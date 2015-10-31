@@ -185,6 +185,7 @@
     <Content Include="Images\img\article-image.jpg" />
     <Content Include="Images\img\backgrounds\bg-about.png" />
     <Content Include="Images\img\backgrounds\bg-single-post.png" />
+    <Content Include="Images\img\Contact_pic.jpg" />
     <Content Include="Images\img\favicon.ico" />
     <Content Include="Images\img\gallery\15.jpg" />
     <Content Include="Images\img\gallery\22.jpg" />
