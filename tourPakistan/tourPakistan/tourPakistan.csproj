@@ -239,6 +239,7 @@
     <Content Include="Images\img\thumbs\6.jpg" />
     <Content Include="Images\img\thumbs\8.jpg" />
     <Content Include="Images\img\top-arrow.svg" />
+    <Content Include="Images\img\poza_2.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fonts\fontawesome-webfont862f.eot" />
