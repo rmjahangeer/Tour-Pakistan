@@ -1,0 +1,111 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Travelogue" />
+
+    <title>Travelogue | Homepage</title>
+    @*<link rel="shortcut icon" href="img/favicon.ico">*@
+
+    <!-- ### CSS Stylesheets ##################################################################### -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/normalize.css" /><!-- CSS: Normalize -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/font-awesome.min.css" /><!-- CSS: Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/styles.css" /><!-- CSS: Main CSS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/responsive.css" /><!-- CSS: Responsive CSS -->
+</head>
+<body class="homepage index-home index">
+
+    <div id="container" class="container intro-effect-grid">
+
+        <a class="cd-primary-nav-trigger" id="trigger-menu" href="#0">
+            <span class="cd-menu-icon"></span>
+        </a>
+    
+
+        <!-- BOF: Fancy Search Form (content imported via jQuery: from search-form.html) -->
+        <div id="travelogue-search" class="travelogue-search">
+            <form action="search.html">
+                <input class="travelogue-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+                <input class="travelogue-search-submit" type="submit" value="">
+                <span class="travelogue-icon-search fa fa-search"></span>
+            </form>
+        </div>
+        <!-- EOF: Fancy Search Form (content imported via jQuery: from search-form.html) -->
+
+        @*hidden image , hidden title*@
+
+        <button class="trigger scroll-down-pulse"><span>Trigger</span></button>
+
+        @*grid div enclosed in article tag*@
+    @RenderBody()
+    
+
+    </div><!-- /container -->
+    
+
+    <!-- ### Sidebar Menu ##################################################################### -->
+    <div id="st-container" class="st-container st-effect-1">
+        @Html.Partial("_MenuPartial")
+    </div>
+    
+    <div id="infinitescroll"></div>
+    <!-- ### JS Scripts ##################################################################### -->
+    <script src="~/Scripts/js/modernizr.custom.js"></script>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/sidebarEffects.js"></script>
+    <script src="~/Scripts/js/classie.js"></script>
+    <script src="~/Scripts/js/custom.js"></script>
+    <script src="~/Scripts/js/transition.js"></script>
+    <script src="~/Scripts/js/jquery.infinitescroll.js"></script>
+    <script src="~/Scripts/js/jquery.ketchup.all.min.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+        var index = 1;
+        var t;
+
+        $('.content > div > .grid').infinitescroll({
+            debug: false,
+            loading: {
+                finished: function (opts) { },
+                start: startAjax,
+            },
+            navSelector: "#infinitescroll",
+            nextSelector: "#infinitescroll",
+            itemSelector: "figure",
+            dataType: 'html',
+            maxPage: 4,
+            path: function (index) {
+                var count = parseInt(index) - 1;
+                return "ajax/content-" + count + ".html";
+            },
+        });
+
+        function startAjax(opts) {
+            $.infinitescroll.prototype.options = opts;
+            $.infinitescroll.prototype.beginAjax(opts);
+        }
+
+    </script>
+    <a href="#" class="back-to-top">Top</a>
+    <!-- Google Code for Remarketing Tag -->
+
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 1008623479;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1008623479/?value=0&amp;guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+</body>
+</html>
