@@ -40,10 +40,10 @@
         <!-- EOF: Fancy Search Form (content imported via jQuery: from search-form.html) -->
 
         <header class="header">
-            <div class="bg-img">
+            @*<div class="">
                 <img class="async-image hide" data-src="/Images/img/Contact_pic.jpg" alt="" />
                 <div class="overlay hidden" id="overlay"></div>
-            </div>
+            </div>*@
             <div class="title">
                 <h1>
                     <span>CONTACT</span>
@@ -52,7 +52,7 @@
                 <p class="subline">Don't be a stranger</p>
 
                 <div>
-                    <form id="theForm" class="simform" autocomplete="off" method="POST" action="php/contact_mail.php">
+                    <form id="theForm" class="simform">
                         <div class="simform-inner">
                             <ol class="questions">
                                 <li>
@@ -72,7 +72,7 @@
                                     <textarea id="q4" name="q4" class="focus-me"></textarea>
                                 </li>
                             </ol><!-- /questions -->
-                            <button class="submit" name="submit_contact" type="submit">Send answers</button>
+                            <button class="submit" name="submit_contact" type="button">Send answers</button>
                             <div class="controls">
                                 <button class="next"></button>
                                 <div class="progress"></div>

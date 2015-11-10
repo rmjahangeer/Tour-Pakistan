@@ -349,6 +349,7 @@
     <Content Include="Images\img\thumbs\8.jpg" />
     <Content Include="Images\img\top-arrow.svg" />
     <Content Include="Images\img\poza_2.jpg" />
+    <Content Include="Images\img\travelogue-logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
