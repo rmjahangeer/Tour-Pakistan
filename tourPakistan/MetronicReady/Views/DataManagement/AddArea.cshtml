@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "AddArea";
+}
+
+<h2>AddArea</h2>
+
+<br /><br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <label>Area<input type="text" class="form-control input-inline" /></label>
+        </div>
+
+        <div class="col-md-4">
+            <label>Province<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <div class="col-md-4">
+            <label>Category<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <a href="@Url.Action("AreaManagement","DataManagement")" class="btn btn-success">Add</a>
+
+    </div>
+</div>
+
+
+
+
+
