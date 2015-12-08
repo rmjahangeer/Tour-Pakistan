@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74BDBB32-D348-4378-AD81-21CD3FB7370A}</ProjectGuid>
+    <ProjectGuid>{0F657BB3-3E97-4522-83E9-C88A71D3DA91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Models</RootNamespace>
-    <AssemblyName>Models</AssemblyName>
+    <RootNamespace>TP.Service</RootNamespace>
+    <AssemblyName>TP.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,28 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainModels\Area.cs" />
-    <Compile Include="DomainModels\AspNetRole.cs" />
-    <Compile Include="DomainModels\AspNetUser.cs" />
-    <Compile Include="DomainModels\AspNetUserClaim.cs" />
-    <Compile Include="DomainModels\AspNetUserLogin.cs" />
-    <Compile Include="DomainModels\Category.cs" />
-    <Compile Include="DomainModels\Location.cs" />
-    <Compile Include="DomainModels\Province.cs" />
-    <Compile Include="DomainModels\Season.cs" />
-    <Compile Include="DomainModels\AreaMapper.cs" />
-    <Compile Include="ModelMappers\CategoryMapper.cs" />
-    <Compile Include="ModelMappers\LocationMapper.cs" />
-    <Compile Include="ModelMappers\ProvinceMapper.cs" />
-    <Compile Include="ModelMappers\SeasonMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebModels\AreaWebModel.cs" />
-    <Compile Include="WebModels\CategoryWebModel.cs" />
-    <Compile Include="WebModels\LocationWebModel.cs" />
-    <Compile Include="WebModels\ProvinceWebModel.cs" />
-    <Compile Include="WebModels\SeasonWebModel.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
