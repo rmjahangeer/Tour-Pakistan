@@ -159,8 +159,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DataManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\ProvinceController.cs" />
+    <Compile Include="Controllers\SeasonController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserManagementController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -883,22 +890,24 @@
     <Content Include="Scripts\global\plugins\socicon\font\socicon.woff2" />
     <Content Include="Scripts\global\plugins\socicon\font\socicond41d.eot" />
     <Content Include="Views\Shared\PartialPages\_SidebarLeftPartial.cshtml" />
-    <Content Include="Views\DataManagement\LocationManagement.cshtml" />
-    <Content Include="Views\DataManagement\AreaManagement.cshtml" />
-    <Content Include="Views\DataManagement\ProvinceManagement.cshtml" />
-    <Content Include="Views\DataManagement\CategoryManagement.cshtml" />
-    <Content Include="Views\DataManagement\SeasonManagement.cshtml" />
-    <Content Include="Views\DataManagement\AddLocation.cshtml" />
-    <Content Include="Views\DataManagement\AddArea.cshtml" />
-    <Content Include="Views\DataManagement\AddProvince.cshtml" />
-    <Content Include="Views\DataManagement\AddCategory.cshtml" />
-    <Content Include="Views\DataManagement\AddSeason.cshtml" />
-    <Content Include="Views\UserManagement\User.cshtml" />
-    <Content Include="Views\UserManagement\Company.cshtml" />
+    <Content Include="Views\Location\LocationIndex.cshtml" />
+    <Content Include="Views\Area\AreaIndex.cshtml" />
+    <Content Include="Views\Province\ProvinceIndex.cshtml" />
+    <Content Include="Views\Category\CategoryIndex.cshtml" />
+    <Content Include="Views\Season\SeasonIndex.cshtml" />
+    <Content Include="Views\Location\AddLocation.cshtml" />
+    <Content Include="Views\Area\AddArea.cshtml" />
+    <Content Include="Views\Province\AddProvince.cshtml" />
+    <Content Include="Views\Category\AddCategory.cshtml" />
+    <Content Include="Views\Season\AddSeason.cshtml" />
+    <Content Include="Views\User\User.cshtml" />
+    <Content Include="Views\Company\Company.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\global\plugins\datatables\DataTables-1.10.8\images\" />
+    <Folder Include="Views\DataManagement\" />
+    <Folder Include="Views\UserManagement\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

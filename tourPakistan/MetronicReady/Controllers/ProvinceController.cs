@@ -6,13 +6,19 @@ using System.Web.Mvc;
 
 namespace MetronicReady.Controllers
 {
-    public class DataManagementController : Controller
+    public class ProvinceController : Controller
     {
-        // GET: DataManagement
+        // GET: Province
 
-        public ActionResult Index()
+        public ActionResult ProvinceIndex()
         {
             return View();
         }
+
+        public ActionResult AddProvince()
+        {
+            return View();
+        }
+
     }
 }

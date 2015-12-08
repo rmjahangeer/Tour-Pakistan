@@ -6,11 +6,15 @@ using System.Web.Mvc;
 
 namespace MetronicReady.Controllers
 {
-    public class DataManagementController : Controller
+    public class CategoryController : Controller
     {
-        // GET: DataManagement
+        // GET: Category
+        public ActionResult CategoryIndex()
+        {
+            return View();
+        }
 
-        public ActionResult Index()
+        public ActionResult AddCategory()
         {
             return View();
         }

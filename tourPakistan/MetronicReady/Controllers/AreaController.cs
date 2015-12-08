@@ -6,11 +6,15 @@ using System.Web.Mvc;
 
 namespace MetronicReady.Controllers
 {
-    public class DataManagementController : Controller
+    public class AreaController : Controller
     {
-        // GET: DataManagement
+        // GET: Area
+        public ActionResult AreaIndex()
+        {
+            return View();
+        }
 
-        public ActionResult Index()
+        public ActionResult AddArea()
         {
             return View();
         }

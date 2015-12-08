@@ -9,14 +9,10 @@ namespace MetronicReady.Controllers
     public class UserManagementController : Controller
     {
         // GET: UserManagement
-        public ActionResult user()
+        public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult company()
-        {
-            return View();
-        }
     }
 }

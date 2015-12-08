@@ -6,10 +6,9 @@ using System.Web.Mvc;
 
 namespace MetronicReady.Controllers
 {
-    public class DataManagementController : Controller
+    public class CompanyController : Controller
     {
-        // GET: DataManagement
-
+        // GET: Company
         public ActionResult Index()
         {
             return View();
