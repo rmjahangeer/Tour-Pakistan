@@ -40,6 +40,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AreaSrevice.cs" />
+    <Compile Include="Service\ProvinceService.cs" />
+    <Compile Include="Service\CategoryService.cs" />
+    <Compile Include="Service\SeasonsService.cs" />
+    <Compile Include="Service\LocationService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{74bdbb32-d348-4378-ad81-21cd3fb7370a}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{37893483-b390-4d54-9aff-51558b5406d3}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

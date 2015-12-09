@@ -48,7 +48,7 @@
     <Compile Include="DomainModels\Location.cs" />
     <Compile Include="DomainModels\Province.cs" />
     <Compile Include="DomainModels\Season.cs" />
-    <Compile Include="DomainModels\AreaMapper.cs" />
+    <Compile Include="ModelMappers\AreaMapper.cs" />
     <Compile Include="ModelMappers\CategoryMapper.cs" />
     <Compile Include="ModelMappers\LocationMapper.cs" />
     <Compile Include="ModelMappers\ProvinceMapper.cs" />
