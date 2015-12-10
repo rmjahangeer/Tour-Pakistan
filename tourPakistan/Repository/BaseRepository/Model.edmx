@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TourPakistanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TourPakistanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Area">
           <Key>
             <PropertyRef Name="AreaId" />
@@ -68,20 +68,31 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TourPakistan.dbo.Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
-            <PropertyRef Name="CategoryName" />
-            <PropertyRef Name="RecCreatedBy" />
-            <PropertyRef Name="RecCreatedDate" />
-            <PropertyRef Name="RecLastUpdate" />
-            <PropertyRef Name="RecUpdatedBy" />
           </Key>
           <Property Name="CategoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RecCreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RecCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="RecLastUpdate" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ScheduledDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="RegistrationStart" Type="datetime" Nullable="false" />
+          <Property Name="RegistrationEnd" Type="datetime" Nullable="false" />
           <Property Name="RecCreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecCreatedDate" Type="datetime" Nullable="false" />
           <Property Name="RecLastUpdate" Type="datetime" Nullable="false" />
@@ -95,10 +106,14 @@ warning 6002: The table/view 'TourPakistan.dbo.Category' does not have a primary
           <Property Name="LocationName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LocationDescription" Type="nvarchar(max)" />
           <Property Name="AreaId" Type="bigint" Nullable="false" />
+          <Property Name="CategoryId" Type="bigint" Nullable="false" />
+          <Property Name="ProvinceId" Type="bigint" Nullable="false" />
+          <Property Name="SeasonId" Type="bigint" Nullable="false" />
           <Property Name="RecCreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecCreatedDate" Type="datetime" Nullable="false" />
           <Property Name="RecLastUpdate" Type="datetime" Nullable="false" />
           <Property Name="RecUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -106,21 +121,15 @@ warning 6002: The table/view 'TourPakistan.dbo.Category' does not have a primary
           </Key>
           <Property Name="ProvinceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProvinceName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CategoryId" Type="bigint" Nullable="false" />
           <Property Name="RecCreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecCreatedDate" Type="datetime" Nullable="false" />
           <Property Name="RecLastUpdate" Type="datetime" Nullable="false" />
           <Property Name="RecUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Season">
           <Key>
             <PropertyRef Name="SeasonId" />
-            <PropertyRef Name="SeasonName" />
-            <PropertyRef Name="RecCreatedBy" />
-            <PropertyRef Name="RecCreatedDate" />
-            <PropertyRef Name="RecLastUpdate" />
-            <PropertyRef Name="RecUpdatedBy" />
           </Key>
           <Property Name="SeasonId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SeasonName" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -209,6 +218,54 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Location_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Province">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Season">
+          <End Role="Season" Type="Self.Season" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="SeasonId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="SeasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Province_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Province" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TourPakistanModelStoreContainer">
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -216,28 +273,11 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Category" EntityType="Self.Category" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Category].[CategoryId] AS [CategoryId], 
-    [Category].[CategoryName] AS [CategoryName], 
-    [Category].[RecCreatedBy] AS [RecCreatedBy], 
-    [Category].[RecCreatedDate] AS [RecCreatedDate], 
-    [Category].[RecLastUpdate] AS [RecLastUpdate], 
-    [Category].[RecUpdatedBy] AS [RecUpdatedBy]
-    FROM [dbo].[Category] AS [Category]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Season" EntityType="Self.Season" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Season].[SeasonId] AS [SeasonId], 
-    [Season].[SeasonName] AS [SeasonName], 
-    [Season].[RecCreatedBy] AS [RecCreatedBy], 
-    [Season].[RecCreatedDate] AS [RecCreatedDate], 
-    [Season].[RecLastUpdate] AS [RecLastUpdate], 
-    [Season].[RecUpdatedBy] AS [RecUpdatedBy]
-    FROM [dbo].[Season] AS [Season]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Area_Province" Association="Self.FK_Area_Province">
             <End Role="Province" EntitySet="Province" />
             <End Role="Area" EntitySet="Area" />
@@ -262,9 +302,24 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
             <End Role="Area" EntitySet="Area" />
             <End Role="Location" EntitySet="Location" />
           </AssociationSet>
+          <AssociationSet Name="FK_Location_Category" Association="Self.FK_Location_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Province" Association="Self.FK_Location_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Season" Association="Self.FK_Location_Season">
+            <End Role="Season" EntitySet="Season" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_Category" Association="Self.FK_Province_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Province" EntitySet="Province" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TourPakistanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -281,7 +336,7 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
           <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RecUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Province" Relationship="Self.FK_Area_Province" FromRole="Area" ToRole="Province" />
-          <NavigationProperty Name="Locations" Relationship="Self.FK_Location_Area" FromRole="Area" ToRole="Location" />
+          <NavigationProperty Name="Locations" Relationship="TourPakistanModel.FK_Location_Area" FromRole="Area" ToRole="Location" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -331,20 +386,7 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-        </EntityType>
-        <EntityType Name="Location">
-          <Key>
-            <PropertyRef Name="LocationId" />
-          </Key>
-          <Property Name="LocationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LocationName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LocationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AreaId" Type="Int64" Nullable="false" />
-          <Property Name="RecCreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RecCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RecUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Area" Relationship="Self.FK_Location_Area" FromRole="Location" ToRole="Area" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -357,22 +399,9 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
           <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RecUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Areas" Relationship="Self.FK_Area_Province" FromRole="Province" ToRole="Area" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-            <PropertyRef Name="CategoryName" />
-            <PropertyRef Name="RecCreatedBy" />
-            <PropertyRef Name="RecCreatedDate" />
-            <PropertyRef Name="RecLastUpdate" />
-            <PropertyRef Name="RecUpdatedBy" />
-          </Key>
-          <Property Name="CategoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RecCreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RecCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RecUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="TourPakistanModel.FK_Province_Category" FromRole="Province" ToRole="Category" />
+          <NavigationProperty Name="Locations" Relationship="TourPakistanModel.FK_Location_Province" FromRole="Province" ToRole="Location" />
         </EntityType>
         <EntityType Name="Season">
           <Key>
@@ -389,6 +418,7 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
           <Property Name="RecCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RecUpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Locations" Relationship="TourPakistanModel.FK_Location_Season" FromRole="Season" ToRole="Location" />
         </EntityType>
         <Association Name="FK_Area_Province">
           <End Role="Province" Type="Self.Province" Multiplicity="1" />
@@ -399,18 +429,6 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
             </Principal>
             <Dependent Role="Area">
               <PropertyRef Name="ProvinceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Location_Area">
-          <End Role="Area" Type="Self.Area" Multiplicity="1" />
-          <End Role="Location" Type="Self.Location" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Area">
-              <PropertyRef Name="AreaId" />
-            </Principal>
-            <Dependent Role="Location">
-              <PropertyRef Name="AreaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -452,17 +470,11 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="Locations" EntityType="Self.Location" />
           <EntitySet Name="Provinces" EntityType="Self.Province" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Seasons" EntityType="Self.Season" />
           <AssociationSet Name="FK_Area_Province" Association="Self.FK_Area_Province">
             <End Role="Province" EntitySet="Provinces" />
             <End Role="Area" EntitySet="Areas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Location_Area" Association="Self.FK_Location_Area">
-            <End Role="Area" EntitySet="Areas" />
-            <End Role="Location" EntitySet="Locations" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -476,7 +488,157 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Locations" EntityType="TourPakistanModel.Location" />
+          <EntitySet Name="Categories" EntityType="TourPakistanModel.Category" />
+          <AssociationSet Name="FK_Location_Area" Association="TourPakistanModel.FK_Location_Area">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <EntitySet Name="Events" EntityType="TourPakistanModel.Event" />
+          <AssociationSet Name="FK_Province_Category" Association="TourPakistanModel.FK_Province_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Season" Association="TourPakistanModel.FK_Location_Season">
+            <End Role="Season" EntitySet="Seasons" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Category" Association="TourPakistanModel.FK_Location_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Province" Association="TourPakistanModel.FK_Location_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LocationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaId" Type="Int64" Nullable="false" />
+          <Property Name="RecCreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RecCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Area" Relationship="TourPakistanModel.FK_Location_Area" FromRole="Location" ToRole="Area" />
+          <Property Name="SeasonId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Season" Relationship="TourPakistanModel.FK_Location_Season" FromRole="Location" ToRole="Season" />
+          <Property Name="CategoryId" Type="Int64" Nullable="false" />
+          <Property Name="ProvinceId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="TourPakistanModel.FK_Location_Category" FromRole="Location" ToRole="Category" />
+          <NavigationProperty Name="Province" Relationship="TourPakistanModel.FK_Location_Province" FromRole="Location" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="RecCreatedBy" />
+            <PropertyRef Name="RecCreatedDate" />
+            <PropertyRef Name="RecLastUpdate" />
+            <PropertyRef Name="RecUpdatedBy" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="CategoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecCreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RecCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Provinces" Relationship="TourPakistanModel.FK_Province_Category" FromRole="Category" ToRole="Province" />
+          <NavigationProperty Name="Locations" Relationship="TourPakistanModel.FK_Location_Category" FromRole="Category" ToRole="Location" />
+        </EntityType>
+        <Association Name="FK_Location_Area">
+          <End Type="TourPakistanModel.Area" Role="Area" Multiplicity="1" />
+          <End Type="TourPakistanModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="ScheduledDate" />
+            <PropertyRef Name="EndDate" />
+            <PropertyRef Name="RegistrationStart" />
+            <PropertyRef Name="RegistrationEnd" />
+            <PropertyRef Name="RecCreatedBy" />
+            <PropertyRef Name="RecCreatedDate" />
+            <PropertyRef Name="RecLastUpdate" />
+            <PropertyRef Name="RecUpdatedBy" />
+          </Key>
+          <Property Name="EventId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduledDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RegistrationStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RegistrationEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecCreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RecCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecLastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Province_Category">
+          <End Type="TourPakistanModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="TourPakistanModel.Province" Role="Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Season">
+          <End Type="TourPakistanModel.Season" Role="Season" Multiplicity="1" />
+          <End Type="TourPakistanModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="SeasonId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="SeasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Category">
+          <End Type="TourPakistanModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="TourPakistanModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Province">
+          <End Type="TourPakistanModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="TourPakistanModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -527,6 +689,7 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="TourPakistanModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
@@ -542,37 +705,12 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Locations">
-            <EntityTypeMapping TypeName="TourPakistanModel.Location">
-              <MappingFragment StoreEntitySet="Location">
-                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
-                <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
-                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
-                <ScalarProperty Name="RecCreatedBy" ColumnName="RecCreatedBy" />
-                <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
-                <ScalarProperty Name="RecLastUpdate" ColumnName="RecLastUpdate" />
-                <ScalarProperty Name="RecUpdatedBy" ColumnName="RecUpdatedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Provinces">
             <EntityTypeMapping TypeName="TourPakistanModel.Province">
               <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
                 <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
-                <ScalarProperty Name="RecCreatedBy" ColumnName="RecCreatedBy" />
-                <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
-                <ScalarProperty Name="RecLastUpdate" ColumnName="RecLastUpdate" />
-                <ScalarProperty Name="RecUpdatedBy" ColumnName="RecUpdatedBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="TourPakistanModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="RecCreatedBy" ColumnName="RecCreatedBy" />
                 <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
                 <ScalarProperty Name="RecLastUpdate" ColumnName="RecLastUpdate" />
@@ -600,6 +738,54 @@ warning 6002: The table/view 'TourPakistan.dbo.Season' does not have a primary k
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="TourPakistanModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SeasonId" ColumnName="SeasonId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RecUpdatedBy" ColumnName="RecUpdatedBy" />
+                <ScalarProperty Name="RecLastUpdate" ColumnName="RecLastUpdate" />
+                <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
+                <ScalarProperty Name="RecCreatedBy" ColumnName="RecCreatedBy" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="TourPakistanModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RecUpdatedBy" ColumnName="RecUpdatedBy" />
+                <ScalarProperty Name="RecLastUpdate" ColumnName="RecLastUpdate" />
+                <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
+                <ScalarProperty Name="RecCreatedBy" ColumnName="RecCreatedBy" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="TourPakistanModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="RecUpdatedBy" ColumnName="RecUpdatedBy" />
+                <ScalarProperty Name="RecLastUpdate" ColumnName="RecLastUpdate" />
+                <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
+                <ScalarProperty Name="RecCreatedBy" ColumnName="RecCreatedBy" />
+                <ScalarProperty Name="RegistrationEnd" ColumnName="RegistrationEnd" />
+                <ScalarProperty Name="RegistrationStart" ColumnName="RegistrationStart" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ScheduledDate" ColumnName="ScheduledDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

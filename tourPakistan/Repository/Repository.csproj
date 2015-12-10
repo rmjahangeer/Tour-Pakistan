@@ -71,6 +71,7 @@
     <None Include="App.Config" />
     <None Include="BaseRepository\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
