@@ -162,7 +162,6 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
-    <Compile Include="Controllers\DataManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
@@ -906,7 +905,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\global\plugins\datatables\DataTables-1.10.8\images\" />
-    <Folder Include="Views\DataManagement\" />
     <Folder Include="Views\UserManagement\" />
   </ItemGroup>
   <ItemGroup>
