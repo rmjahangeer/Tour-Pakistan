@@ -23,10 +23,10 @@
         <AssociationConnector Association="TourPakistanModel.FK_Category_Category" />
         <AssociationConnector Association="TourPakistanModel.FK_Category_Category1" />
         <AssociationConnector Association="TourPakistanModel.FK_Province_Category" />
-        <AssociationConnector Association="TourPakistanModel.FK_Province_Category" />
         <AssociationConnector Association="TourPakistanModel.FK_Location_Season" />
         <AssociationConnector Association="TourPakistanModel.FK_Location_Category" />
         <AssociationConnector Association="TourPakistanModel.FK_Location_Province" />
+        <AssociationConnector Association="TourPakistanModel.FK_Event_AspNetUsers1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
