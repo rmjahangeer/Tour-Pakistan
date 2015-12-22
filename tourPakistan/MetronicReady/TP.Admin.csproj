@@ -162,6 +162,7 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
@@ -901,6 +902,9 @@
     <Content Include="Views\Season\AddSeason.cshtml" />
     <Content Include="Views\User\User.cshtml" />
     <Content Include="Views\Company\Company.cshtml" />
+    <Content Include="Views\Event.cshtml" />
+    <Content Include="Views\Event\AddEvent.cshtml" />
+    <Content Include="Views\Event\EventIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

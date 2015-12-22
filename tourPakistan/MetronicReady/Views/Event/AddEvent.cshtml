@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "AddEvent";
+}
+
+<h2>Add Event</h2>
+
+<br /><br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Title<input type="text" class="form-control input-inline" /></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>Description<input type="text" class="form-control input-inline" /></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>Scheduled Date<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>End Date<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>Registration Start<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+        
+        <div class="col-md-3">
+            <label>Registration End<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <a href="@Url.Action("LocationManagement","DataManagement")" class="btn btn-success">Add</a>
+
+    </div>
+</div>
+

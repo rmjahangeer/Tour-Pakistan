@@ -49,6 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository\BaseDbContext.cs" />
+    <Compile Include="BaseRepository\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseRepository\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -58,20 +63,20 @@
     <Compile Include="Repositories\Area.cs" />
     <Compile Include="Repositories\Category.cs" />
     <Compile Include="Repositories\Location.cs" />
+    <Compile Include="Repositories\LocationImage.cs" />
     <Compile Include="Repositories\Province.cs" />
     <Compile Include="Repositories\Season.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="BaseRepository\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="BaseRepository\Model.edmx.diagram">
+    <None Include="BaseRepository\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
-      <SubType>Designer</SubType>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

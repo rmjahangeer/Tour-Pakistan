@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "AreaManagement";
+﻿@{
+    ViewBag.Title = "EventManagement";
 }
 
 
@@ -17,7 +16,7 @@
 </div>
 <!-- BEGIN PAGE TITLE-->
 <h3 class="page-title">
-    Area Management
+    Event Management
 </h3>
 
 <div class="row">
@@ -29,7 +28,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-settings font-dark"></i>
-                            <span class="caption-subject bold uppercase">Area Data</span>
+                            <span class="caption-subject bold uppercase">Event Data</span>
                         </div>
                         <div class="actions">
                             <div class="btn-group btn-group-devided" data-toggle="buttons">
@@ -47,7 +46,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
-                                        <a href="@Url.Action("AddArea","Area")" id="sample_editable_1_new" class="btn sbold green">
+                                        <a href="@Url.Action("AddEvent","Event")" id="sample_editable_1_new" class="btn sbold green">
                                             Add New
                                             <i class="fa fa-plus"></i>
                                         </a>
@@ -82,8 +81,10 @@
                             </div>
 
 
+                            <br /><br />
+                            <div class="row">
                                 <div class="col-md-4">
-                                    <label class="col-md-4">Area</label>
+                                    <label class="col-md-4">Title</label>
                                     <select class="form-control input-inline col-md-8">
                                         <option>Select</option>
                                         <option value="1">abc</option>
@@ -93,8 +94,18 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-md-4">Province</label>
-                                    <select class="form-control input-inline col-md-8">
+                                    <label class="col-md-5">Company</label>
+                                    <select class="form-control input-inline col-md-7">
+                                        <option>Select</option>
+                                        <option value="1">abc</option>
+                                        <option value="2">def</option>
+                                        <option value="-1">All</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="col-md-5">ScheduledDate</label>
+                                    <select class="form-control input-inline col-md-5">
                                         <option>Select</option>
                                         <option value="1">abc</option>
                                         <option value="2">def</option>
@@ -107,7 +118,7 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label class="col-md-4">Category</label>
+                                    <label class="col-md-4">EndDate</label>
                                     <select class="form-control input-inline col-md-8">
                                         <option>Select</option>
                                         <option value="1">abc</option>
@@ -117,8 +128,8 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-md-4">Season</label>
-                                    <select class="form-control input-inline col-md-8">
+                                    <label class="col-md-5">RegistrationStart</label>
+                                    <select class="form-control input-inline col-md-7">
                                         <option>Select</option>
                                         <option value="1">abc</option>
                                         <option value="2">def</option>
@@ -128,8 +139,8 @@
 
                                 <div class="col-md-4">
                                     <div class="dataTables_length" id="sample_1_length">
-                                        <label class="col-md-4">Show</label>
-                                        <select name="sample_1_length" aria-controls="sample_1" class="form-control input-inline col-md-8">
+                                        <label class="col-md-5">RegistrationEnd</label>
+                                        <select name="sample_1_length" aria-controls="sample_1" class="form-control input-inline col-md-7">
                                             <option value="5">5</option>
                                             <option value="15">15</option>
                                             <option value="20">20</option>
@@ -144,42 +155,48 @@
 
 
 
+                                <div class="row">
+                                    <div class="table-scrollable">
+                                        <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
 
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 67px;">
+                                                        <div class="checker"><span><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"></span></div>
+                                                    </th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" Username : activate to sort column descending" style="width: 200px;">ID</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Email : activate to sort column ascending" style="width: 200px;"> Title </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Points : activate to sort column ascending" style="width: 200px;"> Description </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Email : activate to sort column ascending" style="width: 200px;"> Company </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Joined : activate to sort column ascending" style="width: 200px;"> Scheduled Date </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 200px;"> End Date </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 200px;"> Registration Start </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 200px;"> Registration End </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 200px;"> Action </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>none</td>
+                                                    <td>lahore</td>
+                                                    <td>punjab</td>
+                                                    <td>none</td>
+                                                    <td>none</td>
+                                                    <td><i class="fa fa-trash"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
-                                <div class="table-scrollable">
-                                    <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
-
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
-                                                     " style="width: 67px;">
-                                                    <div class="checker"><span><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"></span></div>
-                                                </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" Username : activate to sort column descending" style="width: 200px;">ID</th>
-                                                <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Email : activate to sort column ascending" style="width: 200px;"> Name </th>
-                                                <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Points : activate to sort column ascending" style="width: 200px;"> Despcription </th>
-                                                <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Joined : activate to sort column ascending" style="width: 200px;"> Province </th>
-                                                <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 200px;"> Action </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>none</td>
-                                                <td>lahore</td>
-                                                <td>punjab</td>
-                                                <td>none</td>
-                                                <td>none</td>
-                                                <td><i class="fa fa-trash"></i></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div><div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 5 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div>
+                                <div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 5 of 25 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div>
                             </div>
+                        </div>
                     </div>
+
+                    <!-- END EXAMPLE TABLE PORTLET-->
                 </div>
-                <!-- END EXAMPLE TABLE PORTLET-->
             </div>
         </div>
     </div>
-</div>
