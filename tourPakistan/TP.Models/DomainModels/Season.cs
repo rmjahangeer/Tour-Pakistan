@@ -1,4 +1,4 @@
-﻿namespace Models.DomainModels
+﻿namespace TP.Models.DomainModels
 {
     public class Season
     {
@@ -6,7 +6,7 @@
         public string SeasonName { get; set; }
         public string RecCreatedBy { get; set; }
         public System.DateTime RecCreatedDate { get; set; }
-        public System.DateTime RecLastUpdate { get; set; }
-        public string RecUpdatedBy { get; set; }
+        public string RecLastUpdatedBy { get; set; }
+        public System.DateTime RecLastUpdatedDate { get; set; }
     }
 }

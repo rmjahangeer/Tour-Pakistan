@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\WebsiteProductByColumn.cs" />
+    <Compile Include="DomainModels\Area.cs" />
     <Compile Include="DomainModels\AspNetRole%27.cs" />
     <Compile Include="DomainModels\AspNetRole.cs" />
     <Compile Include="DomainModels\AspNetUser%27.cs" />
@@ -107,6 +108,12 @@
     <Compile Include="DomainModels\AspNetUserClaim.cs" />
     <Compile Include="DomainModels\AspNetUserLogin.cs" />
     <Compile Include="DomainModels\AspNetUserRole.cs" />
+    <Compile Include="DomainModels\Category.cs" />
+    <Compile Include="DomainModels\Location.cs" />
+    <Compile Include="DomainModels\LocationImage.cs" />
+    <Compile Include="DomainModels\Province.cs" />
+    <Compile Include="DomainModels\Event.cs" />
+    <Compile Include="DomainModels\Season.cs" />
     <Compile Include="IdentityModels\ApplicationRights.cs">
       <SubType>Code</SubType>
     </Compile>

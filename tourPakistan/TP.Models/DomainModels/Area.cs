@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Models.DomainModels
+namespace TP.Models.DomainModels
 {
     public class Area
     {
@@ -9,16 +9,15 @@ namespace Models.DomainModels
             this.Locations = new HashSet<Location>();
         }
 
-        public long AreaId { get; set; }
+        public int AreaId { get; set; }
         public string AreaName { get; set; }
+        public int ProvinceId { get; set; }
         public string AreaDescription { get; set; }
-        public long ProvinceId { get; set; }
         public string RecCreatedBy { get; set; }
         public System.DateTime RecCreatedDate { get; set; }
-        public System.DateTime RecLastUpdate { get; set; }
-        public string RecUpdatedBy { get; set; }
+        public string RecLastUpdatedBy { get; set; }
+        public System.DateTime RecLastUpdatedDate { get; set; }
 
-        public virtual Province Province { get; set; }
         public virtual ICollection<Location> Locations { get; set; }
     }
 }

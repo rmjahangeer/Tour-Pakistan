@@ -1,22 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Models.DomainModels
+namespace TP.Models.DomainModels
 {
     public class Location
     {
+        public Location()
+        {
+            this.LocationImages = new HashSet<LocationImage>();
+        }
+
         public long LocationId { get; set; }
         public string LocationName { get; set; }
         public string LocationDescription { get; set; }
-        public long AreaId { get; set; }
+        public int AreaId { get; set; }
+        public int ProvinceId { get; set; }
+        public long CategoryId { get; set; }
+        public bool IsActive { get; set; }
         public string RecCreatedBy { get; set; }
         public System.DateTime RecCreatedDate { get; set; }
-        public System.DateTime RecLastUpdate { get; set; }
-        public string RecUpdatedBy { get; set; }
+        public string RecLastUpdatedBy { get; set; }
+        public System.DateTime RecLastUpdatedDate { get; set; }
 
         public virtual Area Area { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Province Province { get; set; }
+        public virtual ICollection<LocationImage> LocationImages { get; set; }
     }
 }

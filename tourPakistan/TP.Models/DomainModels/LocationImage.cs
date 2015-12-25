@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.DomainModels
+﻿namespace TP.Models.DomainModels
 {
     public class LocationImage
     {
         public long ImageId { get; set; }
-        public string Path { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ContentType { get; set; }
         public long LocationId { get; set; }
-        public string ImageType { get; set; }
+        public bool IsActive { get; set; }
+        public System.DateTime RecCreatedDate { get; set; }
+        public System.DateTime RecLastUpdatedDate { get; set; }
+        public string RecCreatedBy { get; set; }
+        public string RecLastUpdatedBy { get; set; }
+
+        public virtual Location Location { get; set; }
     }
 }
