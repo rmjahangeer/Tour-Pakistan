@@ -1,0 +1,423 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Travelogue" />
+
+    <title>Travelogue | Homepage</title>
+    <link rel="shortcut icon" href="~/Images/img/favicon.ico">
+
+    <!-- ### CSS Stylesheets ##################################################################### -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/normalize.css" /><!-- CSS: Normalize -->
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome/css/font-awesome.css" /><!-- CSS: Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/styles.css" /><!-- CSS: Main CSS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/responsive.css" /><!-- CSS: Responsive CSS -->
+</head>
+<body class="homepage index-home index">
+
+    <div id="container" class="container intro-effect-grid">
+
+        <a class="cd-primary-nav-trigger" id="trigger-menu" href="#0">
+            <span class="cd-menu-icon"></span>
+        </a>
+
+        <!-- BOF: Fancy Search Form (content imported via jQuery: from search-form.html) -->
+        <div id="travelogue-search" class="travelogue-search">
+            <form action="search.html">
+                <input class="travelogue-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+                <input class="travelogue-search-submit" type="submit" value="">
+                <span class="travelogue-icon-search fa fa-search"></span>
+            </form>
+        </div>
+        <!-- EOF: Fancy Search Form (content imported via jQuery: from search-form.html) -->
+
+        <header class="header">
+            <div class="bg-img">
+                <img class="async-image hide" src="#" data-src="/Images/img/poza_2.jpg" alt="" />
+            </div>
+            <div class="title hidden" id="title">
+                <h1>I want to travel the world</h1>
+            </div>
+            <div class="overlay hidden" id="overlay"></div>
+        </header>
+
+        <button class="trigger scroll-down-pulse"><span>Trigger</span></button>
+
+        <article class="content">
+            <div class="">
+                <div class="grid">
+                    <figure class="single-item-effect big las-vegas">
+                        <img src="~/Images/img/gallery/las-vegas-2.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Know how to <span>live</span></h2>
+                                <p>In Vegas you can have the best time</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small wild">
+                        <img src="~/Images/img/poza-10.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Life <span>Begins</span></h2>
+                                <p>At the end of your comfort zone</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small los-angeles">
+                        <img src="~/Images/img/gallery/los-angeles-1.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>If L.A. <span>falls</span></h2>
+                                <p>The country falls</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small los-angeles">
+                        <img src="~/Images/img/gallery/4.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Live the<span>moment</span></h2>
+                                <p>Don't let it pass by</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small wild">
+                        <img src="~/Images/img/new/480x320/poza-5.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>The <span>journey</span></h2>
+                                <p>Not the arrival matters</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big paris">
+                        <img src="~/Images/img/gallery/paris-1.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Bad day in <span>Paris</span></h2>
+                                <p>Still better than a good day anywhere else</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big city-break">
+                        <img src="~/Images/img/gallery/city-break-10.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>See the city <span>lights</span></h2>
+                                <p>Diamonds fallen from the skies</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small las-vegas">
+                        <img src="~/Images/img/gallery/las-vegas-10.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>God would <span>do it</span></h2>
+                                <p>If he had money</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small city-break">
+                        <img src="~/Images/img/gallery/city-break-13.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Dare to <span>explore</span></h2>
+                                <p>It is a concrete jungle</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small paris">
+                        <img src="~/Images/img/gallery/paris-2.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Never too <span>old</span></h2>
+                                <p>Let’s go fall in love</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small las-vegas">
+                        <img src="~/Images/img/gallery/las-vegas-14.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Imagine <span>how</span></h2>
+                                <p>Heaven must look at night</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big wild">
+                        <img src="~/Images/img/new/965x350/poza-2.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>I want to travel <span>the world</span></h2>
+                                <p>And breathe the air of new places</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big wild">
+                        <img src="~/Images/img/new/965x350/poza-12.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>If you don't know <span>Where</span></h2>
+                                <p>You're going, any road will get you there</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small paris">
+                        <img src="~/Images/img/gallery/paris-13.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Bon <span>appetite</span></h2>
+                                <p>It is food for your soul</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small city-break">
+                        <img src="~/Images/img/gallery/15.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Marry the <span>night</span></h2>
+                                <p>And you will never wake up</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small paris">
+                        <img src="~/Images/img/gallery/paris-9.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>I had it <span>all</span></h2>
+                                <p>But I was waiting for you</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small las-vegas">
+                        <img src="~/Images/img/gallery/las-vegas-8.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Life is<span>complicated</span></h2>
+                                <p>Take route 95</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big los-angeles">
+                        <img src="~/Images/img/gallery/los-angeles-2.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Every day may not be <span>good</span></h2>
+                                <p>But there’s something good in every day</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big los-angeles">
+                        <img src="~/Images/img/gallery/los-angeles-3.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>I will <span>prepare</span></h2>
+                                <p>And someday my chance will come</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small las-vegas">
+                        <img src="~/Images/img/gallery/las-vegas-20.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>From<span>Vegas</span></h2>
+                                <p>With love</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small wild">
+                        <img src="~/Images/img/new/480x320/poza-4.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Go <span>Ahead</span></h2>
+                                <p>You never know what could be on the other side</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small paris">
+                        <img src="~/Images/img/gallery/22.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Like the <span>sunrise</span></h2>
+                                <p>Some things just have to happen</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small wild">
+                        <img src="~/Images/img/new/480x320/poza-11.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Travel <span>is</span></h2>
+                                <p>The ultimate inspiration</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big paris">
+                        <img src="~/Images/img/gallery/paris-3.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Live your own <span>story</span></h2>
+                                <p>Don’t re-write someone elses</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect big las-vegas">
+                        <img src="~/Images/img/gallery/las-vegas-15.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Want something you’ve <span>never had</span></h2>
+                                <p>Do something you’ve never done</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small wild">
+                        <img src="~/Images/img/poza-15.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Go <span>Explore</span></h2>
+                                <p>It's a big world out there</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure class="single-item-effect small city-break">
+                        <img src="~/Images/img/gallery/city-break-7.jpg" alt="img01" />
+                        <figcaption>
+                            <div class="figcaption-border">
+                                <h2>Let’s fly <span>away</span></h2>
+                                <p>Dreams only last for a night</p>
+                                <a href="single.html">View more</a>
+                                <div class="figure-overlay"></div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </article>
+    </div><!-- /container -->
+    <!-- ### Sidebar Menu ##################################################################### -->
+    <div id="st-container" class="st-container">
+        @Html.Partial("_MenuPartial")
+    </div>
+    <div id="infinitescroll"></div>
+    <!-- ### JS Scripts ##################################################################### -->
+    <script src="~/Scripts/js/modernizr.custom.js"></script>
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    
+    <script src="~/Scripts/js/sidebarEffects.js"></script>
+    <script src="~/Scripts/js/classie.js"></script>
+    @*<script src="~/Scripts/js/modernizr.form.custom.js"></script>*@
+    @*<script src="~/Scripts/js/stepsForm.js"></script>*@
+    <script src="~/Scripts/js/custom.js"></script>
+    @*<script src="~/Scripts/js/contact.js"></script>*@
+    @*<script src="~/Scripts/js/jquery.form.js"></script>*@
+    <script src="~/Scripts/js/transition.js"></script>
+    <script src="~/Scripts/js/jquery.infinitescroll.js"></script>
+    <script src="~/Scripts/js/jquery.ketchup.all.min.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+			var index = 1;
+			var t;
+
+			$('.content > div > .grid').infinitescroll({
+				debug		 	: false,
+				loading: {
+					finished	: function( opts ){},
+					start		: startAjax,
+				},
+				navSelector  	: "#infinitescroll",
+				nextSelector 	: "#infinitescroll",
+				itemSelector 	: "figure",
+				dataType	 	: 'html',
+		        maxPage         : 4,
+				path: function(index) {
+					var count = parseInt(index)-1;
+					return "ajax/content-"+count+".html";
+				},
+		    });
+
+			function startAjax( opts ) {
+				$.infinitescroll.prototype.options = opts;
+			    $.infinitescroll.prototype.beginAjax(opts);
+			}
+
+    </script>
+    <a href="#" class="back-to-top">Top</a>
+    <!-- Google Code for Remarketing Tag -->
+
+    <script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1008623479;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1008623479/?value=0&amp;guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<div class="page-header navbar navbar-fixed-top">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a href="~/Home/Index">
+                <img src="~/Images/Web/logo2.png" alt="logo" class="logo-default margin-top-10" />
+            </a>
+        </div>
+        <!-- END LOGO -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+        </a>
+
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+                <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown dropdown-user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        @*<img alt="" class="img-circle" src="~/Content/admin/layout/img/avatar3_small.jpg" />*@
+                        <span class="username username-hide-on-mobile" style="color: white">
+                            @*@("Hello"+User.Identity.Name)*@
+                            Welcome  @Session["FirstName"]
+                        </span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="~/Account/Profile">
+                                <i class="icon-user"></i> My Profile
+                            </a>
+                        </li>
+
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="~/Account/ChangePassword">
+                                <i class="icon-lock"></i> Change Password
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Account/LogOff">
+                                <i class="icon-key"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END USER LOGIN DROPDOWN -->
+                <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                <!-- END QUICK SIDEBAR TOGGLER -->
+            </ul>
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END HEADER INNER -->
+</div>

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "AddLocation";
+}
+
+<h2>AddLocation</h2>
+
+<br/><br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Location<input type="text" class="form-control input-inline" /></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>Area<input type="text" class="form-control input-inline" /></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>Province<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>Category<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <div class="col-md-3">
+            <label>Season<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        </div>
+
+        <a href="@Url.Action("LocationManagement","DataManagement")" class="btn btn-success">Add</a>
+
+    </div>
+</div>
+
