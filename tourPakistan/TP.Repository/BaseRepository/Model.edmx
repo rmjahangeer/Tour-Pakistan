@@ -269,6 +269,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Province_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Province" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="RecCreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TMDModelStoreContainer">
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -317,6 +329,10 @@
           <AssociationSet Name="FK_LocationImage_LocationImage" Association="Self.FK_LocationImage_LocationImage">
             <End Role="Location" EntitySet="Location" />
             <End Role="LocationImage" EntitySet="LocationImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_AspNetUsers" Association="Self.FK_Province_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Province" EntitySet="Province" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -383,6 +399,10 @@
           <AssociationSet Name="FK_LocationImage_LocationImage" Association="TMD.Models.DomainModels.FK_LocationImage_LocationImage">
             <End Role="Location" EntitySet="Locations" />
             <End Role="LocationImage" EntitySet="LocationImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_AspNetUsers" Association="TMD.Models.DomainModels.FK_Province_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Province" EntitySet="Provinces" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="spEbayItemExists_SProcResult">
@@ -475,6 +495,7 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="TMD.Models.DomainModels.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="AspNetRoles" Relationship="TMD.Models.DomainModels.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
           <NavigationProperty Name="Events" Relationship="TMD.Models.DomainModels.FK_Event_AspNetUsers" FromRole="AspNetUser" ToRole="Event" />
+          <NavigationProperty Name="Provinces" Relationship="TMD.Models.DomainModels.FK_Province_AspNetUsers" FromRole="AspNetUser" ToRole="Province" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="TMD.Models.DomainModels.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -598,6 +619,7 @@
           <Property Name="RecLastUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RecLastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Locations" Relationship="TMD.Models.DomainModels.FK_Location_Province" FromRole="Province" ToRole="Location" />
+          <NavigationProperty Name="AspNetUser" Relationship="TMD.Models.DomainModels.FK_Province_AspNetUsers" FromRole="Province" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="Season">
           <Key>
@@ -667,6 +689,18 @@
             </Principal>
             <Dependent Role="LocationImage">
               <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Province_AspNetUsers">
+          <End Type="TMD.Models.DomainModels.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="TMD.Models.DomainModels.Province" Role="Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="RecCreatedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -875,6 +909,7 @@
         <AssociationConnector Association="TMD.Models.DomainModels.FK_Location_Category" />
         <AssociationConnector Association="TMD.Models.DomainModels.FK_Location_Province" />
         <AssociationConnector Association="TMD.Models.DomainModels.FK_LocationImage_LocationImage" />
+        <AssociationConnector Association="TMD.Models.DomainModels.FK_Province_AspNetUsers" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -14,7 +14,7 @@
             <span class="caption-helper">@ViewBag.Title</span>
         </div>
         <div class="actions">
-            <a href="~/SupplierBankAccount/Create" class="btn default yellow-stripe">
+            <a href="@Url.Action("AddProvince","Province")" class="btn default yellow-stripe">
                 <i class="fa fa-plus"></i>
                 <span class="hidden-480">
                     Add New Province
@@ -46,6 +46,8 @@
                                 <tr>
                                     <th class="">Province Id</th>
                                     <th class="">Province Name</th>
+                                    <th class="">Added By</th>
+                                    <th class="">Added Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,6 +56,8 @@
                                     <tr>
                                         <td>@Html.ActionLink(province.ProvinceId.ToString(), "AddProvince", new { id = province.ProvinceId }) </td>
                                         <td>@province.ProvinceName</td>
+                                        <td>@province.AddedBy</td>
+                                        <td>@province.AddedDate</td>
                                     </tr>
                                 }
                             </tbody>

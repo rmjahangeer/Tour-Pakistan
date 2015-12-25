@@ -14,7 +14,9 @@ namespace TP.Models.ModelMapers
                 RecCreatedBy = source.RecCreatedBy,
                 RecCreatedDate = source.RecCreatedDate,
                 RecLastUpdatedBy = source.RecLastUpdatedBy,
-                RecLastUpdatedDate = source.RecLastUpdatedDate
+                RecLastUpdatedDate = source.RecLastUpdatedDate,
+                AddedBy = source.AspNetUser.FirstName + " " + source.AspNetUser.LastName,
+                AddedDate = source.RecCreatedDate.ToString("dd-MMM-yyyy")
             };
         }
 

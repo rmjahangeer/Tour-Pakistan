@@ -17,5 +17,6 @@ namespace TP.Models.DomainModels
         public System.DateTime RecLastUpdatedDate { get; set; }
 
         public virtual ICollection<Location> Locations { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

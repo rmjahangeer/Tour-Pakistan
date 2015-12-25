@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using TP.Interfaces.IRepository;
 using TP.Interfaces.IServices;
@@ -17,7 +18,7 @@ namespace TP.Implementation.Services
 
         public IEnumerable<Province> GetAllProvinces()
         {
-            return provinceRepository.GetAll().ToList();
+            return provinceRepository.GetAll().Include(x=>x.AspNetUser).ToList();
         }
 
         public bool AddUpdateProvince(Province province)

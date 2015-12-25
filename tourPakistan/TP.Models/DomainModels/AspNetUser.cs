@@ -11,6 +11,7 @@ namespace TP.Models.DomainModels
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
             AspNetRoles = new HashSet<AspNetRole>();
             Events = new HashSet<Event>();
+            Provinces = new HashSet<Province>();
         }
 
         public string Id { get; set; }
@@ -42,5 +43,6 @@ namespace TP.Models.DomainModels
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<Event> Events { get; set; }
+        public virtual ICollection<Province> Provinces { get; set; }
     }
 }
