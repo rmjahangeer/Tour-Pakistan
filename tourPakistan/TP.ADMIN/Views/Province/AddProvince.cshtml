@@ -1,23 +1,58 @@
-﻿
+﻿@model TP.Models.WebModels.ProvinceModel
 @{
-    ViewBag.Title = "AddProvince";
+    ViewBag.Title = "Add Province";
+    Session["MenuKey"] = "2";
+    Session["SubMenuKey"] = "3";
 }
 
-<h2>AddProvince</h2>
-
-
-<br /><br />
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <label>Province<input type="text" class="form-control input-inline" /></label>
+<div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bulb font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">Province</span>
+            <span class="caption-helper">@ViewBag.Title</span>
         </div>
-
-        <div class="col-md-4">
-            <label>Category<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        <div class="actions">
+            <button class="btn default blue-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="saveCreate" onclick="return (ValidateFields(event) && ValidateBill());">
+                <i class="fa fa-plus-square-o"></i>
+                <span class="hidden-480">
+                    Save & New
+                </span>
+            </button>
+            <button class="btn default green-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="save" onclick="return (ValidateFields(event) && ValidateBill());">
+                <i class="fa fa-save"></i>
+                <span class="hidden-480">
+                    Save & Close
+                </span>
+            </button>
+            <a href="~/SupplierBankAccount/Index" class="btn default yellow-stripe">
+                <i class="fa fa-list"></i>
+                <span class="hidden-480">
+                    All Provinces
+                </span>
+            </a>
         </div>
-
-        <a href="@Url.Action("ProvinceManagement","DataManagement")" class="btn btn-success">Add</a>
     </div>
+
+
+    @using (Html.BeginForm("AddProvince", "Province", FormMethod.Post, new { @class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form" }))
+    {
+        <div class="portlet-body form">
+
+            <div class="container-fluid">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.ProvinceId)
+                @Html.HiddenFor(m => m.RecCreatedBy)
+                @Html.HiddenFor(m => m.RecCreatedDate)
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Province Name", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.ProvinceName, new { @class = "form-control mandatory", placeholder = "Province Name", @id = "ProvinceName" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
 </div>

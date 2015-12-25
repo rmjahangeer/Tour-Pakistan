@@ -3,7 +3,7 @@ using TP.Interfaces.IRepository;
 using TP.Interfaces.IServices;
 using TP.Models.DomainModels;
 
-namespace TMD.Implementation.Services
+namespace TP.Implementation.Services
 {
     public class AspNetUserService : IAspNetUserService
     {

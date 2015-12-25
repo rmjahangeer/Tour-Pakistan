@@ -1,12 +1,12 @@
-﻿using TMD.Implementation.Services;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
 using TP.Implementation.Identity;
+using TP.Implementation.Services;
 using TP.Interfaces.IServices;
 using TP.Models.IdentityModels;
 
-namespace TMD.Implementation
+namespace TP.Implementation
 {
     public static class TypeRegistrations
     {
@@ -18,6 +18,7 @@ namespace TMD.Implementation
             unityContainer.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             unityContainer.RegisterType<IDashboardService, DashboardService>();
             unityContainer.RegisterType<ILogger, LoggerService>();
+            unityContainer.RegisterType<IProvinceService, ProvinceService>();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace IdentitySample
         private static void RegisterTypes()
         {
             TypeRegistrations.RegisterTypes(container);
-            TMD.Implementation.TypeRegistrations.RegisterType(container);
+            TP.Implementation.TypeRegistrations.RegisterType(container);
 
         }
         /// <summary>

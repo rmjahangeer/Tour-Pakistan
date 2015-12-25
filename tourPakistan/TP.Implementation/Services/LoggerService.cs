@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using TP.Interfaces.IServices;
 
-namespace TMD.Implementation.Services
+namespace TP.Implementation.Services
 {
     /// <summary>
     /// Logger class that manages log entries 

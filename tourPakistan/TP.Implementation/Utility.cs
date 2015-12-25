@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 
-namespace TMD.Implementation
+namespace TP.Implementation
 { 
     public class Utility
     {

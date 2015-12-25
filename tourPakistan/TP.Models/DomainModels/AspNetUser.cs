@@ -10,6 +10,7 @@ namespace TP.Models.DomainModels
             AspNetUserClaims = new HashSet<AspNetUserClaim>();
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
             AspNetRoles = new HashSet<AspNetRole>();
+            Events = new HashSet<Event>();
         }
 
         public string Id { get; set; }
@@ -40,5 +41,6 @@ namespace TP.Models.DomainModels
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

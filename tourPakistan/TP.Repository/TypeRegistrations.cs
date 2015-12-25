@@ -13,6 +13,7 @@ namespace TP.Repository
             
             unityContainer.RegisterType<IAspNetUserRepository, AspNetUserRepository>();
             unityContainer.RegisterType<DbContext, BaseDbContext>(new PerRequestLifetimeManager());
+            unityContainer.RegisterType<IProvinceRepository, ProvinceRepository>();
 
         }
     }

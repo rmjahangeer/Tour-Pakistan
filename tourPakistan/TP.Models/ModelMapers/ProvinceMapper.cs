@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Models.DomainModels;
-using Models.WebModels;
+﻿using TP.Models.DomainModels;
+using TP.Models.WebModels;
 
-namespace Models.ModelMappers
+namespace TP.Models.ModelMapers
 {
     public static class ProvinceMapper
     {
-        public static ProvinceWebModel MapFromServerToClient(this Province source)
+        public static ProvinceModel MapFromServerToClient(this Province source)
         {
-            return new ProvinceWebModel
+            return new ProvinceModel
             {
                 ProvinceId = source.ProvinceId,
                 ProvinceName = source.ProvinceName,
                 RecCreatedBy = source.RecCreatedBy,
                 RecCreatedDate = source.RecCreatedDate,
-                RecLastUpdate = source.RecLastUpdate,
-                RecUpdatedBy = source.RecUpdatedBy
+                RecLastUpdatedBy = source.RecLastUpdatedBy,
+                RecLastUpdatedDate = source.RecLastUpdatedDate
             };
         }
 
-        public static Province MapFromClientToServer(this ProvinceWebModel source)
+        public static Province MapFromClientToServer(this ProvinceModel source)
         {
             return new Province
             {
@@ -31,8 +26,8 @@ namespace Models.ModelMappers
                 ProvinceName = source.ProvinceName,
                 RecCreatedBy = source.RecCreatedBy,
                 RecCreatedDate = source.RecCreatedDate,
-                RecLastUpdate = source.RecLastUpdate,
-                RecUpdatedBy = source.RecUpdatedBy
+                RecLastUpdatedBy = source.RecLastUpdatedBy,
+                RecLastUpdatedDate = source.RecLastUpdatedDate
             };
         }
     }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TP.Interfaces.IServices;
 using TP.Models.DomainModels;
 
-namespace TMD.Implementation.Services
+namespace TP.Implementation.Services
 {
      public   class UsersService : IUsersService
     {

@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using TP.Models.DomainModels;
+﻿using TP.Models.DomainModels;
 
 namespace TP.Interfaces.IRepository
 {
-    public interface IUsersRepository : IBaseRepository<AspNetUser,int>
+    public interface IProvinceRepository : IBaseRepository<Province, int>
     {
-        IEnumerable<AspNetUser> GetAllUsers();
+        
     }
 }

@@ -1,7 +1,7 @@
 ﻿using TP.Interfaces.IServices;
 using TP.Models.ResponseModels;
 
-namespace TMD.Implementation.Services
+namespace TP.Implementation.Services
 {
     public class DashboardService:IDashboardService
     {
