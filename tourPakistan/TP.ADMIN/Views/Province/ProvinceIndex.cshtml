@@ -1,4 +1,5 @@
-﻿@model List<TP.Models.WebModels.ProvinceModel>
+﻿@using System.Globalization
+@model List<TP.Models.WebModels.ProvinceModel>
 @{
     ViewBag.Title = "Province Management";
     Session["MenuKey"] = "2";
@@ -44,7 +45,7 @@
                         <table id="dataTable" class="table table-bordered table-striped table-condensed flip-content">
                             <thead class="flip-content">
                                 <tr>
-                                    <th class="">Province Id</th>
+                                    <th class="" style="width: 15%">Province Id</th>
                                     <th class="">Province Name</th>
                                     <th class="">Added By</th>
                                     <th class="">Added Date</th>
@@ -54,7 +55,7 @@
                                 @foreach (var province in Model)
                                 {
                                     <tr>
-                                        <td>@Html.ActionLink(province.ProvinceId.ToString(), "AddProvince", new { id = province.ProvinceId }) </td>
+                                        <td>@Html.ActionLink(province.ProvinceId.ToString(CultureInfo.InvariantCulture), "AddProvince", new { id = province.ProvinceId }) </td>
                                         <td>@province.ProvinceName</td>
                                         <td>@province.AddedBy</td>
                                         <td>@province.AddedDate</td>
@@ -71,20 +72,16 @@
 
 
 <script type="text/javascript">
-    jQuery(document).on('keyup', '.listFilter', function (ev) {
-        if (ev.which === 13) {
-            $('#btnFltr').click();
-            // Avoid form submit
-            return false;
-        }
-    });
     $(document).ready(function () {
         var oTable = $('#dataTable').dataTable({
             "sPaginationType": "full_numbers",
             "iDisplayLength": 10,
-            "bFilter": true,
+            //"bFilter": true,
+            "searching": true,
             "bLengthChange": false,
-        });
+            //select: true,
+            "info": true
+    });
     });
 </script>
 
