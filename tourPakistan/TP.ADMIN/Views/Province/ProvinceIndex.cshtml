@@ -49,16 +49,18 @@
                                     <th class="">Province Name</th>
                                     <th class="">Added By</th>
                                     <th class="">Added Date</th>
+                                    <th class="">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var province in Model)
                                 {
                                     <tr>
-                                        <td>@Html.ActionLink(province.ProvinceId.ToString(CultureInfo.InvariantCulture), "AddProvince", new { id = province.ProvinceId }) </td>
+                                        <td>@province.ProvinceId</td>
                                         <td>@province.ProvinceName</td>
                                         <td>@province.AddedBy</td>
                                         <td>@province.AddedDate</td>
+                                        <td><a href="@Url.Action("AddProvince","Province")/@province.ProvinceId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a></td>
                                     </tr>
                                 }
                             </tbody>
