@@ -136,6 +136,7 @@
     <Compile Include="RequestModels\OrderSearchRequest.cs" />
     <Compile Include="ResponseModels\OrderSearchResponse.cs" />
     <Compile Include="ResponseModels\DashboardResponseModel.cs" />
+    <Compile Include="WebModels\CategoryModel.cs" />
     <Compile Include="WebModels\ProvinceModel.cs" />
     <Compile Include="WebViewModels\AspNetUsersViewModel.cs" />
     <Compile Include="WebViewModels\MessageViewModel.cs" />

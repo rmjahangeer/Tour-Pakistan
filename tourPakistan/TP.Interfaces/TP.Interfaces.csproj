@@ -55,9 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository\ICategoryRepository.cs" />
     <Compile Include="IRepository\IProvinceRepository.cs" />
     <Compile Include="IRepository\IUsersRepository.cs" />
     <Compile Include="IServices\IAspNetUserService.cs" />
+    <Compile Include="IServices\ICateogryService.cs" />
     <Compile Include="IServices\IProvinceService.cs" />
     <Compile Include="IServices\IDashboardService.cs" />
     <Compile Include="IServices\ILogger.cs" />

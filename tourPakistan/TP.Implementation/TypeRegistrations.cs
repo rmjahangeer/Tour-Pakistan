@@ -19,6 +19,7 @@ namespace TP.Implementation
             unityContainer.RegisterType<IDashboardService, DashboardService>();
             unityContainer.RegisterType<ILogger, LoggerService>();
             unityContainer.RegisterType<IProvinceService, ProvinceService>();
+            unityContainer.RegisterType<ICateogryService, CategoryService>();
         }
     }
 }
