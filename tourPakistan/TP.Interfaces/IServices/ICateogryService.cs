@@ -9,5 +9,6 @@ namespace TP.Interfaces.IServices
         bool AddUpdateCategory(Category category);
 
         Category GetCategoryById(long id);
+        bool DeleteCategory(long id);
     }
 }

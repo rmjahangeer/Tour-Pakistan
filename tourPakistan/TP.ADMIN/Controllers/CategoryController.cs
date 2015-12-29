@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Models.ModelMappers;
+using TMD.Web.Controllers;
 using TP.Interfaces.IServices;
 using TP.Models.DomainModels;
 using TP.Models.WebModels;
@@ -11,7 +12,7 @@ using TP.Models.WebViewModels;
 
 namespace MetronicReady.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private readonly ICateogryService cateogryService;
 
@@ -23,7 +24,14 @@ namespace MetronicReady.Controllers
         // GET: Category
         public ActionResult CategoryIndex()
         {
-            return View();
+            var model = cateogryService.GetAllCategories().ToList();
+            List<CategoryModel> categories;
+            if(model.Count == 0)
+                categories = new List<CategoryModel>();
+
+            categories = model.Select(x => x.MapFromServerToClient()).ToList();
+            ViewBag.MessageVM = TempData["Message"] as MessageViewModel;
+            return View(categories);
         }
 
 
@@ -34,6 +42,7 @@ namespace MetronicReady.Controllers
             {
                 model = cateogryService.GetCategoryById((int) id).MapFromServerToClient();
             }
+            ViewBag.MessageVM = TempData["Message"] as MessageViewModel;
             return View(model);
         }
 
@@ -61,6 +70,20 @@ namespace MetronicReady.Controllers
                 return RedirectToAction("CategoryIndex");
 
             return RedirectToAction("AddCategory");
+        }
+
+        public ActionResult Delete(long id)
+        {
+            var isDeleted = cateogryService.DeleteCategory(id);
+            if (isDeleted)
+            {
+                TempData["Message"] = new MessageViewModel {Message = "Category Deleted Successfully", IsSaved = true};
+            }
+            else
+            {
+                TempData["Message"] = new MessageViewModel { Message = "Something went wrong", IsError = true };
+            }
+            return RedirectToAction("CategoryIndex");
         }
     }
 }

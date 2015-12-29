@@ -11,6 +11,11 @@ namespace TP.Implementation.Services
     {
         private readonly ICategoryRepository categoryRepository;
 
+        public CategoryService(ICategoryRepository categoryRepository)
+        {
+            this.categoryRepository = categoryRepository;
+        }
+
         public IEnumerable<Category> GetAllCategories()
         {
             return categoryRepository.GetAllCategories();
@@ -34,5 +39,15 @@ namespace TP.Implementation.Services
         {
             return categoryRepository.Find(id);
         }
+
+        public bool DeleteCategory(long id)
+        {
+            var toDetele = categoryRepository.Find(id);
+            categoryRepository.Delete(toDetele);
+            categoryRepository.SaveChanges();
+            return true;
+
+        }
+
     }
 }

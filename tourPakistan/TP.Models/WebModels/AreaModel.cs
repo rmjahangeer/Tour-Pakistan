@@ -1,14 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace TP.Models.DomainModels
+﻿namespace TP.Models.WebModels
 {
-    public class Area
+    public class AreaModel
     {
-        public Area()
-        {
-            this.Locations = new HashSet<Location>();
-        }
 
         public int AreaId { get; set; }
         public string AreaName { get; set; }
@@ -18,9 +11,8 @@ namespace TP.Models.DomainModels
         public System.DateTime RecCreatedDate { get; set; }
         public string RecLastUpdatedBy { get; set; }
         public System.DateTime RecLastUpdatedDate { get; set; }
-
         public bool IsActive { get; set; }
 
-        public virtual ICollection<Location> Locations { get; set; }
+        
     }
 }

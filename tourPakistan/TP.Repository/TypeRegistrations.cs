@@ -15,7 +15,7 @@ namespace TP.Repository
             unityContainer.RegisterType<DbContext, BaseDbContext>(new PerRequestLifetimeManager());
             unityContainer.RegisterType<IProvinceRepository, ProvinceRepository>();
             unityContainer.RegisterType<ICategoryRepository, CategoryRepository>();
-
+            unityContainer.RegisterType<IAreaRepository, AreaRepository>();
         }
     }
 }

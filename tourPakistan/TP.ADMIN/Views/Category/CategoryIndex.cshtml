@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@model List<TP.Models.WebModels.ProvinceModel>
+@model List<TP.Models.WebModels.CategoryModel>
 @{
     ViewBag.Title = "Category Management";
     Session["MenuKey"] = "2";
@@ -45,10 +45,9 @@
                         <table id="dataTable" class="table table-bordered table-striped table-condensed flip-content">
                             <thead class="flip-content">
                                 <tr>
-                                    <th class="" style="width: 15%">Province Id</th>
+                                    <th class="" style="width: 15%">Category Id</th>
                                     <th class="">Category Name</th>
-                                    <th class="">Added By</th>
-                                    <th class="">Added Date</th>
+                                    <th class="">State</th>
                                     <th class="">Action</th>
                                 </tr>
                             </thead>
@@ -56,11 +55,19 @@
                                 @foreach (var category in Model)
                                 {
                                     <tr>
-                                        <td>@province.CategoryId</td>
-                                        <td>@province.CategoryName</td>
-                                        <td>@province.AddedBy</td>
-                                        <td>@province.AddedDate</td>
-                                        <td><a href="@Url.Action("AddCategory","Category")/@province.CategoryId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a></td>
+                                        <td>@category.CategoryId</td>
+                                        <td>@category.CategoryName</td>
+                                        <td>@if (category.IsActive)
+                                            {
+                                                <button class="btn green-haze">Active</button>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn red-flamingo">In active</button>
+                                            }</td>
+                                        <td><a href="@Url.Action("AddCategory","Category")/@category.CategoryId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a>
+                                            <a href="@Url.Action("Delete","Category")/@category.CategoryId" class="btn btn-sm red-flamingo"><i class="fa fa-edit"></i> Delete</a>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>

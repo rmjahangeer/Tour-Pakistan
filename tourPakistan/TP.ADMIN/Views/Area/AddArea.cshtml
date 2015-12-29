@@ -1,29 +1,72 @@
-﻿
+﻿@model TP.Models.WebModels.AreaModel
 @{
-    ViewBag.Title = "AddArea";
+    ViewBag.Title = "Add Area";
+    Session["MenuKey"] = "2";
+    Session["SubMenuKey"] = "3";
 }
 
-<h2>AddArea</h2>
-
-<br /><br />
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <label>Area<input type="text" class="form-control input-inline" /></label>
+<div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bulb font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">Area</span>
+            <span class="caption-helper">@ViewBag.Title</span>
         </div>
-
-        <div class="col-md-4">
-            <label>Province<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
+        <div class="actions">
+            <button class="btn default blue-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="saveCreate" onclick="return (ValidateFields(event) && ValidateBill());">
+                <i class="fa fa-plus-square-o"></i>
+                <span class="hidden-480">
+                    Save & New
+                </span>
+            </button>
+            <button class="btn default green-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="save" onclick="return (ValidateFields(event) && ValidateBill());">
+                <i class="fa fa-save"></i>
+                <span class="hidden-480">
+                    Save & Close
+                </span>
+            </button>
+            <a href="@Url.Action("AreaIndex", "Area")" class="btn default yellow-stripe">
+                <i class="fa fa-list"></i>
+                <span class="hidden-480">
+                    All Areas
+                </span>
+            </a>
         </div>
-
-
-        <a href="@Url.Action("AreaManagement","DataManagement")" class="btn btn-success">Add</a>
-
     </div>
+
+
+    @using (Html.BeginForm("AddArea", "Area", FormMethod.Post, new { @class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form" }))
+    {
+        <div class="portlet-body form">
+
+            <div class="container-fluid">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.AreaId)
+                @Html.HiddenFor(m => m.RecCreatedBy)
+                @Html.HiddenFor(m => m.RecCreatedDate)
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Area Name", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AreaName, new { @class = "form-control mandatory", placeholder = "Area Name", @id = "AreaName" })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Area Description", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AreaDescription, new { @class = "form-control mandatory", placeholder = "Area Description", @id = "AreaDescripption" })
+                    </div>
+                </div>
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Is Active", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-control mandatory", @id = "IsActiveArea" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
 </div>
-
-
-
-
-

@@ -125,6 +125,7 @@
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\IdentityOperation.cs" />
     <Compile Include="Services\AspNetUserService.cs" />
+    <Compile Include="Services\AreaService.cs" />
     <Compile Include="Services\DashboardService.cs" />
     <Compile Include="Services\LoggerService.cs" />
     <Compile Include="Services\CategoryService.cs" />
