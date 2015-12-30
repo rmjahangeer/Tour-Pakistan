@@ -288,7 +288,8 @@ $(document).ready(function () {
     $(".datepickerFormated").datepicker({
         changeMonth: true,
         changeYear: true,
-        dateFormat: "dd-M-yy"
+        dateFormat: "dd-M-yy",
+        minDate: new Date()
     });
 
     RestrictNumberOnlyFields();

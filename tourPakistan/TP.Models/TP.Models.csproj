@@ -123,6 +123,7 @@
     <Compile Include="IdentityModels\ViewModels\AccountViewModels.cs" />
     <Compile Include="IdentityModels\ViewModels\AdminViewModel.cs" />
     <Compile Include="IdentityModels\ViewModels\ManageViewModels.cs" />
+    <Compile Include="ModelMapers\EventMapper.cs" />
     <Compile Include="ModelMapers\AreaMapper.cs" />
     <Compile Include="ModelMapers\AspNetUserMapper.cs" />
     <Compile Include="ModelMapers\CategoryMapper.cs" />
@@ -136,8 +137,10 @@
     <Compile Include="RequestModels\OrderSearchRequest.cs" />
     <Compile Include="ResponseModels\OrderSearchResponse.cs" />
     <Compile Include="ResponseModels\DashboardResponseModel.cs" />
+    <Compile Include="WebModels\EventModel.cs" />
     <Compile Include="WebModels\AreaModel.cs" />
     <Compile Include="WebModels\CategoryModel.cs" />
+    <Compile Include="WebModels\SeasonModel.cs" />
     <Compile Include="WebModels\ProvinceModel.cs" />
     <Compile Include="WebViewModels\AspNetUsersViewModel.cs" />
     <Compile Include="WebViewModels\MessageViewModel.cs" />

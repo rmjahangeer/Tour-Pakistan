@@ -1,39 +1,94 @@
-﻿@{
-    ViewBag.Title = "AddEvent";
+﻿@model TP.Models.WebModels.EventModel
+@{
+    ViewBag.Title = "Add Event";
+    Session["MenuKey"] = "2";
+    Session["SubMenuKey"] = "3";
 }
 
-<h2>Add Event</h2>
-
-<br /><br />
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <label>Title<input type="text" class="form-control input-inline" /></label>
+<div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bulb font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">Event</span>
+            <span class="caption-helper">@ViewBag.Title</span>
         </div>
-
-        <div class="col-md-3">
-            <label>Description<input type="text" class="form-control input-inline" /></label>
+        <div class="actions">
+            <button class="btn default blue-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="saveCreate" onclick="return (ValidateFields(event) && ValidateBill());">
+                <i class="fa fa-plus-square-o"></i>
+                <span class="hidden-480">
+                    Save & New
+                </span>
+            </button>
+            <button class="btn default green-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="save" onclick="return (ValidateFields(event) && ValidateBill());">
+                <i class="fa fa-save"></i>
+                <span class="hidden-480">
+                    Save & Close
+                </span>
+            </button>
+            <a href="@Url.Action("EventIndex", "Event")" class="btn default yellow-stripe">
+                <i class="fa fa-list"></i>
+                <span class="hidden-480">
+                    All Events
+                </span>
+            </a>
         </div>
-
-        <div class="col-md-3">
-            <label>Scheduled Date<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
-        </div>
-
-        <div class="col-md-3">
-            <label>End Date<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
-        </div>
-
-        <div class="col-md-3">
-            <label>Registration Start<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
-        </div>
-        
-        <div class="col-md-3">
-            <label>Registration End<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
-        </div>
-
-        <a href="@Url.Action("LocationManagement","DataManagement")" class="btn btn-success">Add</a>
-
     </div>
-</div>
 
+
+    @using (Html.BeginForm("AddEvent", "Event", FormMethod.Post, new { @class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form" }))
+    {
+        <div class="portlet-body form">
+
+            <div class="container-fluid">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.EventId)
+                @Html.HiddenFor(m => m.RecCreatedBy)
+                @Html.HiddenFor(m => m.RecCreatedDate)
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Event Name", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control mandatory", placeholder = "Event Title", @id = "EventTitle" })
+                    </div>
+                </div>
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Event Description", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control mandatory", placeholder = "Event Description", @id = "EventDescripption" })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Starting Date", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.ScheduledDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Starting Date", @id = "EventDescripption" , @readonly=true })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Ending Date", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Ending Date", @id = "EventDescripption", @readonly = true })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Registration Start", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.RegistrationStartDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration Start", @id = "EventDescripption", @readonly = true })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Registration End", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.RegistrationEndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration End", @id = "Registration End", @readonly = true })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    }
+</div>

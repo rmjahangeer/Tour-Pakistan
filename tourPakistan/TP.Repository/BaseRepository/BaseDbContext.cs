@@ -43,6 +43,7 @@ namespace TP.Repository.BaseRepository
         public DbSet<Province> Provinces { get; set; }
         public DbSet<LocationImage> LocationImages { get; set; }
         public DbSet<Season> Seasons { get; set; }
+        public DbSet<Event> Events { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<AspNetUser> AspNetUsers { get; set; }
     }

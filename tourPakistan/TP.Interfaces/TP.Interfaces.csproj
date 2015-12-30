@@ -55,13 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository\IEventRepository.cs" />
     <Compile Include="IRepository\IAreaRepository.cs" />
     <Compile Include="IRepository\ICategoryRepository.cs" />
+    <Compile Include="IRepository\ISeasonRepository.cs" />
     <Compile Include="IRepository\IProvinceRepository.cs" />
     <Compile Include="IRepository\IUsersRepository.cs" />
     <Compile Include="IServices\IAspNetUserService.cs" />
     <Compile Include="IServices\IAreaSerivce.cs" />
+    <Compile Include="IServices\IEventService.cs" />
     <Compile Include="IServices\ICateogryService.cs" />
+    <Compile Include="IServices\ISeasonService.cs" />
     <Compile Include="IServices\IProvinceService.cs" />
     <Compile Include="IServices\IDashboardService.cs" />
     <Compile Include="IServices\ILogger.cs" />

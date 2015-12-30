@@ -126,9 +126,11 @@
     <Compile Include="Identity\IdentityOperation.cs" />
     <Compile Include="Services\AspNetUserService.cs" />
     <Compile Include="Services\AreaService.cs" />
+    <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\DashboardService.cs" />
     <Compile Include="Services\LoggerService.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\SeasonService.cs" />
     <Compile Include="Services\ProvinceService.cs" />
     <Compile Include="Services\UsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
