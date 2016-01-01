@@ -1,45 +1,48 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Models.DomainModels;
-//using Models.WebModels;
+﻿using TP.Models.DomainModels;
+using TP.Models.WebModels;
 
-//namespace Models.ModelMappers
-//{
-//    public static class LocationMapper
-//    {
-//        public static LocationWebModel MapFromServerToClient(this Location source)
-//        {
-//            return new LocationWebModel
-//            {
-//                AreaId = source.AreaId,
-//                LocationId = source.LocationId,
-//                LocationName = source.LocationName,
-//                LocationDescription = source.LocationDescription,
-//                RecCreatedBy = source.RecCreatedBy,
-//                RecCreatedDate = source.RecCreatedDate,
-//                RecLastUpdate = source.RecLastUpdate,
-//                RecUpdatedBy = source.RecUpdatedBy
-//            };
-//        }
+namespace Models.ModelMappers
+{
+    public static class LocationMapper
+    {
+        public static LocationModel MapFromServerToClient(this Location source)
+        {
+            return new LocationModel
+            {
+                AreaId = source.AreaId,
+                AreaName = source.Area.AreaName,
+                ProvinceId = source.ProvinceId,
+                ProvinceName = source.Province.ProvinceName,
+                CategoryId = source.CategoryId,
+                CategoryName = source.Category.CategoryName,
+                LocationId = source.LocationId,
+                LocationName = source.LocationName,
+                LocationDescription = source.LocationDescription,
+                RecCreatedBy = source.RecCreatedBy,
+                RecCreatedDate = source.RecCreatedDate,
+                RecLastUpdatedDate = source.RecLastUpdatedDate,
+                RecLastUpdatedBy = source.RecLastUpdatedBy,
+                IsActive = source.IsActive
+            };
+        }
 
-//        public static Location MapFromClientToServer(this LocationWebModel source)
-//        {
-//            return new Location
-//            {
-//                AreaId = source.AreaId,
-//                LocationId = source.LocationId,
-//                LocationName = source.LocationName,
-//                LocationDescription = source.LocationDescription,
-//                RecCreatedBy = source.RecCreatedBy,
-//                RecCreatedDate = source.RecCreatedDate,
-//                RecLastUpdate = source.RecLastUpdate,
-//                RecUpdatedBy = source.RecUpdatedBy
-//            };
-//        }
-//    }
-//}
+        public static Location MapFromClientToServer(this LocationModel source)
+        {
+            return new Location
+            {
+                AreaId = source.AreaId,
+                ProvinceId = source.ProvinceId,
+                CategoryId = source.CategoryId,
+                LocationId = source.LocationId,
+                LocationName = source.LocationName,
+                LocationDescription = source.LocationDescription,
+                RecCreatedBy = source.RecCreatedBy,
+                RecCreatedDate = source.RecCreatedDate,
+                RecLastUpdatedDate = source.RecLastUpdatedDate,
+                RecLastUpdatedBy = source.RecLastUpdatedBy
+            };
+        }
+    }
+}
 
 

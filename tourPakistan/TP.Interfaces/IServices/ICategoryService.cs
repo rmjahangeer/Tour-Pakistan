@@ -3,7 +3,7 @@ using TP.Models.DomainModels;
 
 namespace TP.Interfaces.IServices
 {
-    public interface ICateogryService
+    public interface ICategoryService
     {
         IEnumerable<Category> GetAllCategories();
         bool AddUpdateCategory(Category category);

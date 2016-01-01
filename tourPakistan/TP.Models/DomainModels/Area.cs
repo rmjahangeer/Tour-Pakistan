@@ -22,5 +22,6 @@ namespace TP.Models.DomainModels
         public bool IsActive { get; set; }
 
         public virtual ICollection<Location> Locations { get; set; }
+        public virtual Province Province { get; set; }
     }
 }

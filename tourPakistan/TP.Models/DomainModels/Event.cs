@@ -16,6 +16,7 @@ namespace TP.Models.DomainModels
         public string RecLastUpdatedBy { get; set; }
         public DateTime RecLastUpdatedDate { get; set; }
 
+        public bool IsActive { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
     }
 }

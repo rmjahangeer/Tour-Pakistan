@@ -1,36 +1,95 @@
-﻿
+﻿@model TP.Models.WebViewModels.LocationViewModel
 @{
-    ViewBag.Title = "AddLocation";
+    ViewBag.Title = "Add Location";
+    Session["MenuKey"] = "2";
+    Session["SubMenuKey"] = "3";
 }
 
-<h2>AddLocation</h2>
-
-<br/><br/>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <label>Location<input type="text" class="form-control input-inline" /></label>
+<div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bulb font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">Location</span>
+            <span class="caption-helper">@ViewBag.Title</span>
         </div>
-
-        <div class="col-md-3">
-            <label>Area<input type="text" class="form-control input-inline" /></label>
+        <div class="actions">
+            <button class="btn default blue-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="saveCreate" onclick="return (ValidateFields(Location) && ValidateBill());">
+                <i class="fa fa-plus-square-o"></i>
+                <span class="hidden-480">
+                    Save & New
+                </span>
+            </button>
+            <button class="btn default green-stripe toBeHidden" id="btnFltr" type="submit" form="SupplierBankAccountForm" name="save" onclick="return (ValidateFields(Location) && ValidateBill());">
+                <i class="fa fa-save"></i>
+                <span class="hidden-480">
+                    Save & Close
+                </span>
+            </button>
+            <a href="@Url.Action("LocationIndex", "Location")" class="btn default yellow-stripe">
+                <i class="fa fa-list"></i>
+                <span class="hidden-480">
+                    All Locations
+                </span>
+            </a>
         </div>
-
-        <div class="col-md-3">
-            <label>Province<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
-        </div>
-
-        <div class="col-md-3">
-            <label>Category<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
-        </div>
-
-        <div class="col-md-3">
-            <label>Season<select class="form-control input-inline"><option>Select</option><option value="1">abc</option><option value="2">def</option><option value="-1">All</option></select></label>
-        </div>
-
-        <a href="@Url.Action("LocationManagement","DataManagement")" class="btn btn-success">Add</a>
-
     </div>
-</div>
 
+
+    @using (Html.BeginForm("AddLocation", "Location", FormMethod.Post, new { @class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form" }))
+    {
+        <div class="portlet-body form">
+
+            <div class="container-fluid">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Location.LocationId)
+                @Html.HiddenFor(m => m.Location.RecCreatedBy)
+                @Html.HiddenFor(m => m.Location.RecCreatedDate)
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Location Name", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Location.LocationName, new { @class = "form-control mandatory", placeholder = "Location Name", @id = "LocationTitle" })
+                    </div>
+                </div>
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Location Description", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Location.LocationDescription, new { @class = "form-control mandatory", placeholder = "Location Description", @id = "LocationDescripption" })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Area", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(m => m.Location.AreaId, new SelectList(Model.AreaDdl, "AreaId", "AreaName", Model.Location.AreaId),  "Select Area", new { @class = "form-control mandatory dropdown-content select2me" })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Province", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(m => m.Location.ProvinceId,new SelectList(Model.ProvinceDdl, "ProvinceId", "ProvinceName", Model.Location.ProvinceId),  "Select Province" ,new { @class = "form-control mandatory dropdown-content select2me" })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Category", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(m => m.Location.CategoryId, new SelectList(Model.CategoryDdl, "CategoryId", "CategoryName", Model.Location.CategoryId), "Select Category" , new { @class = "form-control mandatory dropdown-content select2me"})
+                    </div>
+                </div>
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Is Active", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.CheckBoxFor(m => m.Location.IsActive, new { @class = "form-control mandatory", @id = "IsActiveArea" })
+                    </div>
+                </div>
+               
+
+            </div>
+        </div>
+
+    }
+</div>

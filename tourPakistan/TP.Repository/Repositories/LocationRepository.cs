@@ -8,13 +8,13 @@ using TP.Repository.BaseRepository;
 
 namespace TP.Repository.Repositories
 {
-    public sealed class AreaRepository : BaseRepository<Area>, IAreaRepository
+    public sealed class LocationRepository : BaseRepository<Location>, ILocationRepository
     {
         #region Constructor
         /// <summary>
         /// Constructor
         /// </summary>
-        public AreaRepository(IUnityContainer container)
+        public LocationRepository(IUnityContainer container)
             : base(container)
         {
         }
@@ -22,20 +22,17 @@ namespace TP.Repository.Repositories
         /// <summary>
         /// Primary database set
         /// </summary>
-        protected override IDbSet<Area> DbSet
+        protected override IDbSet<Location> DbSet
         {
-            get { return db.Areas; }
+            get { return db.Locations; }
         }
         #endregion
 
-        public IEnumerable<Area> GetAllAreas()
+        public IEnumerable<Location> GetAllLocations()
         {
-            return DbSet.Include(x => x.Province).Select(x => x).ToList();
+            return DbSet.Include(x=>x.Area).Include(x=>x.Province).Include(x=>x.Category).Select(x=>x).ToList();
+
         }
 
-        public IEnumerable<Area> GetAllActiveAreas()
-        {
-            return DbSet.Include(x => x.Province).Where(x => x.IsActive == true).ToList();
-        }
     }
 }

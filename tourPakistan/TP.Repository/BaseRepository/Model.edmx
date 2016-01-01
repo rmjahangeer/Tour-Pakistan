@@ -17,6 +17,7 @@
           <Property Name="RecCreatedDate" Type="datetime" Nullable="false" />
           <Property Name="RecLastUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecLastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
@@ -100,6 +101,7 @@
           <Property Name="RecCreatedDate" Type="datetime" Nullable="false" />
           <Property Name="RecLastUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecLastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -153,6 +155,18 @@
           <Property Name="RecLastUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecLastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Area_Province">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -294,6 +308,10 @@
           <EntitySet Name="LocationImage" EntityType="Self.LocationImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Area_Province" Association="Self.FK_Area_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -403,6 +421,10 @@
           <AssociationSet Name="FK_Province_AspNetUsers" Association="TMD.Models.DomainModels.FK_Province_AspNetUsers">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Area_Province" Association="TMD.Models.DomainModels.FK_Area_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Area" EntitySet="Areas" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="spEbayItemExists_SProcResult">
@@ -542,6 +564,8 @@
           <Property Name="RecLastUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RecLastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Locations" Relationship="TMD.Models.DomainModels.FK_Location_Area" FromRole="Area" ToRole="Location" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Province" Relationship="TMD.Models.DomainModels.FK_Area_Province" FromRole="Area" ToRole="Province" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -572,6 +596,7 @@
           <Property Name="RecLastUpdatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RecLastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="AspNetUser" Relationship="TMD.Models.DomainModels.FK_Event_AspNetUsers" FromRole="Event" ToRole="AspNetUser" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -620,6 +645,7 @@
           <Property Name="RecLastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Locations" Relationship="TMD.Models.DomainModels.FK_Location_Province" FromRole="Province" ToRole="Location" />
           <NavigationProperty Name="AspNetUser" Relationship="TMD.Models.DomainModels.FK_Province_AspNetUsers" FromRole="Province" ToRole="AspNetUser" />
+          <NavigationProperty Name="Areas" Relationship="TMD.Models.DomainModels.FK_Area_Province" FromRole="Province" ToRole="Area" />
         </EntityType>
         <EntityType Name="Season">
           <Key>
@@ -704,6 +730,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Area_Province">
+          <End Type="TMD.Models.DomainModels.Province" Role="Province" Multiplicity="1" />
+          <End Type="TMD.Models.DomainModels.Area" Role="Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -770,6 +808,7 @@
           <EntitySetMapping Name="Areas">
             <EntityTypeMapping TypeName="TMD.Models.DomainModels.Area">
               <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="RecLastUpdatedDate" ColumnName="RecLastUpdatedDate" />
                 <ScalarProperty Name="RecLastUpdatedBy" ColumnName="RecLastUpdatedBy" />
                 <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
@@ -797,6 +836,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="TMD.Models.DomainModels.Event">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="RecLastUpdatedDate" ColumnName="RecLastUpdatedDate" />
                 <ScalarProperty Name="RecLastUpdatedBy" ColumnName="RecLastUpdatedBy" />
                 <ScalarProperty Name="RecCreatedDate" ColumnName="RecCreatedDate" />
@@ -910,6 +950,7 @@
         <AssociationConnector Association="TMD.Models.DomainModels.FK_Location_Province" />
         <AssociationConnector Association="TMD.Models.DomainModels.FK_LocationImage_LocationImage" />
         <AssociationConnector Association="TMD.Models.DomainModels.FK_Province_AspNetUsers" />
+        <AssociationConnector Association="TMD.Models.DomainModels.FK_Area_Province" />
       </Diagram>
     </Diagrams>
   </Designer>

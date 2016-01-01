@@ -7,6 +7,7 @@ namespace TP.Models.DomainModels
         public Province()
         {
             this.Locations = new HashSet<Location>();
+            this.Areas = new HashSet<Area>();
         }
 
         public int ProvinceId { get; set; }
@@ -18,5 +19,6 @@ namespace TP.Models.DomainModels
 
         public virtual ICollection<Location> Locations { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
+        public virtual ICollection<Area> Areas { get; set; }
     }
 }

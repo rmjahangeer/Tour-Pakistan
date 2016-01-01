@@ -1,4 +1,5 @@
-﻿@model TP.Models.WebModels.AreaModel
+﻿@using System.Web.Mvc.Html
+@model TP.Models.WebViewModels.AreaViewModel
 @{
     ViewBag.Title = "Add Area";
     Session["MenuKey"] = "2";
@@ -41,28 +42,35 @@
 
             <div class="container-fluid">
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => m.AreaId)
-                @Html.HiddenFor(m => m.RecCreatedBy)
-                @Html.HiddenFor(m => m.RecCreatedDate)
+                @Html.HiddenFor(m => m.Area.AreaId)
+                @Html.HiddenFor(m => m.Area.RecCreatedBy)
+                @Html.HiddenFor(m => m.Area.RecCreatedDate)
 
                 <div class="form-group margin-top-20">
                     @Html.Label("Area Name", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.AreaName, new { @class = "form-control mandatory", placeholder = "Area Name", @id = "AreaName" })
+                        @Html.TextBoxFor(m => m.Area.AreaName, new { @class = "form-control mandatory", placeholder = "Area Name", @id = "AreaName" })
                     </div>
                 </div>
                 
                 <div class="form-group margin-top-20">
                     @Html.Label("Area Description", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.AreaDescription, new { @class = "form-control mandatory", placeholder = "Area Description", @id = "AreaDescripption" })
+                        @Html.TextBoxFor(m => m.Area.AreaDescription, new { @class = "form-control mandatory", placeholder = "Area Description", @id = "AreaDescripption" })
+                    </div>
+                </div>
+                
+                <div class="form-group margin-top-20">
+                    @Html.Label("Province", new { @class = "col-md-3 control-label requiredLabel" })
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(m => m.Area.ProvinceId, new SelectList(Model.ProvinceDdl, "ProvinceId", "ProvinceName", Model.Area.ProvinceId), "Select Province", new { @class = "form-control mandatory dropdown-content select2me"})
                     </div>
                 </div>
 
                 <div class="form-group margin-top-20">
                     @Html.Label("Is Active", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-control mandatory", @id = "IsActiveArea" })
+                        @Html.CheckBoxFor(m => m.Area.IsActive, new { @class = "form-control mandatory", @id = "IsActiveArea" })
                     </div>
                 </div>
             </div>

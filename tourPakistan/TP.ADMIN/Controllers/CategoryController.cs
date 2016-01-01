@@ -14,9 +14,9 @@ namespace MetronicReady.Controllers
 {
     public class CategoryController : BaseController
     {
-        private readonly ICateogryService cateogryService;
+        private readonly ICategoryService cateogryService;
 
-        public CategoryController(ICateogryService cateogryService)
+        public CategoryController(ICategoryService cateogryService)
         {
             this.cateogryService = cateogryService;
         }

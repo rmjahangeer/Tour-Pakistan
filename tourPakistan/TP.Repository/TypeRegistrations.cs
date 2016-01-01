@@ -18,6 +18,7 @@ namespace TP.Repository
             unityContainer.RegisterType<IAreaRepository, AreaRepository>();
             unityContainer.RegisterType<ISeasonRepository, SeasonRepository>();
             unityContainer.RegisterType<IEventRepository, EventRepository>();
+            unityContainer.RegisterType<ILocationRepository, LocationRepository>();
         }
     }
 }

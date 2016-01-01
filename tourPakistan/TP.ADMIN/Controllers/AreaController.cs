@@ -13,10 +13,12 @@ namespace MetronicReady.Controllers
     public class AreaController : BaseController
     {
         private readonly IAreaService areaService;
+        private readonly IProvinceService provinceService;
 
-        public AreaController(IAreaService areaService)
+        public AreaController(IAreaService areaService, IProvinceService provinceService)
         {
             this.areaService = areaService;
+            this.provinceService = provinceService;
         }
 
         // GET: Area
@@ -35,29 +37,32 @@ namespace MetronicReady.Controllers
 
         public ActionResult AddArea(long? id)
         {
-            var model = new AreaModel();
+            AreaViewModel viewModel = new AreaViewModel();
             if (id != null)
             {
-                model = areaService.GetAreaById((int)id).MapFromServerToClient();
+                viewModel.Area = areaService.GetAreaById((int)id).MapFromServerToClient();
+                
             }
+            viewModel.ProvinceDdl =
+                    provinceService.GetAllProvinces().ToList().Select(x => x.MapFromServerToClient()).ToList();
             ViewBag.MessageVM = TempData["Message"] as MessageViewModel;
-            return View(model);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult AddArea(AreaModel model)
+        public ActionResult AddArea(AreaViewModel model)
         {
-            if (model.AreaId == 0)
+            if (model.Area.AreaId == 0)
             {
-                model.RecCreatedDate = DateTime.Now;
-                model.RecCreatedBy = Session["UserID"].ToString();
+                model.Area.RecCreatedDate = DateTime.Now;
+                model.Area.RecCreatedBy = Session["UserID"].ToString();
             }
-            model.RecLastUpdatedBy = Session["UserID"].ToString();
-            model.RecLastUpdatedDate = DateTime.Now;
+            model.Area.RecLastUpdatedBy = Session["UserID"].ToString();
+            model.Area.RecLastUpdatedDate = DateTime.Now;
 
-            if (areaService.AddUpdateArea(model.MapFromClientToServer()))
+            if (areaService.AddUpdateArea(model.Area.MapFromClientToServer()))
             {
-                TempData["Message"] = new MessageViewModel { Message = "Category Added Successfully", IsSaved = true };
+                TempData["Message"] = new MessageViewModel { Message = "Area Added Successfully", IsSaved = true };
             }
             else
             {
@@ -75,7 +80,7 @@ namespace MetronicReady.Controllers
             var isDeleted = areaService.DeleteArea(id);
             if (isDeleted)
             {
-                TempData["Message"] = new MessageViewModel { Message = "Category Deleted Successfully", IsSaved = true };
+                TempData["Message"] = new MessageViewModel { Message = "Area Deleted Successfully", IsSaved = true };
             }
             else
             {

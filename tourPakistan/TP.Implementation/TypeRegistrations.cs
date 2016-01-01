@@ -19,10 +19,11 @@ namespace TP.Implementation
             unityContainer.RegisterType<IDashboardService, DashboardService>();
             unityContainer.RegisterType<ILogger, LoggerService>();
             unityContainer.RegisterType<IProvinceService, ProvinceService>();
-            unityContainer.RegisterType<ICateogryService, CategoryService>();
+            unityContainer.RegisterType<ICategoryService, CategoryService>();
             unityContainer.RegisterType<IAreaService, AreaService>();
             unityContainer.RegisterType<ISeasonService, SeasonService>();
             unityContainer.RegisterType<IEventService, EventService>();
+            unityContainer.RegisterType<ILocationService, LocationService>();
         }
     }
 }

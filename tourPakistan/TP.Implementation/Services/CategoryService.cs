@@ -7,7 +7,7 @@ using TP.Models.DomainModels;
 
 namespace TP.Implementation.Services
 {
-    public class CategoryService:ICateogryService
+    public class CategoryService:ICategoryService
     {
         private readonly ICategoryRepository categoryRepository;
 

@@ -17,8 +17,8 @@ namespace TP.Models.ModelMapers
                 RecCreatedDate = source.RecCreatedDate,
                 RecLastUpdatedBy = source.RecLastUpdatedBy,
                 RecLastUpdatedDate = source.RecLastUpdatedDate,
-                IsActive = source.IsActive
-                
+                IsActive = source.IsActive,
+                ProvinceName = source.Province.ProvinceName
             };
         }
 
