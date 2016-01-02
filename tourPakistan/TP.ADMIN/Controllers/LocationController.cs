@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Models.ModelMappers;
+using TMD.Web;
 using TMD.Web.Controllers;
 using TP.Interfaces.IServices;
 using TP.Models.DomainModels;
@@ -96,5 +99,43 @@ namespace MetronicReady.Controllers
             }
             return RedirectToAction("LocationIndex");
         }
+
+
+        #region Helpers
+
+        //public FileResult LoadSliderImage(long id)
+        //{
+        //    //pass id to service, and load image data
+        //    var image = webSiteSliderService.GetSlide(id);
+
+        //    string ext = image.ImageType.Split('/')[1];
+        //    return File(image.ImageData, image.ImageType, "IMG_" + image.SlideId + ((DateTime)image.RecLastUpdatedDate).ToString("yyyyMMdd_HHmmss") + "." + ext);
+        //}
+
+        //private bool SaveProductImage(WebSiteSliderWebModel webSiteSliderWebModel)
+        //{
+        //    var tempStream = webSiteSliderWebModel.SliderImage.InputStream;
+
+        //    //File size must be less than 2MBs
+        //    if (webSiteSliderWebModel.SliderImage.ContentLength > 0 &&
+        //        webSiteSliderWebModel.SliderImage.ContentLength < 2000000)
+        //    {
+        //        //reisze the image for facebook optimization
+        //        var resizedImage = Utility.ResizeImage(Image.FromStream(tempStream),
+        //            Utility.GetImageFormat(webSiteSliderWebModel.SliderImage.ContentType),
+        //            Convert.ToInt32(ConfigurationManager.AppSettings["ProductImageWidth"]),
+        //            Convert.ToInt32(ConfigurationManager.AppSettings["ProductImageHeight"]), true);
+
+        //        byte[] bytes = new byte[resizedImage.Length];
+        //        //copy file content to array
+        //        resizedImage.Read(bytes, 0, Convert.ToInt32(resizedImage.Length));
+
+        //        webSiteSliderWebModel.ImageData = bytes;
+        //        webSiteSliderWebModel.ImageType = webSiteSliderWebModel.SliderImage.ContentType;
+        //        return true;
+        //    }
+        //    return false;
+        //}
+        #endregion
     }
 }
