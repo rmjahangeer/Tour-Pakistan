@@ -1,4 +1,4 @@
-﻿@model TP.Models.WebModels.SeasonModel
+﻿@model TP.Models.WebModels.ProvinceModel
 @{
     ViewBag.Title = "Add Season";
     Session["MenuKey"] = "2";
@@ -41,14 +41,14 @@
 
             <div class="container-fluid">
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => m.SeasonId)
+                @Html.HiddenFor(m => m.ProvinceId)
                 @Html.HiddenFor(m => m.RecCreatedBy)
                 @Html.HiddenFor(m => m.RecCreatedDate)
 
                 <div class="form-group margin-top-20">
-                    @Html.Label("Season Name", new { @class = "col-md-3 control-label requiredLabel" })
+                    @Html.Label("Province Name", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.SeasonName, new { @class = "form-control mandatory", placeholder = "Season Name", @id = "SeasonName" })
+                        @Html.TextBoxFor(m => m.ProvinceName, new { @class = "form-control mandatory", placeholder = "Province Name" })
                     </div>
                 </div>
             </div>
