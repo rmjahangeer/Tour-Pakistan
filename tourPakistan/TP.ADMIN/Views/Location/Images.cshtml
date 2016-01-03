@@ -39,8 +39,8 @@
             
         }
         .customImage:hover {
-            /*zoom: 2;*/
-            transform: scale(1.25, 1.25);
+            border: lightslategray 2px solid;
+            transform: scale(1.2, 1.2) rotate(360deg)
 
         }
     </style>
@@ -52,11 +52,25 @@
                     <div class="portlet-body">
                         
                         <div class="row">
+                            @if (Model.Count == 0)
+                            {
+                                
+                                <h3 class="text-center">No Images for this location.</h3>
+                                if (ViewBag.LocationId != null)
+                                {
+                                    <div class="col-md-offset-5 col-sm-offset-5 col-xs-offset-4"><a class="btn green-turquoise" href="@Url.Action("AddLocation", "Location")/@ViewBag.LocationId">Add Images</a></div>
+                                }
+
+                            }
                             @foreach (var image in Model)
                             {
-                                <div class="col-md-2 col-sm-4 col-xs-4 margin-top-10">
-                                    <img src="@Url.Action("GetImage", "Location")/@image.ImageId" class="img-thumbnail img-responsive image customImage" alt="@image.LocationName"/>
-                                    <a class="btn btn-sm red-sunglo center-block"><i class="fa fa-trash-o" data-id="@image.ImageId"> Remove</i></a>
+                                <div class="col-md-2 col-sm-4 col-xs-4 margin-top-20">
+                                    <a class="fullImage" data-toggle="modal" href="#basic">
+                                        <img src="@Url.Action("GetImage", "Location")/@image.ImageId" class="img-thumbnail img-responsive image customImage" alt="@image.LocationName" id="@image.ImageId" />
+                                    </a>
+                                    <input type="hidden" value="@image.LocationDescription"/>
+                                    <a class="btn btn-sm red-sunglo center-block removeImage" data-id="@image.ImageId"><i class="fa fa-trash-o"> <span class="hidden-480">Remove</span></i></a>
+
                                 </div>
                             }
                         </div>
@@ -67,4 +81,67 @@
         </form>
     </div>
 </div>
+
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true" style="top: 0">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img src="" class="img-responsive"/>
+            </div>
+            <div class="modal-footer">
+                <p id="LocationDescription" class="text-align-center"></p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.fullImage').on('click', function() {
+            var image = $(this).children('img');
+            $('.modal-title').text(image.attr('alt'));
+            $('#LocationDescription').text($(this).parent().children('input').val());
+            $('.modal-body').children('img').attr('src',image.attr('src'));
+        });
+
+        $('.removeImage').on('click', function () {
+            var imageId = $(this).attr('data-id');
+            var deleteConfirmation = confirm("Are you sure you want to delete this image?");
+            if (!deleteConfirmation)
+                return false;
+            $.ajax({
+                type: "POST",
+                url: "/Location/DeleteImage",
+                data: { id: imageId },
+                dataType: "json",
+                beforeSend : function() {
+                    $.blockUI("Working.. Pease wait.");
+                },
+                success: function(response) {
+                    if (response == true) {
+                        toastr.success("Image deleted successfully.", "Notification");
+                        debugger;
+                        $('#' + imageId).parent().parent().remove();
+                    } else {
+                        toastr.error("Somthing went wrong.Try again later.", "Notification");
+                    }
+                },
+                error: function() {
+                    toastr.error("Server not responding. Try again after sometime.", "Notification");
+                },
+                complete : function() {
+                    $.unblockUI();
+                }
+            });
+        });
+    });
+
+    
+</script>
 

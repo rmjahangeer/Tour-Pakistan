@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Models.ModelMappers;
-using TMD.Web.Controllers;
 using TP.Interfaces.IServices;
-using TP.Models.DomainModels;
 using TP.Models.WebModels;
 using TP.Models.WebViewModels;
 
-namespace MetronicReady.Controllers
+namespace TMD.Web.Controllers
 {
+    [Authorize]
     public class CategoryController : BaseController
     {
         private readonly ICategoryService cateogryService;

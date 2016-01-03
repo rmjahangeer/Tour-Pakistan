@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using TMD.Web.Controllers;
 using TP.Interfaces.IServices;
 using TP.Models.ModelMapers;
 using TP.Models.WebModels;
 using TP.Models.WebViewModels;
 
-namespace MetronicReady.Controllers
+namespace TMD.Web.Controllers
 {
+    [Authorize]
     public class AreaController : BaseController
     {
         private readonly IAreaService areaService;

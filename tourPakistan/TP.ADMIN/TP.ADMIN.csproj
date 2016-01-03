@@ -578,6 +578,11 @@
     <Content Include="Content\css\select2-spinner.gif" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.png" />
+    <Content Include="Content\global\css\jquery-ui.css" />
+    <Content Include="Content\global\plugins\bootstrap-modal\css\bootstrap-modal-bs3patch.css" />
+    <Content Include="Content\global\plugins\bootstrap-modal\css\bootstrap-modal.css" />
+    <Content Include="Content\global\plugins\bootstrap-modal\js\bootstrap-modal.js" />
+    <Content Include="Content\global\plugins\bootstrap-modal\js\bootstrap-modalmanager.js" />
     <Content Include="Content\global\plugins\jquery-ui\jquery-ui-1.11.4.css" />
     <Content Include="Content\global\scripts\metronic.js" />
     <Content Include="Scripts\AddProductPage.js" />
@@ -1605,6 +1610,8 @@
     <Content Include="fonts\fontawesome-webfontd41d.eot" />
     <None Include="Properties\PublishProfiles\TOYMARKET.pubxml" />
     <Content Include="Scripts\layout.js" />
+    <Content Include="Scripts\ui-extended-modals.min.js" />
+    <Content Include="Scripts\ui-modals.min.js" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Account\Pricing.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />

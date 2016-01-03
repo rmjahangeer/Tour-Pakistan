@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace MetronicReady.Controllers
+namespace TMD.Web.Controllers
 {
+    [Authorize]
     public class CompanyController : Controller
     {
         // GET: Company

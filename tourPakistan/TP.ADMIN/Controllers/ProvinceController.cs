@@ -8,6 +8,7 @@ using TP.Models.WebViewModels;
 
 namespace TMD.Web.Controllers
 {
+    [Authorize]
     public class ProvinceController : BaseController
     {
         private readonly IProvinceService provinceService;

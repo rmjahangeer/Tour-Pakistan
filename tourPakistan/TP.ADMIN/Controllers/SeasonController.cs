@@ -9,6 +9,7 @@ using TP.Models.WebViewModels;
 
 namespace TMD.Web.Controllers
 {
+    [Authorize]
     public class SeasonController : BaseController
     {
         private readonly ISeasonService seasonService;

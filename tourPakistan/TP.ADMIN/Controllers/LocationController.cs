@@ -16,6 +16,7 @@ using TP.Models.WebViewModels;
 
 namespace TMD.Web.Controllers
 {
+    [Authorize]
     public class LocationController : BaseController
     {
         private readonly ILocationService locationService;
@@ -105,9 +106,20 @@ namespace TMD.Web.Controllers
             return RedirectToAction("LocationIndex");
         }
 
+        [HttpPost]
+        public JsonResult DeleteImage(long id)
+        {
+            if (locationImageService.DeleteLocationImage(id))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Images(long id)
         {
             locationImagesList = locationImageService.GetAllLocationImages(id).ToList().Select(x => x.MapFromServerToClient()).ToList();
+            ViewBag.LocationId = id;
             return View(locationImagesList);
         }
 
@@ -155,8 +167,8 @@ namespace TMD.Web.Controllers
             
             var tempStream = location.Image.InputStream;
 
-            //File size must be less than 2MBs
-            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 2000000)
+            //File size must be less than 4MBs
+            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 4194304)
             {
                 var width = Image.FromStream(tempStream).Width;
                 var height = Image.FromStream(tempStream).Height;

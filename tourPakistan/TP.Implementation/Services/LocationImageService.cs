@@ -40,7 +40,14 @@ namespace TP.Implementation.Services
 
         public bool DeleteLocationImage(long id)
         {
-            throw new System.NotImplementedException();
+            var toDelete = locationImageRepository.Find(id);
+            if (toDelete != null)
+            {
+                locationImageRepository.Delete(toDelete);
+                locationImageRepository.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }
