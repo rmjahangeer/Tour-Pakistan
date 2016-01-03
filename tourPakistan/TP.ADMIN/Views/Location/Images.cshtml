@@ -66,7 +66,9 @@
                             {
                                 <div class="col-md-2 col-sm-4 col-xs-4 margin-top-20">
                                     <a class="fullImage" data-toggle="modal" href="#basic">
-                                        <img src="@Url.Action("GetImage", "Location")/@image.ImageId" class="img-thumbnail img-responsive image customImage" alt="@image.LocationName" id="@image.ImageId" />
+                                        <div style="overflow: hidden; height: 110px">
+                                            <img src="@Url.Action("GetImage", "Location")/@image.ImageId" class="img-thumbnail img-responsive image customImage" alt="@image.LocationName" id="@image.ImageId" />
+                                        </div>
                                     </a>
                                     <input type="hidden" value="@image.LocationDescription"/>
                                     <a class="btn btn-sm red-sunglo center-block removeImage" data-id="@image.ImageId"><i class="fa fa-trash-o"> <span class="hidden-480">Remove</span></i></a>
@@ -104,7 +106,7 @@
 <script>
     $(document).ready(function() {
         $('.fullImage').on('click', function() {
-            var image = $(this).children('img');
+            var image = $(this).children('div').children('img');
             $('.modal-title').text(image.attr('alt'));
             $('#LocationDescription').text($(this).parent().children('input').val());
             $('.modal-body').children('img').attr('src',image.attr('src'));
