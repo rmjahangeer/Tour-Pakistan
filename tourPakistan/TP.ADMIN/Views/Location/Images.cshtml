@@ -8,8 +8,14 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="icon-bulb font-red-sunglo"></i>
-            <span class="caption-subject font-red-sunglo bold uppercase">Province</span>
-            <span class="caption-helper">@ViewBag.Title</span>
+            <span class="caption-subject font-red-sunglo bold uppercase">Location Images</span>
+            <span class="caption-helper">
+                @if (Model.Count > 0)
+                {
+                    @Model.Count<span> - Images</span>
+                }
+        </span>
+
         </div>
         <div class="actions">
             <a href="@Url.Action("LocationIndex","Location")" class="btn default yellow-stripe">
@@ -128,8 +134,7 @@
                 success: function(response) {
                     if (response == true) {
                         toastr.success("Image deleted successfully.", "Notification");
-                        debugger;
-                        $('#' + imageId).parent().parent().remove();
+                        $('#' + imageId).parent().parent().parent().remove();
                     } else {
                         toastr.error("Somthing went wrong.Try again later.", "Notification");
                     }
