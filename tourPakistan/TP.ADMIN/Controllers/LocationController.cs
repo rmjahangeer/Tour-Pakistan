@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Models.ModelMappers;
-using TMD.Web;
-using TMD.Web.Controllers;
 using TP.Interfaces.IServices;
-using TP.Models.DomainModels;
 using TP.Models.ModelMapers;
 using TP.Models.WebModels;
 using TP.Models.WebViewModels;
 
-namespace MetronicReady.Controllers
+namespace TMD.Web.Controllers
 {
     public class LocationController : BaseController
     {
@@ -22,13 +22,15 @@ namespace MetronicReady.Controllers
         private readonly IProvinceService provinceService;
         private readonly IAreaService areaService;
         private readonly ICategoryService categoryService;
+        private readonly ILocationImageService locationImageService;
 
-        public LocationController(ILocationService locationService, IProvinceService provinceService, IAreaService areaService, ICategoryService categoryService)
+        public LocationController(ILocationService locationService, IProvinceService provinceService, IAreaService areaService, ICategoryService categoryService, ILocationImageService locationImageService)
         {
             this.locationService = locationService;
             this.provinceService = provinceService;
             this.areaService = areaService;
             this.categoryService = categoryService;
+            this.locationImageService = locationImageService;
         }
 
         // GET: Location
@@ -101,41 +103,88 @@ namespace MetronicReady.Controllers
         }
 
 
+        public ActionResult SaveLocationImages(long locationId)
+        {
+            var imageWebModel = new List<LocationImageWebModel>();
+
+            for (int i =0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase file = Request.Files[i];
+                if (file != null && file.ContentLength > 0)
+                {
+                    imageWebModel[i] = new LocationImageWebModel()
+                    {
+                        IsActive = true,
+                        RecCreatedBy = User.Identity.GetUserId(),
+                        RecCreatedDate = DateTime.Now,
+                        RecLastUpdatedBy = User.Identity.GetUserId(),
+                        RecLastUpdatedDate = DateTime.Now,
+                        LocationId = locationId
+                    };
+                    SaveImage(imageWebModel[i]);
+                }
+            }
+            locationImageService.AddUpdateLocationImages(imageWebModel);
+            return RedirectToAction("LocationImages");
+
+        }
+
         #region Helpers
 
-        //public FileResult LoadSliderImage(long id)
-        //{
-        //    //pass id to service, and load image data
-        //    var image = webSiteSliderService.GetSlide(id);
+        private static bool SaveImage(LocationImageWebModel location)
+        {
+            
+            var tempStream = location.Image.InputStream;
 
-        //    string ext = image.ImageType.Split('/')[1];
-        //    return File(image.ImageData, image.ImageType, "IMG_" + image.SlideId + ((DateTime)image.RecLastUpdatedDate).ToString("yyyyMMdd_HHmmss") + "." + ext);
-        //}
+            //File size must be less than 2MBs
+            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 2000000)
+            {
+                var width = Image.FromStream(tempStream).Width;
+                var height = Image.FromStream(tempStream).Height;
 
-        //private bool SaveProductImage(WebSiteSliderWebModel webSiteSliderWebModel)
-        //{
-        //    var tempStream = webSiteSliderWebModel.SliderImage.InputStream;
+                Image newImage = new Bitmap(width, height);
+                using (Graphics graphicsHandle = Graphics.FromImage(newImage))
+                {
+                    graphicsHandle.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphicsHandle.DrawImage(Image.FromStream(tempStream), 0, 0, width, height);
+                }
+                //return newImage;
+                var stream = new MemoryStream();
+                newImage.Save(stream, GetImageFormat(location.Image.ContentType));
+                stream.Position = 0;
 
-        //    //File size must be less than 2MBs
-        //    if (webSiteSliderWebModel.SliderImage.ContentLength > 0 &&
-        //        webSiteSliderWebModel.SliderImage.ContentLength < 2000000)
-        //    {
-        //        //reisze the image for facebook optimization
-        //        var resizedImage = Utility.ResizeImage(Image.FromStream(tempStream),
-        //            Utility.GetImageFormat(webSiteSliderWebModel.SliderImage.ContentType),
-        //            Convert.ToInt32(ConfigurationManager.AppSettings["ProductImageWidth"]),
-        //            Convert.ToInt32(ConfigurationManager.AppSettings["ProductImageHeight"]), true);
+                byte[] bytes = new byte[stream.Length];
+                //copy file content to array
+                stream.Read(bytes, 0, Convert.ToInt32(stream.Length));
 
-        //        byte[] bytes = new byte[resizedImage.Length];
-        //        //copy file content to array
-        //        resizedImage.Read(bytes, 0, Convert.ToInt32(resizedImage.Length));
+                location.ImageData = bytes;
+                location.ContentType = location.Image.ContentType;
+                return true;
+            }
+            return false;
+        }
 
-        //        webSiteSliderWebModel.ImageData = bytes;
-        //        webSiteSliderWebModel.ImageType = webSiteSliderWebModel.SliderImage.ContentType;
-        //        return true;
-        //    }
-        //    return false;
-        //}
+        public static ImageFormat GetImageFormat(string contentType)
+        {
+            if (string.IsNullOrEmpty(contentType))
+            {
+                return ImageFormat.Png;
+            }
+            contentType = contentType.Split('/')[1].ToLower();
+            switch (contentType)
+            {
+                case "png":
+                    return ImageFormat.Png;
+                case "gif":
+                    return ImageFormat.Gif;
+                case "jpeg":
+                    return ImageFormat.Jpeg;
+                case "jpg":
+                    return ImageFormat.Jpeg;
+                default:
+                    return ImageFormat.Png;
+            }
+        }
         #endregion
     }
 }

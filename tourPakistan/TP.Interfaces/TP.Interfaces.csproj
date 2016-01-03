@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository\ILocationImageRepository.cs" />
     <Compile Include="IRepository\ILocationRepository.cs" />
     <Compile Include="IRepository\IEventRepository.cs" />
     <Compile Include="IRepository\IAreaRepository.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="IRepository\IUsersRepository.cs" />
     <Compile Include="IServices\IAspNetUserService.cs" />
     <Compile Include="IServices\IAreaSerivce.cs" />
+    <Compile Include="IServices\ILocationImageService.cs" />
     <Compile Include="IServices\ILocationService.cs" />
     <Compile Include="IServices\IEventService.cs" />
     <Compile Include="IServices\ICategoryService.cs" />
