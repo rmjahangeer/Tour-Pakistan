@@ -1,0 +1,70 @@
+﻿@model List<TP.Models.WebModels.LocationImageWebModel>
+@{
+    ViewBag.Title = "Location Images";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bulb font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">Province</span>
+            <span class="caption-helper">@ViewBag.Title</span>
+        </div>
+        <div class="actions">
+            <a href="@Url.Action("LocationIndex","Location")" class="btn default yellow-stripe">
+                <i class="fa fa-plus"></i>
+                <span class="hidden-480">
+                    View Locations
+                </span>
+            </a>
+
+            @*<a href="javascript:;" class="btn default red-stripe" id="btnResetFltr">
+                    <i class="fa fa-recycle"></i>
+                    <span class="hidden-480">
+                        Reset
+                    </span>
+                </a>
+                <a href="javascript:;" class="btn default blue-stripe" id="btnFltr">
+                    <i class="fa fa-filter"></i>
+                    <span class="hidden-480">
+                        Filter
+                    </span>
+                </a>*@
+        </div>
+    </div>
+    <style>
+        .customImage {
+            transition: all 0.5s;
+            
+        }
+        .customImage:hover {
+            /*zoom: 2;*/
+            transform: scale(1.25, 1.25);
+
+        }
+    </style>
+    
+    <div class="portlet-body form">
+        <form class="form-horizontal">
+            <div class="form-body">
+                <div class="portlet box">
+                    <div class="portlet-body">
+                        
+                        <div class="row">
+                            @foreach (var image in Model)
+                            {
+                                <div class="col-md-2 col-sm-4 col-xs-4 margin-top-10">
+                                    <img src="@Url.Action("GetImage", "Location")/@image.ImageId" class="img-thumbnail img-responsive image customImage" alt="@image.LocationName"/>
+                                    <a class="btn btn-sm red-sunglo center-block"><i class="fa fa-trash-o" data-id="@image.ImageId"> Remove</i></a>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -24,6 +24,7 @@ namespace TP.Implementation
             unityContainer.RegisterType<ISeasonService, SeasonService>();
             unityContainer.RegisterType<IEventService, EventService>();
             unityContainer.RegisterType<ILocationService, LocationService>();
+            unityContainer.RegisterType<ILocationImageService, LocationImageService>();
         }
     }
 }

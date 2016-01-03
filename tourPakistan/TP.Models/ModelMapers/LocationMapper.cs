@@ -39,7 +39,8 @@ namespace Models.ModelMappers
                 RecCreatedBy = source.RecCreatedBy,
                 RecCreatedDate = source.RecCreatedDate,
                 RecLastUpdatedDate = source.RecLastUpdatedDate,
-                RecLastUpdatedBy = source.RecLastUpdatedBy
+                RecLastUpdatedBy = source.RecLastUpdatedBy,
+                IsActive = source.IsActive
             };
         }
     }

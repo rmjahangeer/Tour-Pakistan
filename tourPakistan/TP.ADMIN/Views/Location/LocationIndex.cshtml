@@ -70,16 +70,17 @@
                                         <td>
                                             @if (Location.IsActive)
                                             {
-                                                <button class="btn green-haze">Active</button>
+                                                <a href="javascript:;" class="btn green-haze">Active</a>
                                             }
                                             else
                                             {
-                                                <button class="btn red-flamingo">In active</button>
+                                                <a href="javascript:;"  class="btn red-flamingo">In active</a>
                                             }
                                         </td>
                                         <td>
                                             <a href="@Url.Action("AddLocation","Location")/@Location.LocationId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a>
-                                            <a href="@Url.Action("Delete","Location")/@Location.LocationId" class="btn btn-sm red-flamingo"><i class="fa fa-edit"></i> Delete</a>
+                                            <a href="@Url.Action("Delete","Location")/@Location.LocationId" class="btn btn-sm red-flamingo"><i class="fa fa-trash-o"></i> Delete</a>
+                                            <a href="@Url.Action("Images","Location")/@Location.LocationId" class="btn btn-sm green-jungle"><i class="fa fa-picture-o"></i> Images</a>
                                         </td>
                                     </tr>
                                 }

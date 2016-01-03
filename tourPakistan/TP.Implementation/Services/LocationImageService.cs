@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TP.Interfaces.IRepository;
 using TP.Interfaces.IServices;
 using TP.Models.DomainModels;
@@ -17,9 +18,9 @@ namespace TP.Implementation.Services
         }
 
 
-        public IEnumerable<Location> GetAllLocationImages(long locationId)
+        public IEnumerable<LocationImage> GetAllLocationImages(long locationId)
         {
-            throw new System.NotImplementedException();
+            return locationImageRepository.GetAllLocationImages(locationId).ToList();
         }
 
         public bool AddUpdateLocationImages(List<LocationImageWebModel> locationImages)
@@ -28,6 +29,7 @@ namespace TP.Implementation.Services
             {
                 locationImageRepository.Add(locationImage.MapFromClientToServer());
             }
+            locationImageRepository.SaveChanges();
             return true;
         }
 

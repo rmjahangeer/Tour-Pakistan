@@ -23,6 +23,7 @@ namespace TMD.Web.Controllers
         private readonly IAreaService areaService;
         private readonly ICategoryService categoryService;
         private readonly ILocationImageService locationImageService;
+        private static List<LocationImageWebModel> locationImagesList = new List<LocationImageWebModel>();
 
         public LocationController(ILocationService locationService, IProvinceService provinceService, IAreaService areaService, ICategoryService categoryService, ILocationImageService locationImageService)
         {
@@ -73,9 +74,11 @@ namespace TMD.Web.Controllers
             model.Location.RecLastUpdatedBy = Session["UserID"].ToString();
             model.Location.RecLastUpdatedDate = DateTime.Now;
 
-            if (locationService.AddUpdateLocations(model.Location.MapFromClientToServer()))
+            var savedLocationId = locationService.AddUpdateLocations(model.Location.MapFromClientToServer());
+            if (savedLocationId > 0)
             {
                 TempData["Message"] = new MessageViewModel { Message = "Location Added Successfully", IsSaved = true };
+                AddLocationImages(savedLocationId);
             }
             else
             {
@@ -102,36 +105,52 @@ namespace TMD.Web.Controllers
             return RedirectToAction("LocationIndex");
         }
 
-
-        public ActionResult SaveLocationImages(long locationId)
+        public ActionResult Images(long id)
         {
-            var imageWebModel = new List<LocationImageWebModel>();
+            locationImagesList = locationImageService.GetAllLocationImages(id).ToList().Select(x => x.MapFromServerToClient()).ToList();
+            return View(locationImagesList);
+        }
 
-            for (int i =0; i < Request.Files.Count; i++)
+        public FileResult GetImage(long id)
+        {
+            var image = locationImagesList.SingleOrDefault(x => x.ImageId == id);
+            if (image != null)
+            {
+                string ext = image.ContentType.Split('/')[1];
+
+                return File(image.ImageData, image.ContentType, "IMG_" + image.ImageId + image.IsActive + "." + ext);   
+            }
+            return File(new byte[20], "");
+
+        }
+
+        #region Helpers
+        private void AddLocationImages(long id)
+        {
+            var imageWebModel = new List<LocationImageWebModel>(Request.Files.Count);
+
+            for (int i = 0; i < Request.Files.Count; i++)
             {
                 HttpPostedFileBase file = Request.Files[i];
                 if (file != null && file.ContentLength > 0)
                 {
-                    imageWebModel[i] = new LocationImageWebModel()
+                    imageWebModel.Add(new LocationImageWebModel()
                     {
                         IsActive = true,
                         RecCreatedBy = User.Identity.GetUserId(),
                         RecCreatedDate = DateTime.Now,
                         RecLastUpdatedBy = User.Identity.GetUserId(),
                         RecLastUpdatedDate = DateTime.Now,
-                        LocationId = locationId
-                    };
+                        LocationId = id,
+                        Image = file
+                    });
                     SaveImage(imageWebModel[i]);
                 }
             }
             locationImageService.AddUpdateLocationImages(imageWebModel);
-            return RedirectToAction("LocationImages");
 
         }
-
-        #region Helpers
-
-        private static bool SaveImage(LocationImageWebModel location)
+        private bool SaveImage(LocationImageWebModel location)
         {
             
             var tempStream = location.Image.InputStream;
@@ -164,7 +183,7 @@ namespace TMD.Web.Controllers
             return false;
         }
 
-        public static ImageFormat GetImageFormat(string contentType)
+        private ImageFormat GetImageFormat(string contentType)
         {
             if (string.IsNullOrEmpty(contentType))
             {

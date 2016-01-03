@@ -6,7 +6,7 @@ namespace TP.Interfaces.IServices
     public interface ILocationService
     {
         IEnumerable<Location> GetAllLocations();
-        bool AddUpdateLocations(Location locations);
+        long AddUpdateLocations(Location locations);
 
         Location GetLocationById(long id);
         bool DeleteLocation(long id);

@@ -6,7 +6,7 @@ namespace TP.Interfaces.IServices
 {
     public interface ILocationImageService
     {
-        IEnumerable<Location> GetAllLocationImages(long locationId);
+        IEnumerable<LocationImage> GetAllLocationImages(long locationId);
         bool AddUpdateLocationImages(List<LocationImageWebModel> locationImages);
 
         Location GetLocationImageById(long id);

@@ -1625,6 +1625,7 @@
     <Content Include="Views\Province\ProvinceIndex.cshtml" />
     <Content Include="Views\Season\AddSeason.cshtml" />
     <Content Include="Views\Season\SeasonIndex.cshtml" />
+    <Content Include="Views\Location\Images.cshtml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_SidebarMenu.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />

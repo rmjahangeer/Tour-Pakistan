@@ -30,7 +30,7 @@ namespace TP.Repository.Repositories
 
         public IEnumerable<LocationImage> GetAllLocationImages(long locationId)
         {
-            return DbSet.Where(x => x.LocationId == locationId).ToList();
+            return DbSet.Include(x=>x.Location).Where(x => x.LocationId == locationId).ToList();
 
         }
 

@@ -19,7 +19,7 @@ namespace TP.Implementation.Services
             return LocationRepository.GetAllLocations();
         }
 
-        public bool AddUpdateLocations(Location Location)
+        public long AddUpdateLocations(Location Location)
         {
             if (Location.LocationId == 0)
             {
@@ -30,7 +30,7 @@ namespace TP.Implementation.Services
                 LocationRepository.Update(Location);
             }
             LocationRepository.SaveChanges();
-            return true;
+            return Location.LocationId;
         }
 
         public Location GetLocationById(long id)
