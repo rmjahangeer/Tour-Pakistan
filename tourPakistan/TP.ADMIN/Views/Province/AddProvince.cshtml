@@ -1,6 +1,6 @@
 ﻿@model TP.Models.WebModels.ProvinceModel
 @{
-    ViewBag.Title = "Add Season";
+    ViewBag.Title = "Add Province";
     Session["MenuKey"] = "2";
     Session["SubMenuKey"] = "3";
 }
@@ -9,7 +9,7 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="icon-bulb font-red-sunglo"></i>
-            <span class="caption-subject font-red-sunglo bold uppercase">Season</span>
+            <span class="caption-subject font-red-sunglo bold uppercase">Province</span>
             <span class="caption-helper">@ViewBag.Title</span>
         </div>
         <div class="actions">
@@ -25,17 +25,17 @@
                     Save & Close
                 </span>
             </button>
-            <a href="~/SupplierBankAccount/Index" class="btn default yellow-stripe">
+            <a href="@Url.Action("ProvinceIndex","Province")" class="btn default yellow-stripe">
                 <i class="fa fa-list"></i>
                 <span class="hidden-480">
-                    All Seasons
+                    All Province
                 </span>
             </a>
         </div>
     </div>
 
 
-    @using (Html.BeginForm("AddSeason", "Season", FormMethod.Post, new { @class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form" }))
+    @using (Html.BeginForm("AddProvince", "Province", FormMethod.Post, new { @class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form" }))
     {
         <div class="portlet-body form">
 
