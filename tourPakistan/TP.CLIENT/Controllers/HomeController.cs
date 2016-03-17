@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace tourPakistan.Controllers
 {
@@ -12,6 +8,12 @@ namespace tourPakistan.Controllers
         {
             return View();
         }
+        
+        public ActionResult Faq()
+        {
+            return View();
+        }
+
 
         public ActionResult About()
         {
@@ -27,37 +29,5 @@ namespace tourPakistan.Controllers
             return View();
         }
         
-        public ActionResult Search()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Gallery()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Category()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Features()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-        
-        public ActionResult Single()
-        {
-            return View();
-        }
     }
 }
