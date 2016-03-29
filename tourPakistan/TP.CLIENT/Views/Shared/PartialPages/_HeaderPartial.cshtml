@@ -1,4 +1,5 @@
-﻿<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
+﻿@using tourPakistan.Controllers
+<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
     <div class="c-navbar">
         <div class="container">
             <!-- BEGIN: BRAND -->
@@ -31,50 +32,51 @@
                 <!-- Dropdown menu toggle on mobile: c-toggler class can be applied to the link arrow or link itself depending on toggle mode -->
                 <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
                     <ul class="nav navbar-nav c-theme-nav">
-                        <li>
-                            <a href="javascript:;" class="c-link dropdown-toggle">
+                        <li class='@((string) Session["MenuKey"] == "1" ? "c-active" : "")'>
+                            <a href="@Url.Action("Index","Home")" class='c-link dropdown-toggle '>
+                                <span class="c-arrow c-toggler"></span>
                                 Home
-                                <span class="c-arrow c-toggler"></span>
                             </a>
-                            <div class="dropdown-menu c-menu-type-mega c-menu-type-fullwidth" style="min-width: auto">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <ul class="dropdown-menu c-menu-type-inline">
-                                            <li>
-                                                <h3>Home Samples</h3>
-                                            </li>
-                                            <li>
-                                                <a href="index-2.html">Home Version 1</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                            @*<div class="dropdown-menu c-menu-type-mega c-menu-type-fullwidth" style="min-width: auto">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="dropdown-menu c-menu-type-inline">
+                            <li>
+                                <h3>Home Samples</h3>
+                            </li>
+                            <li>
+                                <a href="index-2.html">Home Version 1</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                                </div>
-                            </div>
+                </div>
+            </div>*@
                         </li>
-                        <li class="c-menu-type-classic">
-                            <a href="javascript:;" class="c-link dropdown-toggle">
-                                Features
+                        <li class="c-menu-type-classic @((string) Session["MenuKey"] == "2" ? "c-active" : "")">
+                            <a href="@Url.Action("About", "Home")" class="c-link dropdown-toggle">
                                 <span class="c-arrow c-toggler"></span>
+                                About
                             </a>
                         </li>
-                        <li class="c-active">
-                            <a href="javascript:;" class="c-link dropdown-toggle">
-                                Pages
+                        <li class='@((string) Session["MenuKey"] == "3" ? "c-active" : "")'>
+                            <a href="@Url.Action("Index", "Category")" class="c-link dropdown-toggle">
                                 <span class="c-arrow c-toggler"></span>
+                                Categories
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:;" class="c-link dropdown-toggle">
-                                Shop
+                        <li class='@((string) Session["MenuKey"] == "4" ? "c-active" : "")'>
+                            <a href="@Url.Action("Contact", "Home") " class="c-link dropdown-toggle">
                                 <span class="c-arrow c-toggler"></span>
+                                Contact
                             </a>
 
+
                         </li>
-                        <li>
-                            <a href="javascript:;" class="c-link dropdown-toggle">
-                                Components
+                        <li class='@((string) Session["MenuKey"] == "5" ? "c-active" : "")'>
+                            <a href="@Url.Action("Faq", "Home") " class="c-link dropdown-toggle">
                                 <span class="c-arrow c-toggler"></span>
+                                FAQ
                             </a>
                         </li>
                         <li class="c-search-toggler-wrapper">
