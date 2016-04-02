@@ -1,11 +1,11 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Microsoft.Practices.Unity;
 
 namespace tourPakistan
 {
     public class FilterConfig
     {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters, IUnityContainer container)
         {
             filters.Add(new HandleErrorAttribute());
         }

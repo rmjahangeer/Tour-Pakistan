@@ -35,7 +35,7 @@ namespace TP.Repository.Repositories
 
         public IEnumerable<Category> GetAllActiveCategories()
         {
-            return DbSet.Where(x => x.IsActive == true).ToList();
+            return DbSet.Include(x=>x.Locations).Where(x => x.IsActive == true).ToList();
         }
     }
 }

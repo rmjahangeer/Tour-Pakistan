@@ -1,292 +1,86 @@
-﻿@{
+﻿@model List<TP.Models.WebViewModels.CategoryViewModel>
+@{
     Session["MenuKey"] = "3";
-
 }
 
-
 <div class="c-layout-page">
-<!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
-<div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold">
-    <div class="container">
-        <div class="c-page-title c-pull-left">
-            <h3 class="c-font-uppercase c-font-sbold">Masonry Gallery</h3>
-        </div>
-        <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-            <li>
-                <a href="#">Pages</a>
-            </li>
-            <li>/</li>
-            <li>
-                <a href="#">Masonry Gallery</a>
-            </li>
-            <li>/</li>
-            <li class="c-state_active">Jango Components</li>
-        </ul>
-    </div>
-</div>
-<!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
-<!-- BEGIN: PAGE CONTENT -->
-<div class="c-content-box c-size-md">
-<div class="container">
-<div class="cbp-panel">
-<div id="filters-container" class="cbp-l-filters-buttonCenter">
-    <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
-        All
-        <div class="cbp-filter-counter"></div>
-    </div>
-    <div data-filter=".identity" class="cbp-filter-item">
-        Identity
-        <div class="cbp-filter-counter"></div>
-    </div>
-    <div data-filter=".web-design" class="cbp-filter-item">
-        Web Design
-        <div class="cbp-filter-counter"></div>
-    </div>
-    <div data-filter=".graphic" class="cbp-filter-item">
-        Graphic
-        <div class="cbp-filter-counter"></div>
-    </div>
-    <div data-filter=".logos" class="cbp-filter-item">
-        Logo
-        <div class="cbp-filter-counter"></div>
-    </div>
-    <div data-filter=".logos, .graphic" class="cbp-filter-item">
-        Logo & Graphic
-        <div class="cbp-filter-counter"></div>
-    </div>
-</div>
-<div id="grid-container" class="cbp cbp-l-grid-masonry-projects">
-<div class="cbp-item graphic">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/62.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project1ab43.html?test=1" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="~/assets/base/img/content/stock/62.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Zoom</a>
-                </div>
+    <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+    <div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h3 class="c-font-uppercase c-font-sbold">Masonry Gallery</h3>
             </div>
+            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                <li>
+                    <a href="#">Pages</a>
+                </li>
+                <li>/</li>
+                <li>
+                    <a href="#">Masonry Gallery</a>
+                </li>
+                <li>/</li>
+                <li class="c-state_active">Jango Components</li>
+            </ul>
         </div>
     </div>
-    <a href="~/ajax/projects/project1.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">BeenTo</a>
-    <div class="cbp-l-grid-masonry-projects-desc">web design / graphic</div>
-</div>
-<div class="cbp-item web-design logos">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/60.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project2.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="~/assets/base/img/content/stock/60.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="World Clock Widget<br>by Paul Flavius Nechita">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project2.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">World Clock Widget</a>
-    <div class="cbp-l-grid-masonry-projects-desc">logos / web design</div>
-</div>
-<div class="cbp-item graphic logos">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/58.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project3.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="http://vimeo.com/14912890" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="To-Do Dashboard<br>by Tiberiu Neamu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project3.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">To-Do Dashboard</a>
-    <div class="cbp-l-grid-masonry-projects-desc">graphic / logos</div>
-</div>
-<div class="cbp-item identity web-design">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/56.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project4.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="~/assets/base/img/content/stock/56.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="WhereTO App<br>by Tiberiu Neamu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project5.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">WhereTO App</a>
-    <div class="cbp-l-grid-masonry-projects-desc">web design / identity</div>
-</div>
-<div class="cbp-item web-design graphic">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/54.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project5.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="~/assets/base/img/content/stock/54.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Events and  More<br>by Tiberiu Neamu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project4.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Events and More</a>
-    <div class="cbp-l-grid-masonry-projects-desc">web design / graphic</div>
-</div>
-<div class="cbp-item identity web-design">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/37.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project6.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="~/assets/base/img/content/stock/37.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Ski * Buddy<br>by Tiberiu Neamu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project6.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Ski * Buddy</a>
-    <div class="cbp-l-grid-masonry-projects-desc">identity / web design</div>
-</div>
-<div class="cbp-item graphic logos">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/41.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project7.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="~/assets/base/img/content/stock/41.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Seemple* Music for iPad<br>by Tiberiu Neamu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project7.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Seemple* Music for iPad</a>
-    <div class="cbp-l-grid-masonry-projects-desc">graphic / logos</div>
-</div>
-<div class="cbp-item identity graphic">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/47.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project8.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="http://www.youtube.com/watch?v=Bu9OiDmxCrQ" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Remind~Me More<br>by Tiberiu Neamu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project8.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Remind~Me More</a>
-    <div class="cbp-l-grid-masonry-projects-desc">identity / graphic</div>
-</div>
-<div class="cbp-item web-design graphic">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/36.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project9.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="https://www.ted.com/talks/andrew_bastawrous_get_your_next_eye_exam_on_a_smartphone" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase"
-                       data-title="Workout Buddy<br>by Tiberiu Neamu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project9.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Workout Buddy</a>
-    <div class="cbp-l-grid-masonry-projects-desc">web design / graphic</div>
-</div>
-<div class="cbp-item identity web-design">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/45.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project10.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="https://www.youtube.com/watch?v=3wbvpOIIBQA" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Bills Bills Bills<br>by Cosmin Capitanu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project10.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Bills Bills Bills</a>
-    <div class="cbp-l-grid-masonry-projects-desc">identity / web design</div>
-</div>
-<div class="cbp-item identity logos">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/33.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project11.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="~/assets/base/img/content/stock/33.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Generic Apps<br>by Cosmin Capitanu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project11.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Generic Apps</a>
-    <div class="cbp-l-grid-masonry-projects-desc">identity / logos</div>
-</div>
-<div class="cbp-item graphic web-design">
-    <div class="cbp-caption">
-        <div class="cbp-caption-defaultWrap">
-            <img src="~/assets/base/img/content/stock/34.jpg" alt="">
-        </div>
-        <div class="cbp-caption-activeWrap">
-            <div class="c-masonry-border"></div>
-            <div class="cbp-l-caption-alignCenter">
-                <div class="cbp-l-caption-body">
-                    <a href="~/ajax/projects/project12.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                    <a href="http://vimeo.com/877053" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Speed Detector<br>by Cosmin Capitanu">Zoom</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="~/ajax/projects/project12.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">Speed Detector</a>
-    <div class="cbp-l-grid-masonry-projects-desc">graphic / web design</div>
-</div>
-</div>
-<div id="loadMore-container" class="cbp-l-loadMore-button c-margin-t-60">
-    <a href="~/ajax/masonry-gallery/load-more.html" class="cbp-l-loadMore-link btn c-btn-square c-btn-border-2x c-btn-dark c-btn-bold c-btn-uppercase">
-        <span class="cbp-l-loadMore-defaultText">LOAD MORE</span>
-        <span class="cbp-l-loadMore-loadingText">LOADING...</span>
-        <span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>
-    </a>
-</div>
-</div>
-</div>
-</div>
-<!-- END: PAGE CONTENT -->
-</div>
+    <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+    <!-- BEGIN: PAGE CONTENT -->
+    <div class="c-content-box c-size-md">
+        <div class="container">
+            <div class="cbp-panel">
+                <div id="filters-container" class="cbp-l-filters-buttonCenter">
+                    <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+                        All
+                        <div class="cbp-filter-counter"></div>
+                    </div>
+                    @foreach (var category in Model)
+                    {
+                        <div data-filter=".@category.CategoryName.Replace(" ", "_")" class="cbp-filter-item">
+                            @category.CategoryName
+                            <div class="cbp-filter-counter"></div>
+                        </div>
 
+                    }
+                </div>
+                <div id="grid-container" class="cbp cbp-l-grid-masonry-projects">
+                    @foreach (var category in Model)
+                    {
+                        foreach (var location in category.Locations)
+                        {
+                            <div class="cbp-item @category.CategoryName.Replace(" ", "_")">
+                                <div class="cbp-caption">
+                                    <div class="cbp-caption-defaultWrap">
+                                        <img src="@Url.Action("GetImage", "Category")?categoryId=@category.CategoryId&locationId=@location.LocationId" alt="">
+                                    </div>
+                                    <div class="cbp-caption-activeWrap">
+                                        <div class="c-masonry-border"></div>
+                                        <div class="cbp-l-caption-alignCenter">
+                                            <div class="cbp-l-caption-body">
+                                                <a href="~/ajax/projects/project1ab43.html?test=1" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
+                                                <a href="@Url.Action("GetImage", "Category")?categoryId=@category.CategoryId&locationId=@location.LocationId" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">Zoom</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="~/ajax/projects/project1.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">@location.LocationName</a>
+                                <div class="cbp-l-grid-masonry-projects-desc">@location.CategoryName</div>
+                            </div>
+
+                        }
+                    }
+                </div>
+                @*<div id="loadMore-container" class="cbp-l-loadMore-button c-margin-t-60">
+                        <a href="~/ajax/masonry-gallery/load-more.html" class="cbp-l-loadMore-link btn c-btn-square c-btn-border-2x c-btn-dark c-btn-bold c-btn-uppercase">
+                            <span class="cbp-l-loadMore-defaultText">LOAD MORE</span>
+                            <span class="cbp-l-loadMore-loadingText">LOADING...</span>
+                            <span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>
+                        </a>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    <!-- END: PAGE CONTENT -->
+</div>
 @section PageScripts
 {
     <script src="~/assets/base/js/scripts/pages/masonry-gallery.js" type="text/javascript"></script>

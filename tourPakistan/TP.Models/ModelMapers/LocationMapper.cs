@@ -1,4 +1,6 @@
-﻿using TP.Models.DomainModels;
+﻿using System.Linq;
+using TP.Models.DomainModels;
+using TP.Models.ModelMapers;
 using TP.Models.WebModels;
 
 namespace Models.ModelMappers
@@ -7,7 +9,7 @@ namespace Models.ModelMappers
     {
         public static LocationModel MapFromServerToClient(this Location source)
         {
-            return new LocationModel
+            var toReturn = new LocationModel
             {
                 AreaId = source.AreaId,
                 AreaName = source.Area.AreaName,
@@ -24,6 +26,11 @@ namespace Models.ModelMappers
                 RecLastUpdatedBy = source.RecLastUpdatedBy,
                 IsActive = source.IsActive
             };
+            if (source.LocationImages.Count > 0)
+            {
+                toReturn.LocationImage = source.LocationImages.FirstOrDefault().MapFromServerToClient();
+            }
+            return toReturn;
         }
 
         public static Location MapFromClientToServer(this LocationModel source)

@@ -18,6 +18,8 @@
         public string RecLastUpdatedBy { get; set; }
         public System.DateTime RecLastUpdatedDate { get; set; }
 
+        public LocationImageWebModel LocationImage { get; set; }
+
         
     }
 }

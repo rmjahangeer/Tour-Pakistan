@@ -1,0 +1,221 @@
+﻿@model  TP.Models.WebViewModels.AspNetUsersViewModel
+@{
+    ViewBag.Title = "Register User";
+    string btnText = "Save";
+    var setDiasble = "false";
+    Session["MenuKey"] = 5;
+    Session["SubMenuKey"] = 1;
+    if (Model != null)
+    {
+        if (!string.IsNullOrEmpty(Model.AspNetUserModel.Id))
+        {
+            ViewBag.Title = "Update User";
+            btnText = "Update";
+            setDiasble = "readonly";
+        }
+    }
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.MessageVM = TempData["message"];
+}
+
+@*<link rel="stylesheet" type="text/css" href="~/Scripts/App/select2/select2.css" />*@
+@*<script type="text/javascript" src="~/Scripts/App/select2/select2.js"></script>*@
+
+<!-- Navigation Bar -->
+<!-- Page heading -->
+
+<!--Notifications begin-->
+@Html.Partial("_Alert")
+<!--Notifications end-->
+<!-- Page heading ends -->
+<!-- Form starts.  -->
+@using (Html.BeginForm("Create", "Account", FormMethod.Post, new { @class = "form-horizontal", @id="AccountForm" , role = "form" }))
+{
+    @*@Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)*@
+    <div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-bulb font-red-sunglo"></i>
+                <span class="caption-subject font-red-sunglo bold uppercase">Create/Update Employees</span>
+                <span class="caption-helper">All</span>
+            </div>
+            <div class="actions">
+                <button class="btn default green-stripe toBeHidden" id="btnResetFltr" type="submit" form="AccountForm" name="save" onclick="return (ValidateFields(event));">
+                    <i class="fa fa-save"></i>
+                    <span class="hidden-480">
+                        Save & Close
+                    </span>
+                </button>
+                <a href="~/Account/Users" class="btn default yellow-stripe">
+                    <i class="fa fa-list"></i>
+                    <span class="hidden-480">
+                        All Employees
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <div class="container-fluid">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.AspNetUserModel.Id)
+                @Html.HiddenFor(m => m.AspNetUserModel.RoleName)
+
+                @*@Html.HiddenFor(m => m.UserId)
+                    @Html.HiddenFor(m => m.oldRole)*@
+
+                <div class="form-group margin-top-20">
+                    <label class="col-md-3 control-label">First Name</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AspNetUserModel.FirstName, new { @class = "form-control mandatory", placeholder = "First Name", id = "First Name" })
+                        @*<input type="text" name="AspNetUserModel.FirstName" id="FirstName" class="form-control mandatory"  placeholder="Enter First Name">*@
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" name="LastName">Last Name</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AspNetUserModel.LastName, new { @class = "form-control mandatory", placeholder = "Last Name", id = "Last Name" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.AspNetUserModel.LastName, "", new { @class = "required" })
+                </div>
+
+                @*<div class="form-group">
+                        <label class="col-md-3 control-label" name="LastName">Username</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.AspNetUserModel.UserName, new { @class = "form-control mandatory", @readonly=setDiasble, placeholder = "User Name", id = "User Name" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.AspNetUserModel.UserName, "", new {@class = "required"})
+                    </div>*@
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Email</label>
+                    <div class="col-md-4">
+                        @*<input type="email" id="Email" name="AspNetUserModel.Email" class="form-control mandatory" placeholder="Enter email">*@
+                        @Html.TextBoxFor(m => m.AspNetUserModel.Email, new { @class = "form-control mandatory", @readonly = setDiasble, placeholder = "Email", id = "Email" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.AspNetUserModel.Email, "", new { @class = "required" })
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Address</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AspNetUserModel.Address, new { @class = "form-control mandatory", placeholder = "Address", id = "Address" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.AspNetUserModel.Address, "", new { @class = "required" })
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Telephone</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AspNetUserModel.Telephone, new { @class = "form-control mandatory", placeholder = "Telephone", id = "Telephone" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.AspNetUserModel.Telephone, "", new { @class = "required" })
+                </div>
+
+
+                @if (Model != null && String.IsNullOrEmpty(Model.AspNetUserModel.Id))
+                {
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" name="LastName">Role</label>
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(m => m.AspNetUserModel.RoleId, new SelectList(Model.Roles, "Id", "Name"), "Select Role", new { @class = "form-control", id = "RoleId" })
+                            <label id="roleValidation" style="display: none; color: red"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" name="LastName">Password</label>
+                        <div class="col-md-4">
+                            @Html.PasswordFor(m => m.AspNetUserModel.Password, new { @class = "form-control mandatory", placeholder = "Password", id = "Password" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.AspNetUserModel.Password, "", new { @class = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" name="LastName">Password</label>
+                        <div class="col-md-4">
+                            @Html.PasswordFor(m => m.AspNetUserModel.ConfirmPassword, new { @class = "form-control mandatory", placeholder = "Confirm Password", id = "ConfirmPassword" })
+
+                        </div>
+                        @Html.ValidationMessageFor(m => m.AspNetUserModel.ConfirmPassword, "", new { @class = "required" })
+                    </div>
+
+
+                }
+
+                @if (Model != null && !String.IsNullOrEmpty(Model.AspNetUserModel.Id))
+                {
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Is Locked</label>
+                        <div class="col-md-4" style="padding-top: 10px !important">
+                            @Html.CheckBoxFor(m => m.AspNetUserModel.LockoutEnabled, new { @class = "checker", id = "LockoutEnabled" })
+                        </div>
+
+                    </div>
+                    @Html.HiddenFor(m => m.AspNetUserModel.RoleId)
+                }
+
+
+                @*<div class="control-group row-fluid">
+                        <div class="span3 span-inset">
+                            <button type="submit" class="btn" onclick="return validateUserPassword(event);">@btnText</button>
+                        </div>
+                    </div>*@
+            </div>
+
+        </div>
+    </div>
+}
+        <!-- Matter ends -->
+
+        <script>
+            $(function () {
+
+                $("[readonly='false']").removeAttr("readonly");
+
+            });
+            function validateUserPassword(event) {
+                var userPassword = $("#password").val();
+                var selectedRole = $("#RoleId").val();
+                var model = '@(Model.AspNetUserModel.Id == null ? "true" : "false")';
+                var counter = 0;
+                //if ((userPassword == null || userPassword == "") && model) {
+                //    $("#passwordAuthentication").text("Password Field is required");
+                //    $("#passwordAuthentication").addClass("Error");
+                //    counter++;
+                //} else if (userPassword.length < 6 && model) {
+                //    $("#passwordAuthentication").text("Minimum Password length is 6 characters");
+                //    $("#passwordAuthentication").addClass("Error");
+                //    counter++;
+                //}
+                //else {
+                //    $("#passwordAuthentication").text("");
+                //    $("#passwordAuthentication").removeClass("Error");
+                //}
+                if ((selectedRole == null || selectedRole == "" || selectedRole == undefined) && model) {
+                    $("#roleValidation").text("Please Select Role");
+                    $("#roleValidation").addClass("Error");
+                    counter++;
+                } else {
+                    $("#roleValidation").text("");
+                    $("#roleValidation").removeClass("Error");
+                }
+                if (counter > 0) {
+                    //implementing focus back to error
+                    if ($(".Error").length > 0) {
+                        var divId = $(".Error")[0].id;
+                        if ($("#" + divId).length > 0)
+                            $("#" + divId).focus();
+                        event.preventDefault();
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+        </script>

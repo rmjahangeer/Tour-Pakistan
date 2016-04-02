@@ -1,0 +1,74 @@
+﻿@model  TP.Models.WebModels.AspNetUserModel
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Session["MenuKey"] = "2";
+}
+<!-- Navigation Bar -->
+<!-- Page heading -->
+<!--Notifications begin-->
+<div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bulb font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">My Profile <small><small>View and Edit Profile</small></small></span>
+            <span class="caption-helper">All</span>
+        </div>
+        <div class="actions">
+            <button class="btn default red-stripe" id="btnResetFltr" type="submit" form="ProfileForm" name="save">
+                <i class="fa fa-save"></i>
+                <span class="hidden-480">
+                    Save
+                </span>
+            </button>
+            
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form class="form-horizontal" id="ProfileForm">
+        <div class="form-body">
+            <div class="portlet-body">
+                <div class="form-group margin-top-20">
+                    <label class="col-md-3 control-label">First Name</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control mandatory", @placeholder = "Enter Name", @id = "Name" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" name="LastName">Last Name</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control mandatory" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Email</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control mandatory", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Address</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control mandatory" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Telephone</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control mandatory" })
+                    </div>
+                </div>
+                @if (Model != null)
+                {
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" name="LastName">Role</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.RoleName, new { @class = "form-control mandatory", @readonly = "readonly" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+            </form>
+    </div>
+</div>

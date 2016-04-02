@@ -1,5 +1,7 @@
-﻿using TP.Models.DomainModels;
+﻿using System.Linq;
+using TP.Models.DomainModels;
 using TP.Models.WebModels;
+using TP.Models.WebViewModels;
 
 namespace Models.ModelMappers
 {
@@ -16,6 +18,15 @@ namespace Models.ModelMappers
                 RecLastUpdatedBy = source.RecLastUpdatedBy,
                 RecLastUpdatedDate = source.RecLastUpdatedDate,
                 IsActive = source.IsActive
+            };
+        }
+        public static CategoryViewModel MapCategoryFromServerToClient(this Category source)
+        {
+            return new CategoryViewModel
+            {
+                CategoryId = source.CategoryId,
+                CategoryName = source.CategoryName,
+                Locations = source.Locations.Select(x=>x.MapFromServerToClient()).ToList()
             };
         }
 

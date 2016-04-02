@@ -1487,8 +1487,6 @@
     <Content Include="Content\global\plugins\slider-revolution-slider\video-fullwidth.html" />
     <Content Include="fonts\fontawesome-webfont78ce.html" />
     <Content Include="fonts\fontawesome-webfont78ce.svg" />
-    <Content Include="Images\CompanyLogo\FrontPage.jpg" />
-    <Content Include="Images\CompanyLogo\toysworldlogo.png" />
     <Content Include="Images\loading.gif" />
     <Content Include="Images\photon\entypo.eot" />
     <Content Include="Images\photon\entypo.ttf" />
@@ -1507,11 +1505,7 @@
     <Content Include="Images\photon\w_arrow_red%402x.psd" />
     <Content Include="Images\pic05.jpg" />
     <Content Include="Images\reportsSpinner.gif" />
-    <Content Include="Images\Web\banner1.PNG" />
-    <Content Include="Images\Web\banner2.jpg" />
-    <Content Include="Images\Web\banner3.jpg" />
     <Content Include="Images\Web\logo2.png" />
-    <Content Include="Images\Web\logo3.png" />
     <Content Include="Content\global\img\social\Thumbs.db" />
     <Content Include="Content\global\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\global\plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -1658,7 +1652,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\banner.jpg" />
-    <Content Include="Images\CompanyLogo\dummy.txt" />
     <Content Include="Images\Employee\profile.jpg" />
     <Content Include="Images\entypo.svg" />
     <Content Include="Images\error-pages%402x.png" />
@@ -2544,9 +2537,7 @@
     <Content Include="Images\entypo.woff" />
     <Content Include="Images\iconic_stroke.eot" />
     <Content Include="Images\iconic_stroke.ttf" />
-    <Content Include="Images\jQueryUI\Thumbs.db" />
     <Content Include="Images\preloader\Thumbs.db" />
-    <Content Include="Images\sprites\Thumbs.db" />
     <Content Include="RichTextEditor\CHANGES.md" />
     <Content Include="RichTextEditor\LICENSE.md" />
     <Content Include="RichTextEditor\plugins\scayt\LICENSE.md" />
