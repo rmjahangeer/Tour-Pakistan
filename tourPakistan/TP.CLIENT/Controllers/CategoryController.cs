@@ -22,7 +22,7 @@ namespace tourPakistan.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            response = categoryService.GetAllCategories().Select(x => x.MapCategoryFromServerToClient()).ToList();
+            response = categoryService.GetAllCategories().Where(x=>x.IsActive).Select(x => x.MapCategoryFromServerToClient()).ToList();
 
             return View(response);
         }

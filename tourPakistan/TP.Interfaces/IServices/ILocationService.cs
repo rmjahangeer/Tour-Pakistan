@@ -10,5 +10,6 @@ namespace TP.Interfaces.IServices
 
         Location GetLocationById(long id);
         bool DeleteLocation(long id);
+        bool ActivateLocation(long id);
     }
 }

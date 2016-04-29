@@ -105,6 +105,19 @@ namespace TMD.Web.Controllers
             }
             return RedirectToAction("LocationIndex");
         }
+        public ActionResult Activate(long id)
+        {
+            var isDeleted = locationService.ActivateLocation(id);
+            if (isDeleted)
+            {
+                TempData["Message"] = new MessageViewModel { Message = "Location Deleted Successfully", IsSaved = true };
+            }
+            else
+            {
+                TempData["Message"] = new MessageViewModel { Message = "Something went wrong", IsError = true };
+            }
+            return RedirectToAction("LocationIndex");
+        }
 
         [HttpPost]
         public JsonResult DeleteImage(long id)

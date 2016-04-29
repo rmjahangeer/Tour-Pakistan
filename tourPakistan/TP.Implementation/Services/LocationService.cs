@@ -41,11 +41,18 @@ namespace TP.Implementation.Services
         public bool DeleteLocation(long id)
         {
             var toDetele = LocationRepository.Find(id);
-            LocationRepository.Delete(toDetele);
+            toDetele.IsActive = false;
             LocationRepository.SaveChanges();
             return true;
 
         }
 
+        public bool ActivateLocation(long id)
+        {
+            var toDetele = LocationRepository.Find(id);
+            toDetele.IsActive = true;
+            LocationRepository.SaveChanges();
+            return true;
+        }
     }
 }
