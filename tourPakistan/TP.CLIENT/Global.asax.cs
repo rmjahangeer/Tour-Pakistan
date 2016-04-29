@@ -67,7 +67,7 @@ namespace tourPakistan
             //ConfigureLogger();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters, container);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // Set MVC resolver
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

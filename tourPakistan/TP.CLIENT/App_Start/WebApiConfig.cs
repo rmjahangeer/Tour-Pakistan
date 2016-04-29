@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
 
-namespace TMD.Web.App_Start
+namespace tourPakistan
 {
     public class WebApiConfig
     {
