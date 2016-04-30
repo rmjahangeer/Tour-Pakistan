@@ -48,42 +48,42 @@
                 <div class="form-group margin-top-20">
                     @Html.Label("Event Name", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control mandatory", placeholder = "Event Title", @id = "EventTitle" })
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control mandatory", placeholder = "Event Title"})
                     </div>
                 </div>
 
                 <div class="form-group margin-top-20">
                     @Html.Label("Event Description", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control mandatory", placeholder = "Event Description", @id = "EventDescripption" })
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control mandatory", placeholder = "Event Description" })
                     </div>
                 </div>
                 
                 <div class="form-group margin-top-20">
                     @Html.Label("Starting Date", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.ScheduledDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Starting Date", @id = "EventDescripption" , @readonly=true })
+                        @Html.TextBoxFor(m => m.ScheduledDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Starting Date" , @readonly=true })
                     </div>
                 </div>
                 
                 <div class="form-group margin-top-20">
                     @Html.Label("Ending Date", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Ending Date", @id = "EventDescripption", @readonly = true })
+                        @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Ending Date", @readonly = true })
                     </div>
                 </div>
                 
                 <div class="form-group margin-top-20">
                     @Html.Label("Registration Start", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.RegistrationStartDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration Start", @id = "EventDescripption", @readonly = true })
+                        @Html.TextBoxFor(m => m.RegistrationStartDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration Start", @readonly = true })
                     </div>
                 </div>
                 
                 <div class="form-group margin-top-20">
                     @Html.Label("Registration End", new { @class = "col-md-3 control-label requiredLabel" })
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.RegistrationEndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration End", @id = "Registration End", @readonly = true })
+                        @Html.TextBoxFor(m => m.RegistrationEndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration End", @readonly = true })
                     </div>
                 </div>
 

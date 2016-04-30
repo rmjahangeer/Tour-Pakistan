@@ -74,7 +74,7 @@ namespace tourPakistan
             // Set Web Api resolver
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
             //remove xml api response
-            ConfigureApi(new HttpConfiguration());
+            //ConfigureApi(new HttpConfiguration());
 
             //Added by Jahangir
             //WebApiConfig.Register(GlobalConfiguration.Configuration);
