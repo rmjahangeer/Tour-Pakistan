@@ -16,7 +16,7 @@ using System.Web;
 
 namespace tourPakistan
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class TourPakistanApplication : System.Web.HttpApplication
     {
         #region Private
         private static IUnityContainer container;
@@ -67,14 +67,14 @@ namespace tourPakistan
             //ConfigureLogger();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters, container);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // Set MVC resolver
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
             // Set Web Api resolver
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
             //remove xml api response
-            ConfigureApi(new HttpConfiguration());
+            //ConfigureApi(new HttpConfiguration());
 
             //Added by Jahangir
             //WebApiConfig.Register(GlobalConfiguration.Configuration);

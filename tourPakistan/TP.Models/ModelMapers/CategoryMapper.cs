@@ -3,7 +3,7 @@ using TP.Models.DomainModels;
 using TP.Models.WebModels;
 using TP.Models.WebViewModels;
 
-namespace Models.ModelMappers
+namespace TP.Models.ModelMapers
 {
     public static class CategoryMapper
     {
@@ -26,7 +26,7 @@ namespace Models.ModelMappers
             {
                 CategoryId = source.CategoryId,
                 CategoryName = source.CategoryName,
-                Locations = source.Locations.Select(x=>x.MapFromServerToClient()).ToList()
+                Locations = source.Locations.Where(x=>x.IsActive).Select(x=>x.MapFromServerToClient()).ToList()
             };
         }
 

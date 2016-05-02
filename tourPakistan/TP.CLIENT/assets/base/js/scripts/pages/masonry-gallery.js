@@ -43,7 +43,6 @@
         singlePageCallback: function(url, element) {
             // to update singlePage content use the following method: this.updateSinglePage(yourContent)
             var t = this;
-
             $.ajax({
                     url: url,
                     type: 'GET',
@@ -53,7 +52,9 @@
                 .done(function(result) {
                     t.updateSinglePage(result);
                 })
-                .fail(function() {
+                .fail(function (err, c) {
+                    console.log(err);
+                    console.log(c);
                     t.updateSinglePage("Error! Please refresh the page!");
                 });
         },

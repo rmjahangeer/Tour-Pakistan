@@ -1,4 +1,7 @@
-﻿namespace TP.Models.WebModels
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace TP.Models.WebModels
 {
     public class LocationModel
     {
@@ -18,6 +21,7 @@
         public string RecLastUpdatedBy { get; set; }
         public System.DateTime RecLastUpdatedDate { get; set; }
 
+        public IEnumerable<LocationImageWebModel> LocationImages { get; set; }
         public LocationImageWebModel LocationImage { get; set; }
 
         

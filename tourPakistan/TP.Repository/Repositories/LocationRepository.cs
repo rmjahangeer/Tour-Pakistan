@@ -30,8 +30,28 @@ namespace TP.Repository.Repositories
 
         public IEnumerable<Location> GetAllLocations()
         {
-            return DbSet.Include(x=>x.Area).Include(x=>x.Province).Include(x=>x.Category).Include(x=>x.LocationImages).Select(x=>x).ToList();
+            return DbSet.Include(x=>x.Area).Include(x=>x.Province).Include(x=>x.Category).Include(x=>x.LocationImages).Select(x=>x);
         }
 
+        public IEnumerable<Location> GetAllActiveLocations()
+        {
+            return
+                DbSet.Include(x => x.Area)
+                    .Include(x => x.Province)
+                    .Include(x => x.Category)
+                    .Include(x => x.LocationImages)
+                    .Where(x => x.IsActive)
+                    .Select(x=>x);
+        }
+
+        public Location GetLocationByIdWithImages(long id)
+        {
+            return DbSet
+                    .Include(x => x.Area)
+                    .Include(x => x.Province)
+                    .Include(x => x.Category)
+                    .Include(x => x.LocationImages)
+                    .SingleOrDefault(x => x.LocationId.Equals(id));
+        }
     }
 }

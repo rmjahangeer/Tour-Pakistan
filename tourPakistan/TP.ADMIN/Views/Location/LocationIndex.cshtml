@@ -1,7 +1,4 @@
-﻿@using System.Globalization
-@using System.Security.Policy
-@using TP.Models.DomainModels
-@model List<TP.Models.WebModels.LocationModel>
+﻿@model List<TP.Models.WebModels.LocationModel>
 @{
     ViewBag.Title = "Location Management";
     Session["MenuKey"] = "2";
@@ -55,6 +52,7 @@
                                     <th class="">Category</th>
                                     <th class="">State</th>
                                     <th class="">Action</th>
+                                    <th class="">Images</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,17 +68,20 @@
                                         <td>
                                             @if (Location.IsActive)
                                             {
-                                                <a href="javascript:;" class="btn green-haze">Active</a>
+                                                <a href="@Url.Action("Delete", "Location")/@Location.LocationId" class="btn btn-sm red-flamingo"><i class="fa fa-trash-o"></i> De-activate</a>
                                             }
                                             else
                                             {
-                                                <a href="javascript:;"  class="btn red-flamingo">In active</a>
+                                                <a href="@Url.Action("Activate", "Location")/@Location.LocationId" class="btn btn-sm green-jungle"><i class="fa fa-trash-o"></i> Activate</a>
                                             }
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("AddLocation","Location")/@Location.LocationId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a>
-                                            <a href="@Url.Action("Delete","Location")/@Location.LocationId" class="btn btn-sm red-flamingo"><i class="fa fa-trash-o"></i> Delete</a>
-                                            <a href="@Url.Action("Images","Location")/@Location.LocationId" class="btn btn-sm green-jungle"><i class="fa fa-picture-o"></i> Images</a>
+                                            <a href="@Url.Action("AddLocation", "Location")/@Location.LocationId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a>
+                                            
+
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Images","Location")/@Location.LocationId" class="btn btn-sm blue-madison"><i class="fa fa-picture-o"></i> Images</a>
                                         </td>
                                     </tr>
                                 }

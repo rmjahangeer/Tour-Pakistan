@@ -8,7 +8,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Models.ModelMappers;
 using TP.Interfaces.IServices;
 using TP.Models.ModelMapers;
 using TP.Models.WebModels;
@@ -95,6 +94,19 @@ namespace TMD.Web.Controllers
         public ActionResult Delete(long id)
         {
             var isDeleted = locationService.DeleteLocation(id);
+            if (isDeleted)
+            {
+                TempData["Message"] = new MessageViewModel { Message = "Location Deleted Successfully", IsSaved = true };
+            }
+            else
+            {
+                TempData["Message"] = new MessageViewModel { Message = "Something went wrong", IsError = true };
+            }
+            return RedirectToAction("LocationIndex");
+        }
+        public ActionResult Activate(long id)
+        {
+            var isDeleted = locationService.ActivateLocation(id);
             if (isDeleted)
             {
                 TempData["Message"] = new MessageViewModel { Message = "Location Deleted Successfully", IsSaved = true };

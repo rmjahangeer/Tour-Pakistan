@@ -6,18 +6,18 @@ var PageContact = function() {
 
 		var mapbg = new GMaps({
 			div: '#gmapbg',
-			lat: 3.118823,
-			lng: 101.676084,
+			lat: 31.5703595,
+			lng: 74.30962939999995,
 			scrollwheel: false
 		});
 
 
 		mapbg.addMarker({
-			lat: 3.118823,
-			lng: 101.676084,
-			title: 'Your Location',
+		    lat: 31.5703595,
+		    lng: 74.30962939999995,
+			title: 'Punjab University College of Information Technology',
 			infoWindow: {
-				content: '<h3>Jango Inc.</h3><p>25, Lorem Lis Street, Orange C, California, US</p>'
+			    content: '<h3>PUCIT - Punjab University College of Information Technology</h3><p>Tour Pakistan &copy</p>'
 			}
 		});
 	}

@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Mail;
 using TMD.Web.Helper;
 
-namespace TMD.Web
+namespace tourPakistan
 {
     public class Utility
     {
