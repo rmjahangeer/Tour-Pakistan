@@ -580,6 +580,7 @@
     <Content Include="assets\base\js\scripts\revo-slider\slider-5.js" />
     <Content Include="assets\base\js\scripts\revo-slider\slider-6.js" />
     <Content Include="assets\base\js\scripts\revo-slider\slider-7.js" />
+    <Content Include="assets\base\media\video\video.mp4" />
     <Content Include="assets\plugins\animate\animate.min.css" />
     <Content Include="assets\plugins\bootstrap-social\bootstrap-social.css" />
     <Content Include="assets\plugins\bootstrap\css\bootstrap.min.css" />
