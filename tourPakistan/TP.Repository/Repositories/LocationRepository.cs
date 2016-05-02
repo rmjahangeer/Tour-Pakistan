@@ -43,5 +43,15 @@ namespace TP.Repository.Repositories
                     .Where(x => x.IsActive)
                     .Select(x=>x);
         }
+
+        public Location GetLocationByIdWithImages(long id)
+        {
+            return DbSet
+                    .Include(x => x.Area)
+                    .Include(x => x.Province)
+                    .Include(x => x.Category)
+                    .Include(x => x.LocationImages)
+                    .SingleOrDefault(x => x.LocationId.Equals(id));
+        }
     }
 }

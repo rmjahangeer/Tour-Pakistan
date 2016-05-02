@@ -56,13 +56,13 @@
                                         <div class="c-masonry-border"></div>
                                         <div class="cbp-l-caption-alignCenter">
                                             <div class="cbp-l-caption-body">
-                                                <a href="~/ajax/projects/project1ab43.html?test=1" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
-                                            <a href="@Url.Action("GetImage", "Category")?categoryId=@category.CategoryId&locationId=@location.LocationId" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="<strong>@location.LocationName</strong> <br> @location.LocationDescription">Zoom</a>
+                                                <a href="@Url.Action("LocationDetail","Category")/@location.LocationId" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
+                                                <a href="@Url.Action("GetImage", "Category")?categoryId=@category.CategoryId&locationId=@location.LocationId" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="<strong>@location.LocationName</strong> <br> @location.LocationDescription">Zoom</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="~/ajax/projects/project1.html" class="cbp-singlePage cbp-l-grid-masonry-projects-title">@location.LocationName</a>
+                                <a href="@Url.Action("LocationDetail","Category")/@location.LocationId" class="cbp-singlePage cbp-l-grid-masonry-projects-title">@location.LocationName</a>
                                 <div class="cbp-l-grid-masonry-projects-desc">@category.CategoryName</div>
                             </div>
 

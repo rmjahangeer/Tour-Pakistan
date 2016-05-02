@@ -7,5 +7,6 @@ namespace TP.Interfaces.IRepository
     {
         IEnumerable<Location> GetAllLocations();
         IEnumerable<Location> GetAllActiveLocations();
+        Location GetLocationByIdWithImages(long id);
     }
 }

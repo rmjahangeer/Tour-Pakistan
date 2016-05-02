@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using TP.Models.DomainModels;
-using TP.Models.ModelMapers;
 using TP.Models.WebModels;
 
-namespace Models.ModelMappers
+namespace TP.Models.ModelMapers
 {
     public static class LocationMapper
     {
@@ -29,6 +28,36 @@ namespace Models.ModelMappers
             if (source.LocationImages.Count > 0)
             {
                 toReturn.LocationImage = source.LocationImages.FirstOrDefault().MapFromServerToClient();
+            }
+            return toReturn;
+        }
+        public static LocationModel MapLocationWithImages(this Location source)
+        {
+            var toReturn = new LocationModel
+            {
+                AreaId = source.AreaId,
+                AreaName = source.Area.AreaName,
+                ProvinceId = source.ProvinceId,
+                ProvinceName = source.Province.ProvinceName,
+                CategoryId = source.CategoryId,
+                CategoryName = source.Category.CategoryName,
+                LocationId = source.LocationId,
+                LocationName = source.LocationName,
+                LocationDescription = source.LocationDescription,
+                RecCreatedBy = source.RecCreatedBy,
+                RecCreatedDate = source.RecCreatedDate,
+                RecLastUpdatedDate = source.RecLastUpdatedDate,
+                RecLastUpdatedBy = source.RecLastUpdatedBy,
+                IsActive = source.IsActive
+            };
+            if (source.LocationImages.Count > 0)
+            {
+                toReturn.LocationImages = source.LocationImages.Select(x => new LocationImageWebModel
+                {
+                    ContentType = x.ContentType,
+                    ImageData = x.ImageData,
+                    ImageId = x.ImageId
+                }).ToList();
             }
             return toReturn;
         }

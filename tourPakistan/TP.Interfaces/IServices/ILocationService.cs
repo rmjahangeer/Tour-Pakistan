@@ -9,6 +9,7 @@ namespace TP.Interfaces.IServices
         long AddUpdateLocations(Location locations);
 
         Location GetLocationById(long id);
+        Location GetLocationByIdWithImages(long id);
         bool DeleteLocation(long id);
         bool ActivateLocation(long id);
     }

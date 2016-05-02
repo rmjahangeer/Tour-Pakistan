@@ -8,7 +8,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Models.ModelMappers;
 using TP.Interfaces.IServices;
 using TP.Models.ModelMapers;
 using TP.Models.WebModels;

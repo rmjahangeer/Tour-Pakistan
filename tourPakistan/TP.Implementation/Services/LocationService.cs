@@ -38,6 +38,11 @@ namespace TP.Implementation.Services
             return LocationRepository.Find(id);
         }
 
+        public Location GetLocationByIdWithImages(long id)
+        {
+            return LocationRepository.GetLocationByIdWithImages(id);
+        }
+
         public bool DeleteLocation(long id)
         {
             var toDetele = LocationRepository.Find(id);

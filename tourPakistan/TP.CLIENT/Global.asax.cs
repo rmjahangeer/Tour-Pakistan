@@ -16,7 +16,7 @@ using System.Web;
 
 namespace tourPakistan
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class TourPakistanApplication : System.Web.HttpApplication
     {
         #region Private
         private static IUnityContainer container;
