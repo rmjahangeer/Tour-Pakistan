@@ -36,7 +36,7 @@ namespace tourPakistan.Controllers
 
                 return File(image.ImageData, image.ContentType, "IMG_" + image.ImageId + image.IsActive + "." + ext);
             }
-            return File(new byte[20], "");
+            return File(new byte[20], "image/jpeg", "raw image");
 
         }
     }
