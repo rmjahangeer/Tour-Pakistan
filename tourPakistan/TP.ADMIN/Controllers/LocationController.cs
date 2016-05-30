@@ -168,7 +168,11 @@ namespace TMD.Web.Controllers
                         LocationId = id,
                         Image = file
                     });
-                    SaveImage(imageWebModel[i]);
+                    var isSaved = SaveImage(imageWebModel[i]);
+                    if (!isSaved)
+                    {
+                        return;
+                    }
                 }
             }
             locationImageService.AddUpdateLocationImages(imageWebModel);
@@ -180,7 +184,7 @@ namespace TMD.Web.Controllers
             var tempStream = location.Image.InputStream;
 
             //File size must be less than 4MBs
-            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 4194304)
+            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 8388608)
             {
                 var width = Image.FromStream(tempStream).Width;
                 var height = Image.FromStream(tempStream).Height;
