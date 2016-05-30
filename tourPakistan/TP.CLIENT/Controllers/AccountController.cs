@@ -170,29 +170,46 @@ namespace tourPakistan.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(model);
+                    return Json(new
+                    {
+                        success = false,
+                        message = "Please provide valid Email and Password."
+
+                    }, JsonRequestBehavior.AllowGet);
                 }
                 var user = await UserManager.FindByNameAsync(model.Email);
                 if (user != null)
                 {
                     if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                     {
-                        ModelState.AddModelError("", "Email not confirmed");
-                        return View(model);
+                        //ModelState.AddModelError("", "Email not confirmed");
+                        //return View(model);
+                        return Json(new
+                        {
+                            success = true,
+                            message = "Email not confirmed"
+
+                        }, JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
                         if (user.LockoutEnabled)
                         {
-                            ModelState.AddModelError("", "User Is locked, Please contact admin to unlock the user");
-                            return View(model);
+                            //ModelState.AddModelError("", "User Is locked, Please contact admin to unlock the user");
+                            //return View(model);
+                            return Json(new
+                            {
+                                success = true,
+                                message = "User Is locked, Please contact admin to unlock the user"
+
+                            }, JsonRequestBehavior.AllowGet);
                         }
                         else
                         {
@@ -221,23 +238,45 @@ namespace tourPakistan.Controllers
                             //{
                             //    return RedirectToAction("Index", "Home");
                             //}
-                            if (string.IsNullOrEmpty(returnUrl))
-                                return RedirectToAction("Index", "Home");
-                            return RedirectToLocal(returnUrl);
+                            //if (string.IsNullOrEmpty(returnUrl))
+                            //    return RedirectToAction("Index", "Home");
+                            //return RedirectToLocal(returnUrl);
+                            return Json(new
+                            {
+                                success = true,
+                                message = "Login successfull."
+
+                            }, JsonRequestBehavior.AllowGet);
                         }
                     case SignInStatus.LockedOut:
-                        return View("Lockout");
+                        return Json(new
+                        {
+                            success = false,
+                            message = "Login failed."
+
+                        }, JsonRequestBehavior.AllowGet);
                     case SignInStatus.RequiresVerification:
                         return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
                     case SignInStatus.Failure:
                     default:
-                        ModelState.AddModelError("", "Invalid login attempt.");
-                        return View(model);
+                        //ModelState.AddModelError("", "Invalid login attempt.");
+                        //return View(model);
+                        return Json(new
+                        {
+                            success = false,
+                            message = "Invalid login attempt."
+
+                        }, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
             {
-                return RedirectToAction("Error");
+                return Json(new
+                {
+                    success = false,
+                    message = "Login failed."
+
+                }, JsonRequestBehavior.AllowGet);
 
             }
         }

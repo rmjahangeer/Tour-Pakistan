@@ -1,11 +1,10 @@
-﻿@using tourPakistan.Controllers
-<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
+﻿<header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
     <div class="c-navbar">
         <div class="container">
             <!-- BEGIN: BRAND -->
             <div class="c-navbar-wrapper clearfix">
                 <div class="c-brand c-pull-left">
-                    <a href="index-2.html" class="c-logo">
+                    <a href="#" class="c-logo">
                         <h3 class="c-font-uppercase c-font-bold c-font-black">
                             Tour
                             <span class="c-theme-font">Pakistan</span>
@@ -67,7 +66,7 @@
                             </a>
                         </li>
                         <li class='@((string) Session["MenuKey"] == "4" ? "c-active" : "")'>
-                            <a href="@Url.Action("Contact", "Home") " class="c-link dropdown-toggle">
+                            <a href="@Url.Action("Contact", "Home")" class="c-link dropdown-toggle">
                                 <span class="c-arrow c-toggler"></span>
                                 Contact
                             </a>
@@ -75,7 +74,7 @@
 
                         </li>
                         <li class='@((string) Session["MenuKey"] == "5" ? "c-active" : "")'>
-                            <a href="@Url.Action("Faq", "Home") " class="c-link dropdown-toggle">
+                            <a href="@Url.Action("Faq", "Home")" class="c-link dropdown-toggle">
                                 <span class="c-arrow c-toggler"></span>
                                 FAQ
                             </a>
@@ -85,12 +84,22 @@
                                 <i class="fa fa-search"></i>
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:;" data-toggle="modal" data-target="#login-form" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
-                                <i class="icon-user"></i> Sign In
-                            </a>
-                        </li>
-
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="#" data-toggle="modal" id="headerLoginLink" data-target="#login-form" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
+                                    <i class="icon-user"></i> Sign In
+                                </a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a href="@Url.Action("LogOff", "Account")" class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
+                                    <i class="icon-user"></i> Logout
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </nav>
                 <!-- END: MEGA MENU -->

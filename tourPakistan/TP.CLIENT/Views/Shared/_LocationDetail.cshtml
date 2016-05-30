@@ -9,7 +9,7 @@
         @foreach (var image in Model.LocationImages)
         {
             <li class="cbp-slider-item">
-                <img src="@Url.Action("LoadLocationImage","Category")/@image.ImageId" alt="">
+                <img src="@image.ImageBase64" alt="">
             </li>
         }
     </ul>

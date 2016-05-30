@@ -408,3 +408,83 @@ var App = function() {
     };
 
 }();
+
+
+/*Custom functions*/
+function blockUICustom() {
+    $.blockUI({ message: "<i class='fa fa-gear fa-spin fa-2x' style='color:cornflowerblue'></i> Please wait. <br/>Processing your request." });
+}
+
+$(document).ready(function () {
+    App.init(); // init core
+
+    var slider = $('.c-layout-revo-slider .tp-banner');
+    var cont = $('.c-layout-revo-slider .tp-banner-container');
+    var api = slider.show().revolution(
+    {
+        delay: 15000,
+        startwidth: 1170,
+        startheight: App.getViewPort().height,
+        navigationType: "hide",
+        navigationArrows: "solo",
+        touchenabled: "on",
+        onHoverStop: "on",
+        keyboardNavigation: "off",
+        navigationStyle: "circle",
+        navigationHAlign: "center",
+        navigationVAlign: "bottom",
+        spinner: "spinner2",
+        fullScreen: "on",
+        fullScreenAlignForce: "on",
+        fullScreenOffsetContainer: '',
+        shadow: 0,
+        fullWidth: "off",
+        forceFullWidth: "off",
+        hideTimerBar: "on",
+        hideThumbsOnMobile: "on",
+        hideNavDelayOnMobile: 1500,
+        hideBulletsOnMobile: "on",
+        hideArrowsOnMobile: "on",
+        hideThumbsUnderResolution: 0
+    });
+
+    $('#loginButton').click(function () {
+        var email = $.trim($('#login-email').val());
+        var password = $.trim($('#login-password').val());
+        var remember = $('#login-rememberme').is(':checked');
+        debugger;
+        $.ajax({
+            url: '@Url.Action("Login","Account")',
+            method: 'POST',
+            data: {
+                Email: email,
+                Password: password,
+                RememberMe: remember
+            },
+            type: 'json',
+            beforeSend: function () {
+                $('.modal button.close').click();
+                //<img src='/Images/ajax-loader.gif'/> 
+                //$.blockUI({ message: "<i class='fa fa-gear fa-spin fa-2x' style='color:cornflowerblue'></i> Please wait. <br/>Processing your request." });
+                blockUICustom();
+            },
+            success: function (response) {
+                $.unblockUI();
+                if (response.success) {
+                    toastr.success(response.message, "Success");
+                } else {
+                    toastr.error(response.message, "Error");
+                    setTimeout(function () { $('#headerLoginLink').click(); }, 300);
+                }
+            },
+            error: function (err) {
+                setTimeout(function () { $('#headerLoginLink').click(); }, 500);
+                toastr.error("Something went wrong. Try again Later");
+            },
+            complete: function () {
+                $.unblockUI();
+            }
+        });
+    });
+
+}); //ready

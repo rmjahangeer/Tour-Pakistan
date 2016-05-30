@@ -9,6 +9,7 @@ namespace TP.Models.WebModels
         public long ImageId { get; set; }
         public byte[] ImageData { get; set; }
         public string ContentType { get; set; }
+        public string ImageBase64 { get; set; }
         public string LocationName { get; set; }
         public string LocationDescription { get; set; }
         public long LocationId { get; set; }

@@ -18,4 +18,9 @@ namespace TP.Models.WebViewModels
 
         public LocationModel Location { get; set; }
     }
+
+    public class HomeViewModel
+    {
+        public IEnumerable<LocationModel> Locations { get; set; }
+    }
 }

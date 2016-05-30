@@ -658,12 +658,14 @@
     <Content Include="assets\plugins\zoom-master\jquery.zoom.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\img\90x90\1.jpg" />
     <Content Include="Images\img\90x90\10.jpg" />
     <Content Include="Images\img\90x90\11.jpg" />
@@ -873,7 +875,7 @@
     <Content Include="assets\plugins\font-awesome\fonts\fontawesome-webfonte0a5.eot" />
     <Content Include="assets\plugins\font-awesome\fonts\fontawesome-webfonte0a5.ttf" />
     <Content Include="assets\plugins\font-awesome\fonts\fontawesome-webfonte0a5.woff" />
-    <Content Include="assets\plugins\font-awesome\fonts\fontawesome-webfonte0a5.woff2" />
+    <None Include="assets\plugins\font-awesome\fonts\fontawesome-webfonte0a5-1.woff" />
     <Content Include="assets\plugins\revo-slider\font\revicons90c6.eot" />
     <Content Include="assets\plugins\revo-slider\font\revicons90c6.ttf" />
     <Content Include="assets\plugins\revo-slider\font\revicons90c6.woff" />
@@ -890,6 +892,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -915,6 +918,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Views\Shared\_LocationDetail.cshtml" />
     <Content Include="Web.config" />
@@ -970,7 +974,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\css\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

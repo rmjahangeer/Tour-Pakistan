@@ -48,6 +48,7 @@ namespace TP.Models.IdentityModels.ViewModels
     {
         [Required]
         [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = "Invalid Email")]
         public string Email { get; set; }
 
         [Required]

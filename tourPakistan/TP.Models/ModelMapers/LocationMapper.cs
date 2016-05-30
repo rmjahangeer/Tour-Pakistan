@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TP.Models.DomainModels;
 using TP.Models.WebModels;
 
@@ -27,7 +28,8 @@ namespace TP.Models.ModelMapers
             };
             if (source.LocationImages.Count > 0)
             {
-                toReturn.LocationImage = source.LocationImages.FirstOrDefault().MapFromServerToClient();
+                toReturn.LocationImage = source.LocationImages.OrderBy(x=>x.RecCreatedDate).FirstOrDefault().MapFromServerToClient();
+                toReturn.ImageBase64 = "data:image/png;base64," + Convert.ToBase64String(toReturn.LocationImage.ImageData);
             }
             return toReturn;
         }
@@ -54,8 +56,8 @@ namespace TP.Models.ModelMapers
             {
                 toReturn.LocationImages = source.LocationImages.Select(x => new LocationImageWebModel
                 {
-                    ContentType = x.ContentType,
-                    ImageData = x.ImageData,
+                    
+                    ImageBase64 = "data:image/png;base64," + Convert.ToBase64String(x.ImageData),
                     ImageId = x.ImageId
                 }).ToList();
             }

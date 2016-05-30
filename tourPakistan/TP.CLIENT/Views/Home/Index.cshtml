@@ -1,6 +1,7 @@
-﻿@{
+﻿@model TP.Models.WebViewModels.HomeViewModel
+@{
     Session["MenuKey"] = "1";
-
+    
 }
 
 <div class="c-layout-page">
@@ -51,32 +52,23 @@
                     </li>
                     <!--END-->
                     <!--BEGIN: SLIDE #3 -->
-                    <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="6000" data-thumb="">
-                        <!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
-                        <img src="/assets/base/img/layout/sliders/revo-slider/base/blank.png" alt="">
-                        <div class="caption fulllscreenvideo tp-videolayer" data-x="0" data-y="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeOut" data-autoplay="true" data-autoplayonlyfirsttime="false"
-                             data-nextslideatend="true" data-videowidth="100%" data-videoheight="100%" data-videopreload="meta" data-videomp4="/assets/base/media/video/video.mp4" data-videowebm="" data-videocontrols="none" data-forcecover="1" data-forcerewind="on"
-                             data-aspectratio="16:9" data-volume="mute" data-videoposter="/assets/base/img/layout/sliders/revo-slider/base/blank.png"></div>
-                        <div class="caption customin customout" data-x="center" data-y="center" data-hoffset="" data-voffset="-30" data-speed="500" data-start="1000" data-customin="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-style="dark">
+                        <img alt="" src="~/assets/base/img/content/backgrounds/bg-37.jpg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!--BEGIN: MAIN TITLE -->
+                        <div class="caption customin customout" data-x="center" data-y="center" data-hoffset="" data-voffset="-30" data-speed="500" data-start="1500" data-customin="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
                              data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-splitin="none" data-splitout="none"
                              data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600">
                             <h3 class="c-main-title c-font-55 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
-                                Design that speaks
-                                <br>to modern trends
+                                One JANGO
+                                <br> For every need
                             </h3>
                         </div>
-                        <div class="caption lf" data-x="center" data-y="center" data-voffset="130" data-speed="900" data-start="2000" data-easing="easeOutExpo">
-                            <a href="#" class="c-action-btn btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">Purchase</a>
+                        <!--END -->
+                        <!--BEGIN: ACTION BUTTON -->
+                        <div class="caption randomrotateout" data-x="center" data-y="center" data-hoffset="" data-voffset="120" data-speed="500" data-start="2000" data-easing="Back.easeOut">
+                            <a href="#" class="c-action-btn btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">Explore</a>
                         </div>
-                        <div class="tp-caption arrowicon customin rs-parallaxlevel-0 visible-xs" data-x="center" data-y="bottom" data-hoffset="0" data-voffset="-60" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                             data-speed="500" data-start="2000" data-easing="Power3.easeInOut" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next" style="z-index: 13;">
-                            <div class="rs-slideloop" data-easing="Power3.easeInOut" data-speed="0.5" data-xs="-5" data-xe="5" data-ys="0" data-ye="0">
-                                <span class="c-video-hint c-font-15 c-font-sbold c-font-center c-font-dark">
-                                    Tap to play video
-                                    <i class="icon-control-play"></i>
-                                </span>
-                            </div>
-                        </div>
+                        <!--END -->
                     </li>
                     <!--END -->
                 </ul>
@@ -152,118 +144,35 @@
             <div class="cbp-panel">
                 <!-- SEE: components.js:ContentCubeLatestPortfolio -->
                 <div class="c-content-latest-works cbp cbp-l-grid-masonry-projects wow animate fadeInLeft">
-                    <div class="cbp-item graphic">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="~/assets/base/img/content/stock/08-long.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="c-masonry-border"></div>
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <a href="~/ajax/projects/project1.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
-                                        <a href="~/assets/base/img/content/stock/08.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Dashboard<br>by Paul Flavius Nechita">zoom</a>
+
+                    @foreach (var location in Model.Locations)
+                    {
+                        <div class="cbp-item wow animate fadeInLeft customHeightItem" data-wow-delay="0.4s">
+                            <div class="cbp-caption">
+                                <div class="cbp-caption-defaultWrap">
+                                    <img src="@location.ImageBase64" alt="">
+                                </div>
+                                <div class="cbp-caption-activeWrap">
+                                    <div class="c-masonry-border"></div>
+                                    <div class="cbp-l-caption-alignCenter">
+                                        <div class="cbp-l-caption-body">
+                                            <a href="@Url.Action("LocationDetail","Category")/@location.LocationId" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
+                                            @if (location.LocationId == 22)
+                                            {
+                                                <a href="@Model.Locations.First().ImageBase64" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title='@location.AreaName <br/> @location.LocationName'>zoom</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@location.ImageBase64" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title='@location.AreaName <br/> @location.LocationName'>zoom</a>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="cbp-item web-design logos wow animate fadeInLeft">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="~/assets/base/img/content/stock/07.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="c-masonry-border"></div>
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <a href="~/ajax/projects/project2.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
-                                        <a href="~/assets/base/img/content/stock/07.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="World Clock Widget<br>by Paul Flavius Nechita">zoom</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item graphic logos wow animate fadeInLeft" data-wow-delay="0.2s">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="~/assets/base/img/content/stock/09.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="c-masonry-border"></div>
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <a href="~/ajax/projects/project3.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
-                                        <a href="http://vimeo.com/14912890" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="To-Do Dashboard<br>by Tiberiu Neamu">view video</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item identity web-design wow animate fadeInLeft" data-wow-delay="0.4s">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="~/assets/base/img/content/stock/014.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="c-masonry-border"></div>
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <a href="~/ajax/projects/project4.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
-                                        <a href="~/assets/base/img/content/stock/014.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="WhereTO App<br>by Tiberiu Neamu">zoom</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item web-design graphic wow animate fadeInLeft">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="~/assets/base/img/content/stock/34.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="c-masonry-border"></div>
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <a href="~/ajax/projects/project5.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
-                                        <a href="~/assets/base/img/content/stock/34.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Events and  More<br>by Tiberiu Neamu">zoom</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item identity web-design wow animate fadeInLeft" data-wow-delay="0.2s">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="~/assets/base/img/content/stock/53.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="c-masonry-border"></div>
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <a href="~/ajax/projects/project6.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
-                                        <a href="~/assets/base/img/content/stock/53.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Ski * Buddy<br>by Tiberiu Neamu">zoom</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cbp-item graphic logos wow animate fadeInLeft" data-wow-delay="0.4s">
-                        <div class="cbp-caption">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="~/assets/base/img/content/stock/39.jpg" alt="">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="c-masonry-border"></div>
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <a href="~/ajax/projects/project7.html" class="cbp-singlePage cbp-l-caption-buttonLeft btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase">explore</a>
-                                        <a href="~/assets/base/img/content/stock/39.jpg" class="cbp-lightbox cbp-l-caption-buttonRight btn c-btn-square c-btn-border-1x c-btn-white c-btn-bold c-btn-uppercase" data-title="Seemple* Music for iPad<br>by Tiberiu Neamu">zoom</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    }
+
                 </div>
             </div>
         </div>
@@ -387,10 +296,6 @@
         </div>
     </div>
     <!-- END: CONTENT/MISC/LATEST-ITEMS-1 -->
-    <!-- BEGIN: CONTENT/TESTIMONIALS/TESTIMONIALS-5 -->
-    <!-- END: CONTENT/TESTIMONIALS/TESTIMONIALS-5 -->
-    <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
-<!-- END: CONTENT/MISC/ABOUT-1 -->
 <!-- END: PAGE CONTENT -->
 </div>
 

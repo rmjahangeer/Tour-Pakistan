@@ -19,6 +19,7 @@ namespace TP.Models.WebModels
         public string RecCreatedBy { get; set; }
         public System.DateTime RecCreatedDate { get; set; }
         public string RecLastUpdatedBy { get; set; }
+        public string ImageBase64 { get; set; }
         public System.DateTime RecLastUpdatedDate { get; set; }
 
         public IEnumerable<LocationImageWebModel> LocationImages { get; set; }
