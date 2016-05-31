@@ -22,5 +22,6 @@ namespace TP.Models.WebViewModels
     public class HomeViewModel
     {
         public IEnumerable<LocationModel> Locations { get; set; }
+        public IEnumerable<EventModel> Events { get; set; }
     }
 }

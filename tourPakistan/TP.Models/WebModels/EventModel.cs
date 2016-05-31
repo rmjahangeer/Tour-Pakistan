@@ -8,6 +8,7 @@ namespace TP.Models.WebModels
         public long EventId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string LocationImage { get; set; }
         public long LocationId { get; set; }
         public string LocationName { get; set; }
         public DateTime? ScheduledDate { get; set; }

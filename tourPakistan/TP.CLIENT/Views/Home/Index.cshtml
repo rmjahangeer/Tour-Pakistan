@@ -269,26 +269,22 @@
                     <div class="c-content-testimonial-2-slider" data-slider="owl" data-single-item="true" data-auto-play="6000">
                         <div class="c-title c-font-uppercase c-theme-bg">Upcoming Events</div>
                         <div class="owl-carousel owl-theme c-theme owl-single">
-                            <div class="item">
-                                <div class="c-content-testimonial-2" style="min-height: 360px;">
-                                    <div class="c-testimonial c-font-bold c-font-uppercase">JANGO the best HTML theme I've purchased in months!</div>
-                                    <div class="c-author">
-                                        <div class="c-portrait" style="background-image: url(/assets/base/img/content/team/team13.jpg)"></div>
-                                        <div class="c-name c-font-uppercase">Jim Cook</div>
-                                        <p class="c-position c-theme c-font-uppercase">Orange Inc.</p>
+                            @foreach (var events in Model.Events)
+                            {
+                                <div class="item">
+                                    <div class="c-content-testimonial-2" style="min-height: 360px;">
+                                        <div class="c-testimonial c-font-bold c-font-uppercase"><a href="#">@events.Title</a></div>
+                                        <div class="c-testimonial">Event Date: <br />@events.ScheduledDate.Value.ToString("dd-MMM-yyyy")</div>
+                                        <div class="c-author">
+                                            <div class="c-portrait" style="background-image: url(data:image/png;base64,@events.LocationImage)"></div>
+                                            <div class="c-name c-font-uppercase"><a class="cbp-singlePage" href="@Url.Action("LocationDetail","Category")/@events.LocationId">@events.LocationName</a></div>
+                                            <p class="c-position c-theme c-font-uppercase">@events.RecCreatedByName</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="c-content-testimonial-2" style="min-height: 360px;">
-                                    <div class="c-testimonial c-font-bold c-font-uppercase">Quick and extremely easy to use with awesome customer support</div>
-                                    <div class="c-author">
-                                        <div class="c-portrait" style="background-image: url(/assets/base/img/content/team/team6.jpg)"></div>
-                                        <div class="c-name c-font-uppercase">Jane Smith</div>
-                                        <p class="c-position c-theme c-font-uppercase">Loop Inc.</p>
-                                    </div>
-                                </div>
-                            </div>
+
+                            }
+                            
                         </div>
                     </div>
                 </div>

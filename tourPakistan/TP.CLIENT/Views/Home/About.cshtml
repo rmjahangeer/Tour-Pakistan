@@ -1,8 +1,19 @@
-﻿@{
+﻿
+@using FaceSharp.Api.Objects
+@model IEnumerable<TP.Models.WebModels.EventModel>
+    @{
     Session["MenuKey"] = "2";
 
 }
-        
+<style>
+    .customTitle {
+        position: absolute !important;
+        top: 300px !important;
+        color: white;
+        left: 40px !important;
+        z-index: 10 !important;
+    }
+</style>        
 
 <!-- BEGIN: PAGE CONTAINER -->
 <div class="c-layout-page">
@@ -90,36 +101,22 @@
                     <div class="c-content-media-2-slider" data-slider="owl" data-single-item="true" data-auto-play="4000">
                         <div class="c-content-label c-font-uppercase c-font-bold">Latest Tours</div>
                         <div class="owl-carousel owl-theme c-theme owl-single">
-                            <div class="item">
-                                <div class="c-content-media-2 c-bg-img-center" style="background-image: url(/assets/base/img/content/stock3/17.jpg); min-height: 380px;">
-                                    <div class="c-panel">
-                                        <div class="c-fav">
-                                            <i class="icon-heart c-font-thin"></i>
-                                            <p class="c-font-thin">16</p>
+                            @foreach (var eventModel in Model)
+                            {
+                                <div class="item">
+                                    <div class="c-content-media-2 c-bg-img-center" style="background-image: url(data:image/png;base64,@eventModel.LocationImage); min-height: 380px;">
+                                        <br/>
+                                        <div class="c-content-label c-font-uppercase c-font-bold customTitle">@eventModel.LocationName</div>
+                                        <div class="c-panel">
+                                            <div class="c-fav">
+                                                <i class="icon-heart c-font-thin"></i>
+                                                <p class="c-font-thin">16</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="c-content-media-2 c-bg-img-center" style="background-image: url(/assets/base/img/content/stock3/8.jpg); min-height: 380px;">
-                                    <div class="c-panel">
-                                        <div class="c-fav">
-                                            <i class="icon-heart c-font-thin"></i>
-                                            <p class="c-font-thin">24</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="c-content-media-2 c-bg-img-center" style="background-image: url(/assets/base/img/content/stock3/35.jpg); min-height: 380px;">
-                                    <div class="c-panel">
-                                        <div class="c-fav">
-                                            <i class="icon-heart c-font-thin"></i>
-                                            <p class="c-font-thin">19</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            }
                         </div>
                     </div>
                 </div>
@@ -137,7 +134,7 @@
     </div>
     <!-- END: CONTENT/MISC/LATEST-ITEMS-4 -->
     <!-- BEGIN: CONTENT/SLIDERS/TEAM-1 -->
-    <div class="c-content-box c-size-md c-bg-white">
+    @*<div class="c-content-box c-size-md c-bg-white">
         <div class="container">
             <!-- Begin: Testimonals 1 component -->
             <div class="c-content-person-1-slider" data-slider="owl" data-items="3" data-auto-play="8000">
@@ -354,7 +351,7 @@
             </div>
             <!-- End-->
         </div>
-    </div>
+    </div>*@
     <!-- END: CONTENT/SLIDERS/TEAM-1 -->
     <!-- BEGIN: CONTENT/MISC/SERVICES-1 -->
     <div class="c-content-box c-size-md c-bg-grey-1  ">

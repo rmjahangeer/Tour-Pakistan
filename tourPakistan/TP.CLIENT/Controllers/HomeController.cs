@@ -9,18 +9,22 @@ namespace tourPakistan.Controllers
     public class HomeController : Controller
     {
         private readonly ILocationService _locationService;
+        private readonly IEventService eventService;
 
-        public HomeController(ILocationService locationService)
+        public HomeController(ILocationService locationService, IEventService eventService)
         {
             _locationService = locationService;
+            this.eventService = eventService;
         }
 
         public ActionResult Index()
         {
             var recentLocations = _locationService.GetAllLocations().OrderBy(x=>x.RecCreatedDate).Take(8).Select(x=>x.MapFromServerToClient()).ToList();
+            var latestEvents = eventService.GetAllEvents().OrderByDescending(x=>x.RecCreatedDate).Take(2).Select(x=>x.MapFromServerToClient()).ToList();
             HomeViewModel viewModel = new HomeViewModel
             {
-                Locations = recentLocations
+                Locations = recentLocations,
+                Events = latestEvents
             };
             return View(viewModel);
         }
@@ -33,8 +37,8 @@ namespace tourPakistan.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            var latestEvents = eventService.GetAllEvents().OrderByDescending(x => x.RecCreatedDate).Take(3).Select(x => x.MapFromServerToClient()).ToList();
+            return View(latestEvents);
         }
 
         public ActionResult Contact()

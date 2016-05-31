@@ -1,4 +1,6 @@
-﻿using TP.Models.DomainModels;
+﻿using System;
+using System.Linq;
+using TP.Models.DomainModels;
 using TP.Models.WebModels;
 
 namespace TP.Models.ModelMapers
@@ -22,7 +24,8 @@ namespace TP.Models.ModelMapers
                 RecLastUpdatedBy = source.RecLastUpdatedBy,
                 RecLastUpdatedDate = source.RecLastUpdatedDate,
                 LocationName = source.Location.LocationName,
-                LocationId = source.Location.LocationId
+                LocationId = source.Location.LocationId,
+                LocationImage = Convert.ToBase64String(source.Location.LocationImages.OrderByDescending(x=>x.RecCreatedDate).First().ImageData)
             };
         }
 
