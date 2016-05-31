@@ -28,11 +28,11 @@
             <li><strong>Date Added</strong>@Model.RecLastUpdatedDate.ToString("dd MMM yyyy")</li>
             <li><strong>Categories</strong>@Model.CategoryName</li>
         </ul>
-        <a href="javascript:;" target="_blank" class="cbp-l-project-details-visit btn btn-sm c-btn-border-1x c-btn-square c-btn-dark c-btn-uppercase c-btn-bold">View Events</a> 
+        <a href="@Url.Action("Index","Event")" class="cbp-l-project-details-visit btn btn-sm c-btn-border-1x c-btn-square c-btn-dark c-btn-uppercase c-btn-bold">View Events</a> 
     </div>
 </div>
 
-<div class="cbp-l-project-container">
+@*<div class="cbp-l-project-container">
     <div class="cbp-l-project-related">
         <div class="cbp-l-project-desc-title"><span>Related Places</span></div>
 
@@ -58,7 +58,7 @@
         </ul>
 
     </div>
-</div>
+</div>*@
 
 <br>
 <br>

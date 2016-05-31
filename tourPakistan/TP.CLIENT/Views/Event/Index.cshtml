@@ -1,0 +1,96 @@
+﻿@model IEnumerable<TP.Models.WebModels.EventModel>
+@{
+    ViewBag.Title = "Search";
+    Session["MenuKey"] = "6";
+}
+
+<div class="c-layout-page">
+    <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+    <div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h3 class="c-font-uppercase c-font-sbold">Masonry Gallery</h3>
+            </div>
+            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                <li>
+                    <a href="#">Pages</a>
+                </li>
+                <li>/</li>
+                <li>
+                    <a href="#">Masonry Gallery</a>
+                </li>
+                <li>/</li>
+                <li class="c-state_active">Jango Components</li>
+            </ul>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div class=" container">
+        @*<div class="c-label">All Events</div>*@
+        <div class="c-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-info">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Events</div>
+                        <div class="panel-body">
+                            <p>
+                                Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam
+                                id dolor id nibh ultricies vehicula ut id elit.
+                            </p>
+                        </div>
+                        <!-- Table -->
+                        <table class="table table-hover" id="events">
+                            <thead>
+                                <tr>
+                                    <th scope="row">#</th>
+                                    <th>Event</th>
+                                    <th>Location</th>
+                                    <th>Organizer</th>
+                                    <th>Registration Start</th>
+                                    <th>Registration End</th>
+                                    <th>Event Start</th>
+                                    <th>Event Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @{ int i = 0;}
+                            @foreach (var events in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@events.Title</td>
+                                    <td>
+                                        <div class="c-name"><a class="cbp-singlePage" href="@Url.Action("LocationDetail", "Category")/@events.LocationId">@events.LocationName</a>
+                                        </div></td>
+                                    <td>@events.RecCreatedByName</td>
+                                    <td>@events.RegistrationStartDate.Value.ToShortDateString()</td>
+                                    <td>@events.RegistrationEndDate.Value.ToShortDateString()</td>
+                                    <td>@events.ScheduledDate.Value.ToShortDateString()</td>
+                                    <td>@{ var duration = events.EndDate.Value.Subtract(events.ScheduledDate.Value).TotalDays;} @duration Days</td>
+                                </tr>
+
+                                i++;
+                            }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row">#</th>
+                                    <th>Event</th>
+                                    <th>Location</th>
+                                    <th>Organizer</th>
+                                    <th>Registration Start</th>
+                                    <th>Registration End</th>
+                                    <th>Event Start</th>
+                                    <th>Event Duration</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

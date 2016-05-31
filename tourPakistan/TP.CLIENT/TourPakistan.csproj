@@ -195,11 +195,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AddEventController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ViewEventController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -658,6 +657,7 @@
     <Content Include="assets\plugins\zoom-master\jquery.zoom.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\jquery.dataTables.css" />
     <Content Include="Content\css\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
@@ -904,6 +904,7 @@
     <Content Include="Scripts\js\isotope\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\js\isotope\isotope.pkgd.min.js" />
     <Content Include="Scripts\js\isotope\modernizr-isotope.js" />
+    <Content Include="Scripts\js\jquery.dataTables.js" />
     <Content Include="Scripts\js\jquery.form.js" />
     <Content Include="Scripts\js\jquery.infinitescroll.js" />
     <Content Include="Scripts\js\jquery.ketchup.all.min.js" />
@@ -950,10 +951,9 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\AddEvent\AddEvent.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
-    <Content Include="Views\ViewEvent\ViewEvent.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\PartialPages\_HeaderPartial.cshtml" />
     <Content Include="Views\Shared\PartialPages\_FooterPartial.cshtml" />
