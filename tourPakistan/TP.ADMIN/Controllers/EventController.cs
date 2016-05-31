@@ -1,7 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TP.Interfaces.IServices;
 using TP.Models.ModelMapers;
 using TP.Models.WebModels;
@@ -13,21 +19,20 @@ namespace TMD.Web.Controllers
     public class EventController : BaseController
     {
         private readonly IEventService eventService;
-
-        public EventController(IEventService eventService)
+        private readonly ILocationService locationService;
+        private static IEnumerable<LocationModel> locationsList;
+        public EventController(IEventService eventService, ILocationService locationService)
         {
             this.eventService = eventService;
+            this.locationService = locationService;
         }
 
         // GET: Event
         public ActionResult EventIndex()
         {
             var model = eventService.GetAllEvents().ToList();
-            List<EventModel> events;
-            if (model.Count == 0)
-                events = new List<EventModel>();
 
-            events = model.Select(x => x.MapFromServerToClient()).ToList();
+            var events = model.Select(x => x.MapFromServerToClient()).ToList();
             ViewBag.MessageVM = TempData["Message"] as MessageViewModel;
             return View(events);
         }
@@ -35,27 +40,28 @@ namespace TMD.Web.Controllers
 
         public ActionResult AddEvent(long? id)
         {
-            var model = new EventModel();
+            var model = new EventViewModel();
             if (id != null)
             {
-                model = eventService.GetEventById((int)id).MapFromServerToClient();
+                model.Event = eventService.GetEventById(id.Value).MapFromServerToClient();
             }
+            locationsList = model.Locations = locationService.GetAllLocations().Select(x => x.MapFromServerToClient());
             ViewBag.MessageVM = TempData["Message"] as MessageViewModel;
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult AddEvent(EventModel model)
+        public ActionResult AddEvent(EventViewModel model)
         {
-            if (model.EventId == 0)
+            if (model.Event.EventId == 0)
             {
-                model.RecCreatedDate = DateTime.Now;
-                model.RecCreatedBy = Session["UserID"].ToString();
+                model.Event.RecCreatedDate = DateTime.Now;
+                model.Event.RecCreatedBy = Session["UserID"].ToString();
             }
-            model.RecLastUpdatedBy = Session["UserID"].ToString();
-            model.RecLastUpdatedDate = DateTime.Now;
+            model.Event.RecLastUpdatedBy = Session["UserID"].ToString();
+            model.Event.RecLastUpdatedDate = DateTime.Now;
 
-            if (eventService.AddUpdateEvents(model.MapFromClientToServer()))
+            if (eventService.AddUpdateEvents(model.Event.MapFromClientToServer()))
             {
                 TempData["Message"] = new MessageViewModel { Message = "Event Added Successfully", IsSaved = true };
             }
@@ -83,5 +89,20 @@ namespace TMD.Web.Controllers
             }
             return RedirectToAction("EventIndex");
         }
+
+        public FileResult GetImage(long id)
+        {
+            var image = locationsList.Single(x => x.LocationId == id).LocationImage;
+            if (image != null)
+            {
+                string ext = image.ContentType.Split('/')[1];
+
+                return File(image.ImageData, image.ContentType, "IMG_" + image.ImageId + image.IsActive + "." + ext);
+            }
+            return File(new byte[20], "");
+
+        }
+
+        
     }
 }

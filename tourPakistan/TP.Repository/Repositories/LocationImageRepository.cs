@@ -33,6 +33,11 @@ namespace TP.Repository.Repositories
             return DbSet.Include(x=>x.Location).Where(x => x.LocationId == locationId).ToList();
 
         }
+        public bool DeleteAllLocationImages(long locationId)
+        {
+            db.LocationImages.RemoveRange(DbSet.Where(x => x.LocationId == locationId));
+            return true;
+        }
 
     }
 }

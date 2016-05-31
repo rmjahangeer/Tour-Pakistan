@@ -4,11 +4,6 @@ namespace TP.Models.DomainModels
 {
     public class Location
     {
-        public Location()
-        {
-            this.LocationImages = new HashSet<LocationImage>();
-        }
-
         public long LocationId { get; set; }
         public string LocationName { get; set; }
         public string LocationDescription { get; set; }
@@ -25,5 +20,6 @@ namespace TP.Models.DomainModels
         public virtual Category Category { get; set; }
         public virtual Province Province { get; set; }
         public virtual ICollection<LocationImage> LocationImages { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

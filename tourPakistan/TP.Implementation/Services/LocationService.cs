@@ -8,10 +8,12 @@ namespace TP.Implementation.Services
     public class LocationService:ILocationService
     {
         private readonly ILocationRepository LocationRepository;
+        private readonly ILocationImageRepository locationImageRepository;
 
-        public LocationService(ILocationRepository LocationRepository)
+        public LocationService(ILocationRepository LocationRepository, ILocationImageRepository locationImageRepository)
         {
             this.LocationRepository = LocationRepository;
+            this.locationImageRepository = locationImageRepository;
         }
 
         public IEnumerable<Location> GetAllLocations()
@@ -46,18 +48,27 @@ namespace TP.Implementation.Services
         public bool DeleteLocation(long id)
         {
             var toDetele = LocationRepository.Find(id);
-            toDetele.IsActive = false;
+            locationImageRepository.DeleteAllLocationImages(toDetele.LocationId);
+            LocationRepository.Delete(toDetele);
             LocationRepository.SaveChanges();
             return true;
-
         }
 
         public bool ActivateLocation(long id)
         {
-            var toDetele = LocationRepository.Find(id);
-            toDetele.IsActive = true;
+            var toToggle = LocationRepository.Find(id);
+            var status = false;
+            if (toToggle.IsActive)
+            {
+                toToggle.IsActive = !toToggle.IsActive;
+            }
+            else
+            {
+                toToggle.IsActive = !toToggle.IsActive;
+                status = true;
+            }
             LocationRepository.SaveChanges();
-            return true;
+            return status;
         }
     }
 }

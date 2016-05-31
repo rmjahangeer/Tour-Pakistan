@@ -1,10 +1,16 @@
-﻿@model TP.Models.WebModels.EventModel
+﻿@using Newtonsoft.Json
+@model TP.Models.WebViewModels.EventViewModel
 @{
     ViewBag.Title = "Add Event";
     Session["MenuKey"] = "2";
     Session["SubMenuKey"] = "3";
 }
-
+<style>
+    .select2Icon {
+        height: 40px !important;
+        width: 40px !important;
+    }
+</style>
 <div class="portlet light bg-inverse formBodyRemoveSideSpace formBodyMinHeight">
     <div class="portlet-title">
         <div class="caption">
@@ -35,55 +41,62 @@
     </div>
 
 
-    @using (Html.BeginForm("AddEvent", "Event", FormMethod.Post, new { @class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form" }))
+    @using (Html.BeginForm("AddEvent", "Event", FormMethod.Post, new {@class = "form-horizontal", @id = "SupplierBankAccountForm", role = "form"}))
     {
         <div class="portlet-body form">
 
             <div class="container-fluid">
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(m => m.EventId)
-                @Html.HiddenFor(m => m.RecCreatedBy)
-                @Html.HiddenFor(m => m.RecCreatedDate)
+                @Html.HiddenFor(m => m.Event.EventId)
+                @Html.HiddenFor(m => m.Event.RecCreatedBy)
+                @Html.HiddenFor(m => m.Event.RecCreatedDate)
 
                 <div class="form-group margin-top-20">
-                    @Html.Label("Event Name", new { @class = "col-md-3 control-label requiredLabel" })
+                    @Html.Label("Event Name", new {@class = "col-md-3 control-label requiredLabel"})
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control mandatory", placeholder = "Event Title"})
+                        @Html.TextBoxFor(m => m.Event.Title, new {@class = "form-control mandatory", placeholder = "Event Title"})
                     </div>
                 </div>
 
                 <div class="form-group margin-top-20">
-                    @Html.Label("Event Description", new { @class = "col-md-3 control-label requiredLabel" })
+                    @Html.Label("Location", new {@class = "col-md-3 control-label requiredLabel"})
                     <div class="col-md-4">
-                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control mandatory", placeholder = "Event Description" })
+                        @Html.DropDownListFor(m => m.Event.LocationId, new SelectList(Model.Locations, "LocationId", "LocationName", Model.Event.LocationId), "", new {@class = "form-control"})
                     </div>
                 </div>
-                
+
                 <div class="form-group margin-top-20">
-                    @Html.Label("Starting Date", new { @class = "col-md-3 control-label requiredLabel" })
+                    @Html.Label("Event Description", new {@class = "col-md-3 control-label requiredLabel"})
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.ScheduledDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Starting Date" , @readonly=true })
+                        @Html.TextAreaFor(m => m.Event.Description, new {@class = "form-control mandatory", placeholder = "Event Description"})
                     </div>
                 </div>
-                
+
                 <div class="form-group margin-top-20">
-                    @Html.Label("Ending Date", new { @class = "col-md-3 control-label requiredLabel" })
+                    @Html.Label("Starting Date", new {@class = "col-md-3 control-label requiredLabel"})
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Ending Date", @readonly = true })
+                        @Html.TextBoxFor(m => m.Event.ScheduledDate, "{0:dd-MMM-yyyy}", new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Starting Date", @readonly = true })
                     </div>
                 </div>
-                
+
                 <div class="form-group margin-top-20">
-                    @Html.Label("Registration Start", new { @class = "col-md-3 control-label requiredLabel" })
+                    @Html.Label("Ending Date", new {@class = "col-md-3 control-label requiredLabel"})
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.RegistrationStartDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration Start", @readonly = true })
+                        @Html.TextBoxFor(m => m.Event.EndDate, "{0:dd-MMM-yyyy}", new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Ending Date", @readonly = true })
                     </div>
                 </div>
-                
+
                 <div class="form-group margin-top-20">
-                    @Html.Label("Registration End", new { @class = "col-md-3 control-label requiredLabel" })
+                    @Html.Label("Registration Start", new {@class = "col-md-3 control-label requiredLabel"})
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.RegistrationEndDate, new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration End", @readonly = true })
+                        @Html.TextBoxFor(m => m.Event.RegistrationStartDate, "{0:dd-MMM-yyyy}", new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration Start", @readonly = true })
+                    </div>
+                </div>
+
+                <div class="form-group margin-top-20">
+                    @Html.Label("Registration End", new {@class = "col-md-3 control-label requiredLabel"})
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Event.RegistrationEndDate, "{0:dd-MMM-yyyy}", new { @class = "form-control mandatory datepickerFormated cursorHand", placeholder = "Registration End", @readonly = true })
                     </div>
                 </div>
 
@@ -92,3 +105,24 @@
 
     }
 </div>
+
+<script>
+    $(document).ready(function () {
+        function format(state) {
+            if (!state.id) return state.text; // optgroup
+            return "<img class='select2Icon' src='@Url.Action("GetImage")/"+ state.id +"'/>&nbsp;&nbsp;" + state.text;
+
+
+        }
+
+        $('#Event_LocationId').select2({
+            placeholder: '<i class="fa fa-map-marker"></i>&nbsp;Select a Location',
+            allowClear: true,
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function (m) {
+                return m;
+            }
+        });
+    });
+</script>

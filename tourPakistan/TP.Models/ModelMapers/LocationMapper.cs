@@ -28,7 +28,7 @@ namespace TP.Models.ModelMapers
             };
             if (source.LocationImages.Count > 0)
             {
-                toReturn.LocationImage = source.LocationImages.OrderBy(x=>x.RecCreatedDate).FirstOrDefault().MapFromServerToClient();
+                toReturn.LocationImage = source.LocationImages.OrderByDescending(x=>x.RecCreatedDate).FirstOrDefault().MapFromServerToClient();
                 toReturn.ImageBase64 = "data:image/png;base64," + Convert.ToBase64String(toReturn.LocationImage.ImageData);
             }
             return toReturn;

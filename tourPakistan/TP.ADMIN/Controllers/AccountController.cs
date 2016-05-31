@@ -182,7 +182,12 @@ namespace IdentitySample.Controllers
                 {
                     return View(model);
                 }
-                var user = await UserManager.FindByNameAsync(model.Email);
+                AspNetUser user = null;
+                if (model.Email.Contains("@"))
+                {
+                    user = await UserManager.FindByEmailAsync(model.Email);
+                }
+                user = await UserManager.FindByNameAsync(model.Email);
                 if (user != null)
                 {
                     if (!await UserManager.IsEmailConfirmedAsync(user.Id))
@@ -788,7 +793,7 @@ namespace IdentitySample.Controllers
             //    ImagePath = ConfigurationManager.AppSettings["ProfileImage"].ToString() + result.ImageName
             //};
             //ViewBag.FilePath = ConfigurationManager.AppSettings["ProfileImage"] + ProfileViewModel.ImageName;//Server.MapPath
-            //ViewBag.MessageVM = TempData["message"] as MessageViewModel;
+            ViewBag.MessageVM = TempData["message"] as MessageViewModel;
             AspNetUserModel ProfileViewModel = new AspNetUserModel();
             ProfileViewModel=AspNetUserService.FindById(User.Identity.GetUserId()).CreateFrom();
             return View(ProfileViewModel);
@@ -814,6 +819,7 @@ namespace IdentitySample.Controllers
             }
             catch (Exception e)
             {
+                TempData["message"] = new MessageViewModel { Message = "Something went wrong", IsError = true };
             }
             return RedirectToAction("Profile");
         }

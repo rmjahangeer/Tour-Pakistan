@@ -25,6 +25,15 @@
                     Save & Close
                 </span>
             </button>
+            @if (Model.Location.LocationId > 0)
+            {
+                <a href="@Url.Action("Images", "Location")/@Model.Location.LocationId" class="btn default yellow-stripe">
+                    <i class="fa fa-file-picture-o"></i>
+                    <span class="hidden-480">
+                        View Images
+                    </span>
+                </a>
+            }
             <a href="@Url.Action("LocationIndex", "Location")" class="btn default yellow-stripe">
                 <i class="fa fa-list"></i>
                 <span class="hidden-480">

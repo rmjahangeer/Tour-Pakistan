@@ -102,6 +102,7 @@
           <Property Name="RecLastUpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RecLastUpdatedDate" Type="datetime" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LocationId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -235,6 +236,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Event_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Location_Area">
           <End Role="Area" Type="Self.Area" Multiplicity="1" />
           <End Role="Location" Type="Self.Location" Multiplicity="*" />
@@ -272,7 +285,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LocationImage_LocationImage">
-          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LocationImage" Type="Self.LocationImage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Location">
@@ -330,6 +345,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Event_AspNetUsers" Association="Self.FK_Event_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Location" Association="Self.FK_Event_Location">
+            <End Role="Location" EntitySet="Location" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
           <AssociationSet Name="FK_Location_Area" Association="Self.FK_Location_Area">
@@ -425,6 +444,10 @@
           <AssociationSet Name="FK_Area_Province" Association="TMD.Models.DomainModels.FK_Area_Province">
             <End Role="Province" EntitySet="Provinces" />
             <End Role="Area" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Location" Association="TMD.Models.DomainModels.FK_Event_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Event" EntitySet="Events" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="spEbayItemExists_SProcResult">
@@ -597,6 +620,8 @@
           <Property Name="RecLastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="AspNetUser" Relationship="TMD.Models.DomainModels.FK_Event_AspNetUsers" FromRole="Event" ToRole="AspNetUser" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LocationId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="TMD.Models.DomainModels.FK_Event_Location" FromRole="Event" ToRole="Location" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -617,6 +642,7 @@
           <NavigationProperty Name="Category" Relationship="TMD.Models.DomainModels.FK_Location_Category" FromRole="Location" ToRole="Category" />
           <NavigationProperty Name="Province" Relationship="TMD.Models.DomainModels.FK_Location_Province" FromRole="Location" ToRole="Province" />
           <NavigationProperty Name="LocationImages" Relationship="TMD.Models.DomainModels.FK_LocationImage_LocationImage" FromRole="Location" ToRole="LocationImage" />
+          <NavigationProperty Name="Events" Relationship="TMD.Models.DomainModels.FK_Event_Location" FromRole="Location" ToRole="Event" />
         </EntityType>
         <EntityType Name="LocationImage">
           <Key>
@@ -742,6 +768,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Event_Location">
+          <End Type="TMD.Models.DomainModels.Location" Role="Location" Multiplicity="1" />
+          <End Type="TMD.Models.DomainModels.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -836,6 +874,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="TMD.Models.DomainModels.Event">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="RecLastUpdatedDate" ColumnName="RecLastUpdatedDate" />
                 <ScalarProperty Name="RecLastUpdatedBy" ColumnName="RecLastUpdatedBy" />
@@ -951,6 +990,7 @@
         <AssociationConnector Association="TMD.Models.DomainModels.FK_LocationImage_LocationImage" />
         <AssociationConnector Association="TMD.Models.DomainModels.FK_Province_AspNetUsers" />
         <AssociationConnector Association="TMD.Models.DomainModels.FK_Area_Province" />
+        <AssociationConnector Association="TMD.Models.DomainModels.FK_Event_Location" />
       </Diagram>
     </Diagrams>
   </Designer>

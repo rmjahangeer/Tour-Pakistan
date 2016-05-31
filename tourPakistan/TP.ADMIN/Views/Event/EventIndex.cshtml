@@ -46,12 +46,14 @@
                         <table id="dataTable" class="table table-bordered table-striped table-condensed flip-content">
                             <thead class="flip-content">
                                 <tr>
-                                    <th class="" style="width: 15%">Event Id</th>
+                                    <th class="" style="width: 5%">Id</th>
                                     <th class="">Event Title</th>
+                                    <th class="">Location</th>
                                     <th class="">Start Date</th>
                                     <th class="">End Date</th>
                                     <th class="">Registration Start</th>
                                     <th class="">Registration End</th>
+                                    <th class="">Organizer</th>
                                     <th class="">Action</th>
                                 </tr>
                             </thead>
@@ -61,13 +63,32 @@
                                     <tr>
                                         <td>@Event.EventId</td>
                                         <td>@Event.Title</td>
-                                        <td>@Event.ScheduledDate</td>
-                                        <td>@Event.EndDate</td>
-                                        <td>@Event.RegistrationStartDate</td>
-                                        <td>@Event.RegistrationEndDate</td>
+                                        <td><a href="@Url.Action("AddLocation","Location")/@Event.LocationId">@Event.LocationName</a></td>
+                                        <td>@Event.ScheduledDate.Value.ToString("dd-MMM-yyyy")</td>
+                                        <td>@Event.EndDate.Value.ToString("dd-MMM-yyyy")</td>
+                                        <td>@Event.RegistrationStartDate.Value.ToString("dd-MMM-yyyy")</td>
+                                        <td>@Event.RegistrationEndDate.Value.ToString("dd-MMM-yyyy")</td>
+                                        <td>@Event.RecCreatedByName</td>
                                         <td>
-                                            <a href="@Url.Action("AddEvent","Event")/@Event.EventId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a>
-                                            <a href="@Url.Action("Delete","Event")/@Event.EventId" class="btn btn-sm red-flamingo"><i class="fa fa-edit"></i> Delete</a>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn blue-madison dropdown-toggle" data-toggle="dropdown">
+                                                    Actions <i class="fa fa-angle-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop2">
+                                                    <li>
+                                                        <a href="@Url.Action("AddEvent", "Event")/@Event.EventId">
+                                                            <i class=" fa fa-pencil">
+                                                            </i> Edit
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="@Url.Action("Delete", "Event")/@Event.EventId">
+                                                            <i class=" fa fa-trash-o">
+                                                            </i> Delete
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                 }

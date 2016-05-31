@@ -43,17 +43,16 @@
                     <div class="portlet-body flip-scroll">
                         <table id="dataTable" class="table table-bordered table-striped table-condensed flip-content">
                             <thead class="flip-content">
-                                <tr>
-                                    <th class="" style="width: 15%">Location Id</th>
-                                    <th class="">Location Name</th>
-                                    <th class="">Description</th>
-                                    <th class="">Area</th>
-                                    <th class="">Province</th>
-                                    <th class="">Category</th>
-                                    <th class="">State</th>
-                                    <th class="">Action</th>
-                                    <th class="">Images</th>
-                                </tr>
+                            <tr>
+                                <th class="" style="width: 5%">Id</th>
+                                <th class="">Location Name</th>
+                                <th class="">Description</th>
+                                <th class="">Area</th>
+                                <th class="">Province</th>
+                                <th class="">Category</th>
+                                <th class="">State</th>
+                                <th class=""></th>
+                            </tr>
                             </thead>
                             <tbody>
                                 @foreach (var Location in Model)
@@ -65,23 +64,51 @@
                                         <td>@Location.AreaName</td>
                                         <td>@Location.ProvinceName</td>
                                         <td>@Location.CategoryName</td>
-                                        <td>
-                                            @if (Location.IsActive)
-                                            {
-                                                <a href="@Url.Action("Delete", "Location")/@Location.LocationId" class="btn btn-sm red-flamingo"><i class="fa fa-trash-o"></i> De-activate</a>
-                                            }
+                                        <td>@if(@Location.IsActive){<label class='label label-success '>Enabled</label>}
                                             else
-                                            {
-                                                <a href="@Url.Action("Activate", "Location")/@Location.LocationId" class="btn btn-sm green-jungle"><i class="fa fa-trash-o"></i> Activate</a>
-                                            }
-                                        </td>
+                                            {<label class='label label-danger'>Disabled</label>}</td>
                                         <td>
-                                            <a href="@Url.Action("AddLocation", "Location")/@Location.LocationId" class="btn btn-sm blue-steel"><i class="fa fa-edit"></i> Edit</a>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn blue-madison dropdown-toggle" data-toggle="dropdown">
+                                                        Actions <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop2">
+                                                        <li>
+                                                            <a href="@Url.Action("AddLocation", "Location")/@Location.LocationId">
+                                                                <i class="fa fa-pencil"></i> Edit
+                                                            </a>
+                                                        </li>
+                                                        
+                                                        @if (User.IsInRole("Admin"))
+                                                        {
+                                                            <li>
+                                                                @if (Location.IsActive)
+                                                                {
+                                                                    <a href="@Url.Action("Activate", "Location")/@Location.LocationId">
+                                                                        <i class="fa fa-ban"></i> Disable
+                                                                    </a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href="@Url.Action("Activate", "Location")/@Location.LocationId">
+                                                                        <i class="fa fa-check"></i> Enable
+                                                                    </a>
+                                                                }
+                                                            </li>
+                                                            <li>
+                                                                <a href="@Url.Action("Delete", "Location")/@Location.LocationId">
+                                                                    <i class="fa fa-trash-o"></i> Delete
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                        <li>
+                                                            <a href="@Url.Action("Images","Location")/@Location.LocationId">
+                                                                <i class="fa fa-file-picture-o"></i> Images
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             
-
-                                        </td>
-                                        <td>
-                                            <a href="@Url.Action("Images","Location")/@Location.LocationId" class="btn btn-sm blue-madison"><i class="fa fa-picture-o"></i> Images</a>
                                         </td>
                                     </tr>
                                 }

@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="portlet-body form">
-        <form class="form-horizontal" id="ProfileForm">
+        <form class="form-horizontal" id="ProfileForm" method="POST" action="@Url.Action("Profile","Account")">
         <div class="form-body">
             <div class="portlet-body">
                 <div class="form-group margin-top-20">
@@ -43,7 +43,13 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label">Email</label>
                     <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control mandatory", @readonly = "readonly" })
+                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control mandatory", @readonly = "readonly"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Username</label>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control mandatory", @readonly = "readonly" })
                     </div>
                 </div>
                 <div class="form-group">

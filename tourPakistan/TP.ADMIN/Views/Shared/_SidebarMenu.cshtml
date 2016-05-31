@@ -20,8 +20,7 @@
                             <span class="selected"></span>
                         </a>
                     </li>
-                    @if (User.IsInRole("Admin"))
-                    {
+                    
                         <li class=@( (Session["MenuKey"] != null && Session["MenuKey"].ToString() == "2") ? "active" : "")>
                             <a href="javascript:;">
                                 <i class="icon-basket-loaded"></i>
@@ -29,75 +28,80 @@
                                 <span class="arrow "></span>
                             </a>
                             <ul class="sub-menu">
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "1") ? "active" : "")>
-                                    <a href="@Url.Action("LocationIndex","Location")" class="WhiteColor">
-                                        <i class="icon-graph"></i>
-                                        <span class="title">Locations</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "2") ? "active" : "")>
-                                    <a href="@Url.Action("AreaIndex","Area")" class="nav-link ">
-                                        <i class="icon-graph"></i>
-                                        <span class="title">Areas</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "3") ? "active" : "")>
-                                    <a href="@Url.Action("ProvinceIndex","Province")" class="nav-link ">
-                                        <i class="icon-graph"></i>
-                                        <span class="title">Provinces</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "4") ? "active" : "")>
-                                    <a href="@Url.Action("CategoryIndex","Category")" class="nav-link ">
-                                        <i class="icon-graph"></i>
-                                        <span class="title">Categories</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "5") ? "active" : "")>
-                                    <a href="@Url.Action("SeasonIndex","Season")" class="nav-link ">
-                                        <i class="icon-graph"></i>
-                                        <span class="title">Seasons</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "6") ? "active" : "")>
-                                    <a href="@Url.Action("EventIndex","Event")" class="nav-link ">
-                                        <i class="icon-graph"></i>
-                                        <span class="title">Events</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
+                                @if (User.IsInRole("Company") || User.IsInRole("Admin"))
+                                {
+                                    <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "1") ? "active" : "")>
+                                        <a href="@Url.Action("LocationIndex", "Location")" class="WhiteColor">
+                                            <i class="icon-graph"></i>
+                                            <span class="title">Locations</span>
+                                            <span class="selected"></span>
+                                        </a>
+                                    </li>
+                                    <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "6") ? "active" : "")>
+                                        <a href="@Url.Action("EventIndex", "Event")" class="nav-link ">
+                                            <i class="icon-graph"></i>
+                                            <span class="title">Events</span>
+                                            <span class="selected"></span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+
+                                    <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "2") ? "active" : "")>
+                                        <a href="@Url.Action("AreaIndex", "Area")" class="nav-link ">
+                                            <i class="icon-graph"></i>
+                                            <span class="title">Areas</span>
+                                            <span class="selected"></span>
+                                        </a>
+                                    </li>
+                                    <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "3") ? "active" : "")>
+                                        <a href="@Url.Action("ProvinceIndex", "Province")" class="nav-link ">
+                                            <i class="icon-graph"></i>
+                                            <span class="title">Provinces</span>
+                                            <span class="selected"></span>
+                                        </a>
+                                    </li>
+                                    <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "4") ? "active" : "")>
+                                        <a href="@Url.Action("CategoryIndex", "Category")" class="nav-link ">
+                                            <i class="icon-graph"></i>
+                                            <span class="title">Categories</span>
+                                            <span class="selected"></span>
+                                        </a>
+                                    </li>
+                                    <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "5") ? "active" : "")>
+                                        <a href="@Url.Action("SeasonIndex", "Season")" class="nav-link ">
+                                            <i class="icon-graph"></i>
+                                            <span class="title">Seasons</span>
+                                            <span class="selected"></span>
+                                        </a>
+                                    </li>
+                                    
+                                }
                             </ul>
                         </li>
 
-                        <li class=@( (Session["MenuKey"] != null && Session["MenuKey"].ToString() == "3") ? "active" : "")>
-                            <a href="javascript:;">
-                                <i class="icon-basket-loaded"></i>
-                                <span class="title">User Management</span>
-                                <span class="arrow "></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "1") ? "active" : "")>
-                                    <a href="#" class="nav-link ">
-                                        <i class="icon-user-follow"></i>
-                                        <span class="title">Users</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                                <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "2") ? "active" : "")>
-                                    <a href="#" class="nav-link ">
-                                        <i class="icon-user-follow"></i>
-                                        <span class="title">Company</span>
-                                        <span class="selected"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class=@( (Session["MenuKey"] != null && Session["MenuKey"].ToString() == "3") ? "active" : "")>
+                                <a href="javascript:;">
+                                    <i class="icon-basket-loaded"></i>
+                                    <span class="title">User Management</span>
+                                    <span class="arrow "></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class=@( (Session["SubMenuKey"] != null && Session["SubMenuKey"].ToString() == "1") ? "active" : "")>
+                                        <a href="@Url.Action("Users","Account")" class="nav-link ">
+                                            <i class="icon-user-follow"></i>
+                                            <span class="title">Users/Companies</span>
+                                            <span class="selected"></span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }
+                    
                 </ul>
             </div>
             <!-- END HORIZONTAL RESPONSIVE MENU -->

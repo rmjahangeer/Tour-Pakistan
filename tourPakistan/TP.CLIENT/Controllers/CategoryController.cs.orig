@@ -1,0 +1,54 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using TP.Interfaces.IServices;
+using TP.Models.ModelMapers;
+using TP.Models.WebModels;
+using TP.Models.WebViewModels;
+
+// ReSharper disable InconsistentNaming
+
+namespace tourPakistan.Controllers
+{
+    public class CategoryController : Controller
+    {
+        private readonly ICategoryService categoryService;
+        private readonly ILocationService locationService;
+
+        public CategoryController(ICategoryService categoryService, ILocationService locationService)
+        {
+            this.categoryService = categoryService;
+            this.locationService = locationService;
+        }
+
+        // GET: Category
+        public ActionResult Index()
+        {
+            var response = categoryService.GetAllCategories().Where(x=>x.IsActive).Select(x => x.MapCategoryFromServerToClient()).ToList();
+            return View(response);
+        }
+
+<<<<<<< HEAD
+=======
+        public FileResult GetImage(long categoryId, long locationId)
+        {
+            var image = response.SingleOrDefault(x => x.CategoryId == categoryId).Locations.SingleOrDefault(x=>x.LocationId == locationId).LocationImage;
+            if (image != null)
+            {
+                string ext = image.ContentType.Split('/')[1];
+
+                return File(image.ImageData, image.ContentType, "IMG_" + image.ImageId + image.IsActive + "." + ext);
+            }
+            return File(new byte[20], "image/jpeg", "raw image");
+
+        }
+
+>>>>>>> de486359bf637521026bc9aa91232888d65e5498
+        public ActionResult LocationDetail(int id)
+        {
+            var location = locationService.GetLocationByIdWithImages(id).MapLocationWithImages();
+            return PartialView("_LocationDetail", location);
+        }
+
+    }
+}

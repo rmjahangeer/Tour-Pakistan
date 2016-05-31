@@ -17,11 +17,12 @@ namespace TP.Models.ModelMapers
                 RegistrationStartDate = source.RegistrationStartDate,
                 RegistrationEndDate = source.RegistrationEndDate,
                 RecCreatedBy = source.RecCreatedBy,
+                RecCreatedByName = source.AspNetUser.FirstName,
                 RecCreatedDate = source.RecCreatedDate,
                 RecLastUpdatedBy = source.RecLastUpdatedBy,
                 RecLastUpdatedDate = source.RecLastUpdatedDate,
-                
-                
+                LocationName = source.Location.LocationName,
+                LocationId = source.Location.LocationId
             };
         }
 
@@ -40,6 +41,7 @@ namespace TP.Models.ModelMapers
                 RecCreatedDate = source.RecCreatedDate,
                 RecLastUpdatedDate = source.RecLastUpdatedDate,
                 RecLastUpdatedBy = source.RecLastUpdatedBy,
+                LocationId = source.LocationId
             };
         }
     }

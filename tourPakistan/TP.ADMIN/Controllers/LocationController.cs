@@ -78,7 +78,10 @@ namespace TMD.Web.Controllers
             if (savedLocationId > 0)
             {
                 TempData["Message"] = new MessageViewModel { Message = "Location Added Successfully", IsSaved = true };
-                AddLocationImages(savedLocationId);
+                if (!AddLocationImages(savedLocationId))
+                {
+                    TempData["Message"] = new MessageViewModel { Message = "Location Added, But Images not saved. All Images Must be less than 1Mb", IsSaved = true };
+                }
             }
             else
             {
@@ -109,11 +112,11 @@ namespace TMD.Web.Controllers
             var isDeleted = locationService.ActivateLocation(id);
             if (isDeleted)
             {
-                TempData["Message"] = new MessageViewModel { Message = "Location Deleted Successfully", IsSaved = true };
+                TempData["Message"] = new MessageViewModel { Message = "Location Enabled Successfully", IsInfo = true };
             }
             else
             {
-                TempData["Message"] = new MessageViewModel { Message = "Something went wrong", IsError = true };
+                TempData["Message"] = new MessageViewModel { Message = "Location Disabled Successfully", IsInfo = true };
             }
             return RedirectToAction("LocationIndex");
         }
@@ -149,7 +152,7 @@ namespace TMD.Web.Controllers
         }
 
         #region Helpers
-        private void AddLocationImages(long id)
+        private bool AddLocationImages(long id)
         {
             var imageWebModel = new List<LocationImageWebModel>(Request.Files.Count);
 
@@ -171,11 +174,11 @@ namespace TMD.Web.Controllers
                     var isSaved = SaveImage(imageWebModel[i]);
                     if (!isSaved)
                     {
-                        return;
+                        return false;
                     }
                 }
             }
-            locationImageService.AddUpdateLocationImages(imageWebModel);
+            return locationImageService.AddUpdateLocationImages(imageWebModel);
 
         }
         private bool SaveImage(LocationImageWebModel location)
@@ -183,8 +186,8 @@ namespace TMD.Web.Controllers
             
             var tempStream = location.Image.InputStream;
 
-            //File size must be less than 4MBs
-            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 8388608)
+            //File size must be less than 1MBs
+            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 1024)
             {
                 var width = Image.FromStream(tempStream).Width;
                 var height = Image.FromStream(tempStream).Height;
@@ -192,7 +195,7 @@ namespace TMD.Web.Controllers
                 Image newImage = new Bitmap(width, height);
                 using (Graphics graphicsHandle = Graphics.FromImage(newImage))
                 {
-                    graphicsHandle.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    graphicsHandle.InterpolationMode = InterpolationMode.Default;
                     graphicsHandle.DrawImage(Image.FromStream(tempStream), 0, 0, width, height);
                 }
                 //return newImage;

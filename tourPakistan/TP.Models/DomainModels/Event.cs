@@ -5,6 +5,7 @@ namespace TP.Models.DomainModels
     public class Event
     {
         public long EventId { get; set; }
+        public long LocationId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime? ScheduledDate { get; set; }
@@ -18,5 +19,6 @@ namespace TP.Models.DomainModels
 
         public bool IsActive { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
+        public virtual Location Location { get; set; }
     }
 }

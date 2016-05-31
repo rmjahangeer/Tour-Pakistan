@@ -145,6 +145,7 @@
     <Compile Include="WebModels\SeasonModel.cs" />
     <Compile Include="WebModels\ProvinceModel.cs" />
     <Compile Include="WebViewModels\CategoryViewModel.cs" />
+    <Compile Include="WebViewModels\EventViewModel.cs" />
     <Compile Include="WebViewModels\LocationViewModel.cs" />
     <Compile Include="WebViewModels\AreaViewModel.cs" />
     <Compile Include="WebViewModels\AspNetUsersViewModel.cs" />
