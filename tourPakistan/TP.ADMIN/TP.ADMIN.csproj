@@ -585,6 +585,7 @@
     <Content Include="Content\global\plugins\bootstrap-modal\js\bootstrap-modalmanager.js" />
     <Content Include="Content\global\plugins\jquery-ui\jquery-ui-1.11.4.css" />
     <Content Include="Content\global\scripts\metronic.js" />
+    <Content Include="Images\Web\tp_logo.PNG" />
     <Content Include="Scripts\AddProductPage.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -1505,7 +1506,6 @@
     <Content Include="Images\photon\w_arrow_red%402x.psd" />
     <Content Include="Images\pic05.jpg" />
     <Content Include="Images\reportsSpinner.gif" />
-    <Content Include="Images\Web\logo2.png" />
     <Content Include="Content\global\img\social\Thumbs.db" />
     <Content Include="Content\global\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\global\plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
