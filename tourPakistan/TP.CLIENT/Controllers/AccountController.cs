@@ -11,7 +11,6 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using TMD.Web;
 using TP.Implementation.Identity;
 using TP.Interfaces.IServices;
 using TP.Models.DomainModels;

@@ -6,7 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
-using TMD.Web.Helper;
+using tourPakistan.Helper;
 
 namespace tourPakistan
 {
