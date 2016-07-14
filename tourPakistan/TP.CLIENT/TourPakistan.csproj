@@ -888,6 +888,7 @@
     <Content Include="assets\plugins\socicon\font\socicon.woff" />
     <Content Include="assets\plugins\socicon\font\socicon.woff2" />
     <Content Include="assets\plugins\socicon\font\socicond41d.eot" />
+    <None Include="Properties\PublishProfiles\TPCLient.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

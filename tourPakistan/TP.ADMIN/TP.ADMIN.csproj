@@ -1494,7 +1494,6 @@
     <Content Include="Images\photon\entypo.woff" />
     <Content Include="Images\photon\iconic_stroke.eot" />
     <Content Include="Images\photon\iconic_stroke.ttf" />
-    <Content Include="Images\photon\icons\default\Thumbs.db" />
     <Content Include="Images\photon\icons\hover\Thumbs.db" />
     <Content Include="Images\photon\icons\Thumbs.db" />
     <Content Include="Images\photon\jQueryUI\Thumbs.db" />
@@ -1602,7 +1601,6 @@
     <Content Include="fonts\fontawesome-webfont78ce.eot" />
     <Content Include="fonts\fontawesome-webfont78ce.woff" />
     <Content Include="fonts\fontawesome-webfontd41d.eot" />
-    <None Include="Properties\PublishProfiles\TOYMARKET.pubxml" />
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\ui-extended-modals.min.js" />
     <Content Include="Scripts\ui-modals.min.js" />
@@ -1627,6 +1625,7 @@
     <Content Include="Views\Season\AddSeason.cshtml" />
     <Content Include="Views\Season\SeasonIndex.cshtml" />
     <Content Include="Views\Location\Images.cshtml" />
+    <None Include="Properties\PublishProfiles\TPAdmin.pubxml" />
     <None Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_SidebarMenu.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />

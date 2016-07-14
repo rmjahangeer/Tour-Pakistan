@@ -30,7 +30,7 @@ namespace TP.Repository.Repositories
 
         public IEnumerable<Event> GetAllEvents()
         {
-            return DbSet.Include(x=>x.AspNetUser).Select(x=>x).ToList();
+            return DbSet.Include(x=>x.AspNetUser).Select(x=>x);
         }
 
     }

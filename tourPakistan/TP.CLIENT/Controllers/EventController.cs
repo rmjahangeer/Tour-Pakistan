@@ -17,7 +17,7 @@ namespace tourPakistan.Controllers
         // GET: AddEvent
         public ActionResult Index()
         {
-            var events = _eventService.GetAllEvents().Select(x => x.MapFromServerToClient());
+            var events = _eventService.GetAllEvents().ToList().Select(x => x.MapFromServerToClient()).ToList();
             return View(events);
         }
     }

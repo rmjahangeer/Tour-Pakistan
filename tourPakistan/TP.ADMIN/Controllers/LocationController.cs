@@ -187,7 +187,7 @@ namespace TMD.Web.Controllers
             var tempStream = location.Image.InputStream;
 
             //File size must be less than 1MBs
-            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 1024)
+            if (location.Image.ContentLength > 0 && location.Image.ContentLength < 1024*1024)
             {
                 var width = Image.FromStream(tempStream).Width;
                 var height = Image.FromStream(tempStream).Height;

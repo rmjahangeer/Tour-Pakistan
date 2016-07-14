@@ -454,7 +454,7 @@ $(document).ready(function () {
         var remember = $('#login-rememberme').is(':checked');
         debugger;
         $.ajax({
-            url: '@Url.Action("Login","Account")',
+            url: '/Account/Login',
             method: 'POST',
             data: {
                 Email: email,
